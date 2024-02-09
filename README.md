@@ -1,1 +1,2 @@
 # Small Talk
+SmallTalk is a web application designed to create a virtual community for children in hospitals, allowing them to connect with peers facing similar health challenges. This project is born from a vision to blend social support, entertainment, and direct communication with healthcare teams into a single, child-friendly platform. While our ultimate ambition includes a comprehensive suite of features aimed at enhancing the hospital experience for young patients, this prototype will focus on core functionalities achievable within the scope of this semester.
