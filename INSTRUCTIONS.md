@@ -10,7 +10,8 @@ Make sure you have the latest version of Node.js installed on your machine. Ther
 ## Running on Your Machine
   *  First, fork the repo and make your appropriate branches
   *  On your local machine, navigate to the small-talk folder
-  *  Run the command **npm run dev** in your command line
+  *  Run the command **npm install** to install necessary dependencies
+  *  Run the command **npm run dev** in your command line to compile and run the app locally
     *  Visit http://localhost:3000 to see the site hosted on your machine. Whenever you save changes, this will update in real time.
 
 ### Additional Resources
