@@ -1,19 +1,19 @@
 # Small Talk
-SmallTalk is a web application designed to create a virtual community for children in hospitals, allowing them to connect with peers facing similar health challenges. This project is born from a vision to blend social support, entertainment, and direct communication with healthcare teams into a single, child-friendly platform. While our ultimate ambition includes a comprehensive suite of features aimed at enhancing the hospital experience for young patients, this prototype will focus on core functionalities achievable within the scope of this semester.
+SmallTalk is a web application designed to create a virtual community for children in hospitals, allowing them to connect with peers facing similar health challenges.
 
-## Getting Started
-You can find a quick to follow beginner's guide here: https://www.youtube.com/watch?v=ENrzD9HAZK4
+## Overview
+This project is born from a vision to blend social support, entertainment, and direct communication with healthcare teams into a single, child-friendly platform. While our ultimate ambition includes a comprehensive suite of features aimed at enhancing the hospital experience for young patients, this prototype will focus on core functionalities achievable within the scope of this semester.
 
-Make sure you have the latest version of Node.js installed on your machine. There are a couple basic options:
-  *  Use the recommended version manager (best option): https://www.github.com/coreybutler/nvm-windows
-  *  Download straight from the source: https://nodejs.org/en
+## Features
+- Create a verified account as a patient, alumni that has recovered, parent of patient, or hospital faculty
+- Reach out to Doctors or Nurses virtually
+- Interact with other patients virtually
+- Have access to any hospital services digitally
+- Have a visible calendar and notification bar that tells you the plans for the day and future events of the month.
 
-## Running on Your Machine
-  *  First, fork the repo and make your appropriate branches
-  *  On your local machine, navigate to the small-talk folder
-  *  Run the command **npm run dev** in your command line
-    *  Visit http://localhost:3000 to see the site hosted on your machine. Whenever you save changes, this will update in real time.
+## Planned Features
+This list is what we will strive to achieve during this semester, while not the core functionality of the application, lists our plans and goals we wish to achieve in the project. 
 
-### Additional Resources
-NextJS documentation: https://nextjs.org/docs/app/building-your-application
-TailwindCSS documentation: https://v2.tailwindcss.com/docs
+[PDF of Plans](https://github.com/Redblaze74/2024-S-GROUP4-SMTK/blob/main/docs/img/PlannedFeatures.pdf)
+
+Once a planned feature is successfully implemented it will be moved from this list into the features list.
