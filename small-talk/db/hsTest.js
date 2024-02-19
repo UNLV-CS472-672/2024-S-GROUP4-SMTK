@@ -2,8 +2,8 @@
 import Mongoboi from "./mongo"
 export default async function handleSubmit(formData) {
     "use server"
- 
-    const mongoboi = new Mongoboi("mongodb+srv://smt_root:pokemonwithguns@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority", "Users")
+    var uri = ""
+    const mongoboi = new Mongoboi(uri, "Users")
     const date = new Date('January 1, 1980');
     var filter = {
       username: formData.get('username'),
