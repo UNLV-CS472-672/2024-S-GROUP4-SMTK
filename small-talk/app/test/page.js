@@ -5,6 +5,12 @@ import handleSubmit from "@/db/hsTest"
 export default function LoginPage() {
   var status = "Submit";
   const [textInput, setTextInput] = useState(null);
+
+  const handleLogin = () => {
+    // if log in successfully
+    window.location.href = "/homepage"; // Redirect to the homepage
+  };
+
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center text-black">
       {(textInput == null) ? <div></div>: <div className="text-white">hello {textInput.firstname}</div>}
@@ -42,7 +48,8 @@ export default function LoginPage() {
               
           />
         </div>
-        <button type="submit" className='p-5 m-5 rounded-md bg-green-400'>{status}</button>
+        <button id ="login"type="submit" className='p-5 m-5 rounded-md bg-green-400' onClick={handleLogin}>{status}</button>
+        
       </form>
       
       </div>
