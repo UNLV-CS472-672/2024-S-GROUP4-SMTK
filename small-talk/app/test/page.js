@@ -22,6 +22,7 @@ export default function LoginPage() {
             name="username"
             placeholder="Username"
             className='p-5 m-5'
+              
           />
         </div>
         <div>
@@ -30,6 +31,15 @@ export default function LoginPage() {
             name="password"
             placeholder="Password"
             className="p-5 m-5"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="Password must contain at least
+              - one(1) number
+              - one(1) upper case letter
+              - one(1) lower case letter
+              - eight(8) or more characters"
+            // required
+            //   minlength = "8"
+              
           />
         </div>
         <button type="submit" className='p-5 m-5 rounded-md bg-green-400'>{status}</button>
