@@ -17,3 +17,4 @@ Make sure you have the latest version of Node.js installed on your machine. Ther
 ### Additional Resources
 NextJS documentation: https://nextjs.org/docs/app/building-your-application
 TailwindCSS documentation: https://v2.tailwindcss.com/docs
+
