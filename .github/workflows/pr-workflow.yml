@@ -19,9 +19,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Change directory to project
-        run: cd small-talk
-
       - name: Install dependencies
         run: npm install
 
