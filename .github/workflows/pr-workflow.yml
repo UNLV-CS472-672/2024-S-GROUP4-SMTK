@@ -18,7 +18,9 @@ jobs:
         run: cd small-talk
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm init
+          npm install
 
       - name: Lint with ESLint
         run: npm lint

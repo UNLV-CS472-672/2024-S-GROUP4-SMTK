@@ -1,12 +1,13 @@
-name: Pull Request Workflow
+name: Merged to main repo workflow
 
 on:
-  push:
-    branches:
-      - main
+  pull_request_target:
+    types:
+      - closed
 
 jobs:
-  build:
+  if_merged:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +18,9 @@ jobs:
         run: cd small-talk
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm init
+          npm install
 
       - name: Lint with ESLint
         run: npm lint
