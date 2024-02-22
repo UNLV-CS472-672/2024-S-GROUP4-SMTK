@@ -1,7 +1,6 @@
 "use client"
 import { useState } from "react";
 import handleSubmit from "@/db/hsTest"
-import Image from "next/image";
 
 export default function LoginPage() {
   var status = "Submit";
@@ -15,7 +14,7 @@ export default function LoginPage() {
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center text-black">
       {(textInput == null) ? <div></div>: <div className="text-white">hello {textInput.firstname}</div>}
-        <Image src="/placeholder-logo.png" alt="Description of the image"></Image>
+        <img src="/placeholder-logo.png" alt="Description of the image" layout="fill"></img>
       <div className="rounded-md bg-sky-500/50 p-10 m-4">
       <form action={async (formData) => {
         const data = await handleSubmit(formData)
