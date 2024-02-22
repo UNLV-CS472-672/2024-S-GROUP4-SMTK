@@ -1,0 +1,30 @@
+name: Pull Request Workflow
+
+on:
+  pull_request:
+    types: [edited, opened, ready_for_review, synchronize, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Use NodeJS version
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./small-talk
+
+      - name: Lint with ESLint
+        run: npm run lint
+        working-directory: ./small-talk
+
+      - name: Build Next.js app
+        run: npm run build
+        working-directory: ./small-talk
