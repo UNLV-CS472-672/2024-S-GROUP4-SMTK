@@ -23,7 +23,7 @@ jobs:
         working-directory: ./small-talk
 
       - name: Lint with ESLint
-        run: npm lint
+        run: npm run lint
         working-directory: ./small-talk
 
       - name: Build Next.js app
