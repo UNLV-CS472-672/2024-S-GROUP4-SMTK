@@ -11,6 +11,10 @@ export default function LoginPage() {
     // if login sucessful
     window.location.href = "/homepage"; // Redirect to the homepage
   };
+  const handleAdmin = () => {
+    // if login sucessful
+    window.location.href = "/accountCreate"; // Redirect to the homepage
+  };
 
   const authenticateUP = (event) => {
     //form isnt submitted by default
@@ -89,6 +93,7 @@ export default function LoginPage() {
           id="adminCreateButton"
           type="adminCreate" 
           className='p-5 m-2 rounded-md bg-orange-400' 
+          onClick={handleAdmin}
         >{"New Patient"}
         </button>
       </form>
@@ -119,7 +124,7 @@ export default function Test() {
     }
   };
   return (
-    <div className="h-screen w-screen fldb-blue-200items-center justify-center text-black">
+    <div className="h-screen w-screen flex flex-col items-center justify-center text-black">
         <img src="/placeholder-logo.png" alt="Description of the image"></img>
       <div className="rounded-md bg-sky-500/50 p-10 m-4">
       <form onSubmit={handleSubmit}>
