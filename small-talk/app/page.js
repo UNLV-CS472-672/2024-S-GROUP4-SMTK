@@ -8,7 +8,7 @@ export default function Home() {
         <h1 className="font-sans text-4xl">
           Small Talk App
         </h1>
-        <Link href='/test'>Navigate to Test Page</Link>
+        <Link href='/login'>Navigate to Login Page</Link>
       </div>
     </main>
   );
