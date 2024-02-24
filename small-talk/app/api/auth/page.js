@@ -5,9 +5,6 @@ export default function auth() {
 }
 
 
-
-
-
 // import { NextApiRequest, NextApiResponse } from 'next'
  
 // export default async function handler(
