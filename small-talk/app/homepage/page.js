@@ -1,155 +1,59 @@
 "use client"
 import Link from 'next/link'
 import React, { useState } from 'react';
+import './styles.css';
 
-
-// Styling functions
-const HomePageContainerStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start', // Align buttons to the left side
-    justifyContent: 'flex-start', // Align content to the top
-    height: '100vh',
-};
-
-
-// button syling
-const ButtonStyle = {
-    padding: '20px', // Increase padding for larger buttons
-    width: '100%', // Make button full width of the sidebar container
-    border: 'none',
-    borderRadius: '0 5px 5px 0', // Rounded corners on the side sticking out
-    backgroundColor: '#007bff',
-    color: '#fff',
-    cursor: 'pointer',
-    transition: 'transform 0.3s ease', // Transition for the sliding effect
-    margin: '5px 0', // Margin between buttons
-    textAlign: 'left', // Align text to the left
-    fontSize: '18px', // Increase font size if needed
-    height: '10%', // Each button will take up 10% of the sidebar height
-    flexGrow: 1, // Allow buttons to grow and fill the container
-
-};
-
-const hoverEffect = {
-    transform: 'translateX(10px)', // Slide to the right on hover
-};
-
-
-const SidebarStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start', // Align buttons to the left side
-    position: 'fixed', // Make sidebar fixed to the side of the screen
-    left: 0,
-    top: 0,
-    width: '250px', // Width of the sidebar
-    height: '100%', // Sidebar spans the full height of the viewport
-    backgroundColor: '#333', // Light background for the sidebar
-    padding: '10px',
-    boxSizing: 'border-box',
-    justifyContent: 'space-between', // Distribute buttons evenly
-
-};
-
-
-const HeaderStyle = {
-    color: '#FFFFFF', // A bright color for better visibility on a black background
-    fontSize: '24px', // Keeping the font size large for better readability
-    position: 'absolute', // Positioning it absolutely will take it out of the normal document flow
-    top: '50%', // Position it halfway down the parent container
-    left: '50%', // Position it halfway across the parent container
-    transform: 'translate(-50%, -50%)', // Offset the header by half its width and height for centering
-    textAlign: 'center', // Center-align the text
-    zIndex: '10', // Ensure it's above other elements (if necessary)
-};
-
-
-
-const HoverButton = ({ style, onClick, children }) => {
+const HoverButton = ({ onClick, iconImage, altText }) => {
     const [isHovered, setIsHovered] = useState(false);
 
-    const hoverStyle = {
-        ...style,
-        ...(isHovered ? hoverEffect : null),
-    };
+    const hoverStyle = isHovered ? "button hover" : "button";
 
     return (
         <button
-            style={hoverStyle}
+            className={hoverStyle}
             onClick={onClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            {children}
+            <img src={iconImage} alt={altText} className="button-icon" />
         </button>
     );
 };
 
-
-const handleGame = () => {
-
-    window.location.href = "/game"; // Redirect to the game
-};
-
-const handleChat = () => {
-
-    window.location.href = "/chat"; // Redirect to the chat
-};
-
-const handleFood = () => {
-
-    window.location.href = "/food"; // Redirect to the food
-};
-
-const handleMovies = () => {
-
-    window.location.href = "/movie"; // Redirect to the movies
-};
-
-const handleSettings = () => {
-
-    window.location.href = "/setting"; // Redirect to the setting
-};
-
-const handleProfile = () => {
-
-    window.location.href = "/profile"; // Redirect to the profile
-};
-
-const handleSignOut = () => {
-
-    window.location.href = "/"; // Redirect to the welcome screen
-};
+const handleRedirect = (path) => () => {
+    window.location.href = path;
+}
 
 export default function Homepage() {
-
-
     return (
-        <div style={HomePageContainerStyle}>
+        <div className="homePageContainer">
             {/* header for homepage */}
-            <h1 style={HeaderStyle}>Welcome to Homepage</h1>
-            <div style={SidebarStyle}>
+            <h1 className="header">Welcome to Homepage</h1>
+            <div className = "topbar">
+                <img src="/img/three-bar.png" alt="Tab"/>
+                <img src="/img/logo.png" alt="Logo"/>
+            </div>
+            <div className="sidebar">
                 {/* creating a game button, and direct to the game page with ButtonStyling for the button */}
-                <HoverButton style={ButtonStyle} onClick={handleGame}>Game</HoverButton>
+                <HoverButton onClick={handleRedirect('/game')} iconImage="/img/games-tab.png" altText="Games" />
 
                 {/* creating a chat button, and direct to the chat page with ButtonStyling for the button */}
-                <HoverButton style={ButtonStyle} onClick={handleChat}>Chat</HoverButton>
+                <HoverButton onClick={handleRedirect('/chat')} iconImage="/img/chat-tab.png" altText="Chat" />
 
                 {/* creating a food button, and direct to the food page with ButtonStyling for the button */}
-                <HoverButton style={ButtonStyle} onClick={handleFood}>Order Food</HoverButton>
+                <HoverButton onClick={handleRedirect('/food')} iconImage="/img/food-tab.png" altText="Order Food" />
 
                 {/* creating a movies button, and direct to the movies page with ButtonStyling for the button */}
-                <HoverButton style={ButtonStyle} onClick={handleMovies}>Movies</HoverButton>
+                <HoverButton onClick={handleRedirect('/movie')} iconImage="/img/media-tab.png" altText="Movies" />
 
                 {/* creating a settings button, and direct to the settings page with ButtonStyling for the button */}
-                <HoverButton style={ButtonStyle} onClick={handleSettings}>Settings</HoverButton>
+                <HoverButton onClick={handleRedirect('/setting')}><span className="button-text">Settings</span></HoverButton>
 
                 {/* creating a profile button, and direct to the profile page with ButtonStyling for the button */}
-                <HoverButton style={ButtonStyle} onClick={handleProfile}>Profile</HoverButton>
+                <HoverButton onClick={handleRedirect('/profile')}><span className="button-text">Profile</span></HoverButton>
 
                 {/*creating a signout button, and direct to the login page with ButtonStyling for the button */}
-                <HoverButton style={ButtonStyle} onClick={handleSignOut}>Sign Out</HoverButton>
+                <HoverButton onClick={handleRedirect('/')}><span className="button-text">Sign Out</span></HoverButton>
             </div>
         </div>
     );

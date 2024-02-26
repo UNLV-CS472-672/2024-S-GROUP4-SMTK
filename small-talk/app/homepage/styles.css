@@ -1,0 +1,78 @@
+/*  ===================
+    Styles for Homepage
+    =================== */
+
+/* Styling Functions */
+.homePageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align buttons to the left side */
+    justify-content: flex-start; /* Align content to the top */
+    height: 100vh,
+}
+
+/* Button Styling */
+.button {
+    padding: 10px; /* Provide padding inside the button */
+    width: 100%; /* Button should take full width of its container */
+    height: 15%; /* Adjust the height as needed */
+    display: flex; /* Use flex layout */
+    align-items: center; /* Center items vertically */
+    justify-content: flex-start; /* Align items to the left */
+    background-image: url('/img/real-button.png'); /* Your button background */
+    background-size: cover; /* Cover the entire button with the background image */
+    background-repeat: no-repeat;
+    position: relative; /* Position relative for children positioning */
+}
+
+.button-icon {
+    width: 30px; /* Width of the icon */
+    height: 30px; /* Height of the icon */
+    /* Remove absolute positioning and centering transform */
+}
+
+.button:hover {
+    transform: translateX(10px);
+}
+
+.button-text {
+    /* Style your text as needed */
+    margin-left: 10px; /* Space between icon and text */
+}
+
+/* Topbar Styling */
+.topbar {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 15%;
+    background-color: #3CAFFF;
+    z-index: 100;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align buttons to the left side */
+    position: fixed; /* Make sidebar fixed to the side of the screen */
+    left: 0;
+    top: 15%;
+    width: 250px; /* Width of the sidebar */
+    height: 85%; /* Sidebar spans the full height of the viewport */
+    box-sizing: border-box;
+    justify-content: space-between; /* Distribute buttons evenly */
+    z-index: 1;
+};
+
+.header {
+    color: #FFFFFF; /* A bright color for better visibility on a black background */
+    font-size: 24px; /* Keeping the font size large for better readability */ 
+    position: absolute; /* Positioning it absolutely will take it out of the normal document flow */
+    top: 50%; /* Position it halfway down the parent container */
+    left: 50%; /* Position it halfway across the parent container */
+    transform: translate(-50%, -50%); /* Offset the header by half its width and height for centering */
+    text-align: center; /* Center-align the text */
+    z-index: 10; /* Ensure it's above other elements (if necessary) */
+};
