@@ -26,9 +26,9 @@
 }
 
 .button-icon {
-    width: 30px; /* Width of the icon */
-    height: 30px; /* Height of the icon */
-    /* Remove absolute positioning and centering transform */
+    width: 90px;
+    height: auto; 
+    margin-left: 20px;
 }
 
 .button:hover {
@@ -36,8 +36,8 @@
 }
 
 .button-text {
-    /* Style your text as needed */
-    margin-left: 10px; /* Space between icon and text */
+    color: gray;
+    font-size: 24px;
 }
 
 /* Topbar Styling */
