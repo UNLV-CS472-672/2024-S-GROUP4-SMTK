@@ -10,6 +10,8 @@ export default function SmolAuth(WrappedComponent)
             /*
             get a cookie
             grab session id
+
+            -- DO THIS ON SERVER SIDE --
             verify session id
             */
             const validSession = null;
