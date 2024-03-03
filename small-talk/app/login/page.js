@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
 import handleSubmit from "@/db/hsTest"
+// import Mongoboi from "@/db/mongo";
 
 export default function LoginPage() {
   var status = "Submit"; // name/text for the button
@@ -16,7 +17,7 @@ export default function LoginPage() {
     window.location.href = "/accountCreate"; // Redirect to the homepage
   };
 
-  const authenticateUP = (event) => {
+  const authenticateUP = async (event) => {
     //form isnt submitted by default
     event.preventDefault();
     let ok = false;
@@ -27,6 +28,29 @@ export default function LoginPage() {
       return;
     }
     else {
+      // try{
+      // var info = {
+      //   "username" : username
+      // }
+      // const mongoInst = new Mongoboi("mongodb+srv://smt_root:pokemonwithguns@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority", "Users");
+      
+      // mongoInst.connect();
+      // //const result = await mongoInst.findOne("Users", info)
+      // const result = await mongoInst.findOne("Users", info);
+      // if (result != null)
+      // {
+      //   alert("found");
+      //   // logic to test password
+      // }
+      // else{
+      // alert("MIA");
+      // }
+      
+      // }
+      // catch (error) {
+      //   console.error('Error:', error);
+      //   alert("An error occurred while trying to authenticate.");
+      // }
       handleLogin() //calls for redirection to login page
     }
     return
