@@ -19,7 +19,7 @@ const SidebarButton = ({ redirect, imgSrc, altText, width, height, marginLeft })
     };
 
     return (
-        <HoverButton onClick={() => handleRedirect(redirect)}>
+        <HoverButton onClick={handleRedirect(redirect)}>
             <img src={imgSrc} alt={altText} style={{ width, height, marginLeft }} />
         </HoverButton>
     );
