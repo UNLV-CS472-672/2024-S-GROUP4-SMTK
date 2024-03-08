@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+import { MongoClient } from "mongodb";
 
 class Mongoboi {
   constructor(uri, dbName) {
@@ -37,13 +37,13 @@ class Mongoboi {
     }
   }
 
-  async findOne(collectionName, filter) {
+  async findOne(collectionName, query) {
     try {
-      const result = await this.db.collection(collectionName).findOne(filter);
+      const result = await this.db.collection(collectionName).findOne(query);
       console.log('Document found:', result);
       return result;
     } catch (error) {
-      console.error('Error finding document:', error);
+      //console.error('Error finding document:', error);
       return null;
     }
   }

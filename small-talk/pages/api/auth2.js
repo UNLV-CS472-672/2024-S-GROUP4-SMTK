@@ -5,9 +5,17 @@ import { NextResponse } from "next/server";
 export default async function POST(req,res) 
 {
     let session_id;
-    if (req.headers.authorization) {
+    console.log(req.headers)
+    if (req.headers.authorization) 
+    {
         session_id = req.headers.authorization
+        console.log("AUTH2: "+ session_id)
     }
+    else
+    {
+        res.status(200).json({ found: false }); return;
+    }
+
     const uri = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority"
     const mongoboi = new Mongoboi(uri, "Users")
     const query = {

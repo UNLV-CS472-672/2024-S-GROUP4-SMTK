@@ -1,27 +1,55 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { getCookie } from "@/util/smolCookie";
 
-export default function SmolAuth(WrappedComponent) 
-{
-    function AuthorizedComponent(props) {
-        const router = useRouter()
+export function smolAuth(getServerSidePropsFunc) {
+    return async (ctx) => {
+        const { req } = ctx;
+        
+        if (req.headers.cookie) {
+            const session_id = getCookie("session_id", req.headers.cookie);
+            //console.log(session_id)
+            try {
+                let response = await fetch("http://" + req.headers.host + "/api/auth2/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type" : "application/json",
+                        "Authorization" : session_id
+                    }
+                })
 
-        useEffect(() => {
-            /*
-            get a cookie
-            grab session id
+                let json = (await response.json());
+                
+                if (json == null) {
+                    return {
+                        redirect: {
+                        permanent: false,
+                        destination: '/login',
+                        },
+                    };
+                }
+                console.log(json)
+                let isFound = (json.found != null) ? json.found : false;
 
-            -- DO THIS ON SERVER SIDE --
-            verify session id
-            */
-            const validSession = null;
-            if (validSession == null) {
-                router.push('/login');
+                if (isFound == false) {
+                    return {
+                        redirect: {
+                        permanent: false,
+                        destination: '/login',
+                        },
+                    };
+                }
+            } catch (error) {
+                // Failure in the query or any error should fallback here
+                // this route is possibly forbidden means the cookie is invalid
+                // or the cookie is expired
+                return {
+                    redirect: {
+                        permanent: false,
+                        destination: '/login',
+                    },
+                };
             }
-        }, []);
-
-        return <WrappedComponent {...props}/>
-    }
-
-    return AuthorizedComponent;
-}
+        }
+  
+      return await getServerSidePropsFunc(ctx);
+    };
+  }
