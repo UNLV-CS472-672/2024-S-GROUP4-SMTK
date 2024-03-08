@@ -1,7 +1,14 @@
 "use client"
 import Link from 'next/link'
-export default function chat() {
-    // will be navigated to this page after click chats button on homepage
-    return <Link href="/chat">Health/Doctors/Nurses Information</Link>
+import React from 'react';
+import ThemeLayout from '../components/ThemeLayout';
 
+export default function health() {
+    return (
+        <ThemeLayout>
+            <div>
+                <h1>Doctor and Nurse Information Page</h1>          
+            </div>
+        </ThemeLayout>
+    );
 }
