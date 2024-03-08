@@ -1,13 +1,13 @@
 "use server"
 import Mongoboi from "./mongo"
-export default async function handleSubmit(formData) {
+export default async function handleSubmit(username, password) {
     "use server"
     var uri = "mongodb+srv://smt_root:pokemonwithguns@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority"
     const mongoboi = new Mongoboi(uri, "Users")
     const date = new Date('January 1, 1980');
     var filter = {
-      username: formData.get('username'),
-      password: formData.get('password'),
+      username: username,
+      password: password,
     }
     await mongoboi.connect();
     const user = await mongoboi.findOne("patients", filter)

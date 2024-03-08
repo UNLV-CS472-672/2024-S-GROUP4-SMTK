@@ -1,6 +1,8 @@
 "use client"
 import { useState } from "react";
+//import Mongoboi from  "@/db/mongo"
 import handleSubmit from "@/db/hsTest"
+//const Mongoboi = require("@/db/mongo");
 
 export default function LoginPage() {
   var status = "Submit"; // name/text for the button
@@ -16,34 +18,44 @@ export default function LoginPage() {
     window.location.href = "/accountCreate"; // Redirect to the homepage
   };
 
-  const authenticateUP = (event) => {
+  const authenticateUP = async (event) => {
     //form isnt submitted by default
+
     event.preventDefault();
     let ok = false;
 
     //checks if user/pw is blank
     if(!username || !password){
       alert("All fields are necessary!");
-      return;
+      return ok;
     }
-    else {
-      handleLogin() //calls for redirection to login page
-    }
-    return
-  }
     
+    // checks if the credentials are in the database
+    if (await handleSubmit(username, password) == null){
+      alert("Invalid login!");
+      return ok;
+    }
+
+    ok = true;
+    handleLogin(); //calls for redirection to login page
+    return ok;
+  }
 
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center text-black">
       {(textInput == null) ? <div></div>: <div className="text-white">hello {textInput.firstname}</div>}
         <img src="/placeholder-logo.png" alt="Description of the image"></img>
       <div className="rounded-md bg-sky-500/50 p-10 m-4">
-      <form action={async (formData) => {
+      {/* <form action={async (formData) => {
         const data = await handleSubmit(formData)
         if (data != null) {
           setTextInput(data)
         }
-      }}>
+        else{
+          alert("Invalid login!")
+        }
+      }}> */}
+      <form>
         <div>
           <input
             onChange={(e) => setUsername(e.target.value)}
@@ -85,7 +97,7 @@ export default function LoginPage() {
           className='p-5 m-5 rounded-md bg-green-400' 
           //recieved the confirmation that user is done inputting
           //proceed to check if User/PW ok
-          onClick={authenticateUP} 
+          onClick={authenticateUP}
         >{status}
         </button>
 
