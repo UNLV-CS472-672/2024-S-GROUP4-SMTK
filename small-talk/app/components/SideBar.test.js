@@ -4,11 +4,14 @@ import SideBar from './SideBar';
 
 // Mock the SidebarButton component with a custom implementation
 // that renders an identifiable element for each button
-jest.mock('./SidebarButton', () => ({ redirect, imgSrc, altText, width, height, marginLeft }) => (
+const MockSidebarButton = ({ redirect, imgSrc, altText, width, height, marginLeft }) => (
   <div data-testid="sidebar-button" data-redirect={redirect} data-imgsrc={imgSrc} alt={altText} style={{ width, height, marginLeft }}>
     {altText}
   </div>
-));
+);
+MockSidebarButton.displayName = 'MockSidebarButton'; // Setting the displayName
+
+jest.mock('./SidebarButton', () => MockSidebarButton);
 
 const expectedButtons = [
   { redirect: '/health', imgSrc: '/img/health-tab.png', altText: 'Health', width: '45%', height: 'auto', marginLeft: '7%' },
@@ -41,8 +44,4 @@ describe('SideBar Component', () => {
       expect(button).toHaveStyle(`margin-left: ${marginLeft}`);
     });
   });
-
-
-  
-
 });
