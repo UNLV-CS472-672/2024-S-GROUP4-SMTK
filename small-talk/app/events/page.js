@@ -1,7 +1,14 @@
 "use client"
 import Link from 'next/link'
-export default function chat() {
-    // will be navigated to this page after click chats button on homepage
-    return <Link href="/chat">Events</Link>
+import React from 'react';
+import ThemeLayout from '../components/ThemeLayout';
 
+export default function events() {
+    return (
+        <ThemeLayout>
+            <div>
+                <h1>Events Page</h1>          
+            </div>
+        </ThemeLayout>
+    );
 }
