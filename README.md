@@ -17,3 +17,5 @@ This list is what we will strive to achieve during this semester, while not the 
 [PDF of Plans](https://github.com/UNLV-CS472-672/2024-S-GROUP4-SMTK/blob/main/docs/img/PlannedFeatures.pdf)
 
 Once a planned feature is successfully implemented it will be moved from this list into the features list.
+
+[Image of Chart Diagram for Creating Chatroom](https://github.com/UNLV-CS472-672/2024-S-GROUP4-SMTK/blob/main/docs/img/chatroomChart.png)
