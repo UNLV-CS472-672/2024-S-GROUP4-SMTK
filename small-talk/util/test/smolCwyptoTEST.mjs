@@ -1,4 +1,4 @@
-import { createCookieHash } from "./util/smolCwypto.js";
+import { createCookieHash } from "@/util/smolCwypto.js";
 
 describe('createCookieHash', () => {
     it('should create a valid hash', () => {
