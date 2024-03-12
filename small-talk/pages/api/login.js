@@ -1,5 +1,5 @@
 import Mongoboi from "@/db/mongo"
-import { createCookieHash } from "@/util/smolCwypto.js"
+import  {createCookieHash}  from "@/util/smolCwypto.js"
 // POST, preferably with SSL because parameters with GET get cached all over the place
 export default async function POST(req, res) {
   let data = {
