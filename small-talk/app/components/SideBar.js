@@ -1,3 +1,4 @@
+import React from 'react';
 import SidebarButton from "./SidebarButton";
 
 const SideBar = () => {
@@ -13,7 +14,7 @@ const SideBar = () => {
       ];
 
     return (
-        <div className="flex flex-col items-start fixed top-[15%] h-[85%] w-[15%]">
+        <div className="flex flex-col items-start fixed top-[15%] h-[85%] w-[15%]" data-testid="sidebar">
           {buttons.map((button, index) => (
             <SidebarButton key={index} {...button} />
           ))}

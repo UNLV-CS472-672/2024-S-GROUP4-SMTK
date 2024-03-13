@@ -10,7 +10,7 @@
  * @param {string} marginLeft - width, height, and marginLeft define the custom sizes for the images to look good in the sidebar
  *                              these images should be resized to be more responsive and consistent down the line.
  */
-
+import React from 'react';
 import HoverButton from './HoverButton';
 
 const SidebarButton = ({ redirect, imgSrc, altText, width, height, marginLeft }) => {
