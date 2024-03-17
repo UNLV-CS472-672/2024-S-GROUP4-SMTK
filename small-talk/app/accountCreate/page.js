@@ -1,6 +1,8 @@
 "use client"
 import Link from 'next/link'
 import React, { useState } from 'react';
+import handleCreate from "@/db/hcTest"
+import handleRegister from "@/db/registerTest"
 
 export default function RegisterPage() {
     var status = "Submit"; // name/text for the button
@@ -13,12 +15,14 @@ export default function RegisterPage() {
     //const history = useHistory();
     const [textInput, setTextInput] = useState(null);
     
-    const RegisterPage = () => {
+    const RegisterPatient = async () => {
       // if login sucessful
+      await handleRegister(username, password, firstName, lastName, dob);
+
       window.location.href = "/login"; // Redirect to the login page
     };
   
-    const checkUP = (event) => {
+    const checkUP = async (event) => {
         //form isnt submitted by default
         event.preventDefault();
         let ok = false;
@@ -38,6 +42,12 @@ export default function RegisterPage() {
             alert("Password cannot contain first or last name.");
             return
         }
+
+        if(await handleCreate(username) == false){
+          alert("Username is already taken!");
+          return
+        }
+
         //define pw pattern
         let pwPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
         
@@ -54,10 +64,8 @@ export default function RegisterPage() {
         //     alert("Password must contain at least: \n- one number \n- one uppercase letter \n- one lowercase letter \n- eight(8) characters");
         //     return
         // }
-        
-        
-  
-        RegisterPage() //calls for redirection to login page
+      
+        RegisterPatient() //calls for redirection to login page
         return
     }
       
