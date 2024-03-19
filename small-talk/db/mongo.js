@@ -1,10 +1,10 @@
-import { MongoClient } from "mongodb";
+const  MongoDB  = require("mongodb");
 
 class Mongoboi {
   constructor(uri, dbName) {
     this.uri = uri;
     this.dbName = dbName;
-    this.client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    this.client = new MongoDB.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
   }
 
   async connect() {
