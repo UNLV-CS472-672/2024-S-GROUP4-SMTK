@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link'
 import React, { useState } from 'react';
-import handleCreate from "@/db/hcTest"
+import userExists from "@/db/username"
 import handleRegister from "@/db/registerTest"
 
 export default function RegisterPage() {
@@ -15,11 +15,20 @@ export default function RegisterPage() {
     //const history = useHistory();
     const [textInput, setTextInput] = useState(null);
     
+    const goLogin = () => {
+      window.location.href = "/login"; // Redirect to the login
+    }
+
     const RegisterPatient = async () => {
       // if login sucessful
-      await handleRegister(username, password, firstName, lastName, dob);
-
-      window.location.href = "/login"; // Redirect to the login page
+      if(await handleRegister(username, password, firstName, lastName, dob) != null){
+        alert("Registration was SUCCESSFUL");
+        window.location.href = "/login"; // Redirect to the login page
+      }
+      else{
+        alert("Registration was unsuccessful");
+      }
+      
     };
   
     const checkUP = async (event) => {
@@ -33,17 +42,22 @@ export default function RegisterPage() {
           return;
         }
         
-        if(username.includes(firstName) || username.includes(lastName)){
-            alert("Username cannot contain first or last name.");
-            return
+        if(username.toLowerCase().includes(firstName.toLowerCase()) || username.toLowerCase().includes(lastName.toLowerCase())){
+          alert("Username cannot contain first or last name.");
+          return
         }
 
-        if(password.includes(firstName) || password.includes(lastName)){
-            alert("Password cannot contain first or last name.");
-            return
+        if(password.toLowerCase().includes(firstName.toLowerCase()) || password.toLowerCase().includes(lastName.toLowerCase())){
+          alert("Password cannot contain first or last name.");
+          return
         }
 
-        if(await handleCreate(username) == false){
+        if(username.toLowerCase().includes(password.toLowerCase()) || password.toLowerCase().includes(username.toLowerCase())){
+          alert("Username cannot contain password or vice versa.");
+          return
+        }
+
+        if(await userExists(username) == false){
           alert("Username is already taken!");
           return
         }
@@ -56,14 +70,6 @@ export default function RegisterPage() {
             alert("Password must contain at least: \n- one number \n- one uppercase letter \n- one lowercase letter \n- eight(8) characters");
             return
         }
-
-        //if checks pass, create the account
-        alert('Account created succesfully!')
-        
-        // if (!pwPattern.test(password)){
-        //     alert("Password must contain at least: \n- one number \n- one uppercase letter \n- one lowercase letter \n- eight(8) characters");
-        //     return
-        // }
       
         RegisterPatient() //calls for redirection to login page
         return
@@ -188,7 +194,7 @@ export default function RegisterPage() {
             id="cancelButton"
             type="button" 
             className='p-5 m-2 rounded-md bg-red-400' 
-            onClick={RegisterPage} 
+            onClick={goLogin} 
           >{"Cancel"}
           </button>
         </form>
