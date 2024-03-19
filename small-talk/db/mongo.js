@@ -1,3 +1,4 @@
+// const { ClientEncryption } = require('mongodb-client-encryption');
 const { MongoClient } = require('mongodb');
 
 class Mongoboi {
