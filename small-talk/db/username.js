@@ -4,7 +4,6 @@ import Mongoboi from "./mongo"
 export default async function userExists(username) {
     "use server"
     const mongoboi = new Mongoboi(uri, "Users")
-    const date = new Date('January 1, 1980');
     var filter = {
       username: username, //check for existing username in db
     }
