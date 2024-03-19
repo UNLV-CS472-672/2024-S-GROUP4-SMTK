@@ -4,7 +4,7 @@ Pull requests should each have a relatively concise and relevant title that accu
 ## Issue Number
 The specific issue that the pull request addresses.
 ## Description
-A description of the changes made for the pull request. Describe the general purpose of major changes in the code. Make sure to also clearly explain any specific things done to the code that may not be obvious to others.
+A description of the changes made for the pull request. Describe the general purpose of major changes in the code and how they address the issue the pull request correlates to. Make sure to also clearly explain any specific things done to the code that may not be obvious to others.
 ## Testing
 Mention any test cases made that accompany the pull request. Do the tests pass with the newly edited code? If test cases need to be created (or edited) to cover the new editions to the project please mention so.
 ## Possible Errors
