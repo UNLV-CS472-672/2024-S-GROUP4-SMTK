@@ -1,7 +1,5 @@
 const port = 8000;
 const httpServer = require("http").createServer((req, res) => {}).listen(port);
-console.log(httpServer.address().port);
-console.log(httpServer.address().address);
 const io = require("socket.io")(httpServer, {
   cors: {
     origin: "http://localhost:3000",
@@ -10,7 +8,7 @@ const io = require("socket.io")(httpServer, {
 
 // when socket.connect on react gets called, this runs
 io.use((socket, next) => {
-    console.log("connected")
+    console.log("connected " + socket.handshake.auth.username)
     const username = socket.handshake.auth.username
     if (!username) {
         return next(new Error("invalid"))
@@ -41,3 +39,5 @@ io.on("connection", (socket) => {
       username: socket.username,
     });
 });
+
+module.exports = [ io, httpServer ];
