@@ -1,27 +1,23 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import SideBar from './SideBar';
+import buttons from "../data/sideBarButtons.json"
 
-// Mock the SidebarButton component with a custom implementation
-// that renders an identifiable element for each button
-const MockSidebarButton = ({ redirect, imgSrc, altText, width, height, marginLeft }) => (
-  <div data-testid="sidebar-button" data-redirect={redirect} data-imgsrc={imgSrc} alt={altText} style={{ width, height, marginLeft }}>
-    {altText}
-  </div>
-);
-MockSidebarButton.displayName = 'MockSidebarButton'; // Setting the displayName
+/*
+  Mock the SidebarButton component with a custom implementation
+  that renders an identifiable element for each button that will
+  hold the attributes from the list in sideBarButtons.json
 
-jest.mock('./SidebarButton', () => MockSidebarButton);
+  The mock is found in the __mocks__ directory
+*/
+jest.mock('./SidebarButton');
 
-const expectedButtons = [
-  { redirect: '/health', imgSrc: '/img/health-tab.png', altText: 'Health', width: '45%', height: 'auto', marginLeft: '7%' },
-  { redirect: '/events', imgSrc: '/img/event-tab.png', altText: 'Events', width: '60%', height: 'auto', marginLeft: '15%' },
-  { redirect: '/chat', imgSrc: '/img/chat-tab.png', altText: 'Chat', width: '60%', height: 'auto', marginLeft: '10%' },
-  { redirect: '/friends', imgSrc: '/img/friend-tab.png', altText: 'Friends', width: '60%', height: 'auto', marginLeft: '5%' },
-  { redirect: '/movie', imgSrc: '/img/media-tab.png', altText: 'Movies', width: '60%', height: 'auto', marginLeft: '12%' },
-  { redirect: '/food', imgSrc: '/img/food-tab.png', altText: 'Order Food', width: '65%', height: 'auto', marginLeft: '10%' },
-  { redirect: '/game', imgSrc: '/img/games-tab.png', altText: 'Games', width: '45%', height: 'auto', marginLeft: '5%' },
-];
+/*
+  The behavior we want to check is that what's rendered on the screen is in the 
+  sideBarButtons.json file, this way if any structure to that json changes, then
+  we're not failing a test.
+*/
+const expectedButtons = buttons;
 
 describe('SideBar Component', () => {
   it('renders the correct number of SidebarButton components', () => {

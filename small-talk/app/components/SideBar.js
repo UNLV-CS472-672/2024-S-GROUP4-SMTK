@@ -1,25 +1,29 @@
 import React from 'react';
 import SidebarButton from "./SidebarButton";
+import SB_ExpandButton from "./SB_ExpandButton";
+import buttons from "../data/sidebarButtons.json";
+import expand from "../data/sidebarExpand.json";
 
-const SideBar = () => {
-    //List of JSON elements that define the details for each button that exists on the sidebar.
-    const buttons = [
-        { redirect: '/health', imgSrc: '/img/health-tab.png', altText: 'Health', width: '45%', height: 'auto', marginLeft: '7%' },
-        { redirect: '/events', imgSrc: '/img/event-tab.png', altText: 'Events', width: '60%', height: 'auto', marginLeft: '15%' },
-        { redirect: '/chat', imgSrc: '/img/chat-tab.png', altText: 'Chat', width: '60%', height: 'auto', marginLeft: '10%' },
-        { redirect: '/friends', imgSrc: '/img/friend-tab.png', altText: 'Friends', width: '60%', height: 'auto', marginLeft: '5%' },
-        { redirect: '/movie', imgSrc: '/img/media-tab.png', altText: 'Movies', width: '60%', height: 'auto', marginLeft: '12%' },
-        { redirect: '/food', imgSrc: '/img/food-tab.png', altText: 'Order Food', width: '65%', height: 'auto', marginLeft: '10%' },
-        { redirect: '/game', imgSrc: '/img/games-tab.png', altText: 'Games', width: '45%', height: 'auto', marginLeft: '5%' },
-      ];
-
+const SideBar = ({ isExpanded }) => {
+    // Uses the list of buttons in the sideBarButtons json and their properties to render
+    // a new button for each member of that list
     return (
-        <div className="flex flex-col items-start fixed top-[15%] h-[85%] w-[15%]" data-testid="sidebar">
-          {buttons.map((button, index) => (
-            <SidebarButton key={index} {...button} />
-          ))}
-        </div>
-    );
+      <div className="flex flex-col fixed top-[15%] h-[85%] w-[15%]" data-testid="sidebar">
+        { !isExpanded ? (
+            <div data-testid="sidebar">
+                {buttons.map((button, index) => (
+                <SidebarButton key={index} {...button}/>
+            ))}
+          </div>
+        ) : (
+            <div className="text-black" data-testid="sidebar-expand">
+                {expand.map((button, index) => (
+                    <SB_ExpandButton key={index} {...button} />
+                ))}
+            </div>
+        ) }
+      </div>
+    ) 
 };
 
 export default SideBar;

@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import React, { useState } from 'react';
 import userExists from "@/db/username"
-import handleRegister from "@/db/registerTest"
+import handleRegister from "@/db/registerToDB"
 
 export default function RegisterPage() {
     var status = "Submit"; // name/text for the button
