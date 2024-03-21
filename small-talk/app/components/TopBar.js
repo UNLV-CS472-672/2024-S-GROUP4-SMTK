@@ -24,15 +24,15 @@ const TopBar = ({ toggleSidebar }) => {
                 <div className="absolute right-0 mt-[8%] mr-[1%] py-[1%] w-[11%] bg-white rounded-lg">
                     <ul>
                         <li className="flex block px-[10%] py-[5%] text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
-                            <img src="/img/profile-icon.png" style={{ marginLeft: "2%", width: "15%" }}/>
+                            <img src="/img/profile-icon.png" style={{ marginLeft: "2%", width: "15%" }} alt="Profile"/>
                             <Link href="/profile" className="ml-[11%] mt-[2%]">Profile</Link>
                         </li>
                         <li className="flex block px-[10%] py-[5%] text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
-                            <img src="/img/setting-icon.png" style={{ width: "20%" }}/>
+                            <img src="/img/setting-icon.png" style={{ width: "20%" }} alt="Settings"/>
                             <Link href="/setting" className="ml-[7.5%] mt-[2%]">Setting</Link>
                         </li>
                         <li className="flex block px-[10%] py-[5%] text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
-                            <img src="/img/logout-icon.png" style={{ width: "20%" }}/>
+                            <img src="/img/logout-icon.png" style={{ width: "20%" }} alt="Logout"/>
                             <Link href="/" className="ml-[7.5%] mt-[1%]">Logout</Link>
                         </li>
                     </ul>

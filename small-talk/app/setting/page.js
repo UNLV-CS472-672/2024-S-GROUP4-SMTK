@@ -1,5 +1,5 @@
 "use client"
-import Link from 'next/link'
+import Link from 'next/link';
 import ThemeLayout from '../components/ThemeLayout';
 
 export default function setting() {
