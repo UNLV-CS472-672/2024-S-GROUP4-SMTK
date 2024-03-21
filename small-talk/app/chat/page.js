@@ -4,7 +4,7 @@ import ThemeLayout from '../components/ThemeLayout';
 import socket from "../../util/socket";
 import React, { useEffect, useState } from 'react';
 
-export default function chat(){
+export default function Chat(){
 	const [text, setText] = useState(null);
 	const [user, setUser] = useState(null);
 	  
