@@ -1,4 +1,4 @@
-const  MongoDB  = require("mongodb");
+const { MongoClient } = require('mongodb');
 
 class Mongoboi {
   constructor(uri, dbName) {
