@@ -3,11 +3,11 @@ import Link from 'next/link'
 import React from 'react';
 import ThemeLayout from '../components/ThemeLayout';
 
-export default function movie() {
+export default function events() {
     return (
         <ThemeLayout>
             <div>
-                <h1>Movie Page</h1>          
+                <h1>Events Page</h1>          
             </div>
         </ThemeLayout>
     );

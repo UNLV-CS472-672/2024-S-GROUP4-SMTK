@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+const { MongoClient } = require('mongodb');
 
 class Mongoboi {
   constructor(uri, dbName) {
