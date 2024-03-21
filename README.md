@@ -16,4 +16,17 @@ This list is what we will strive to achieve during this semester, while not the 
 
 [PDF of Plans](https://github.com/Redblaze74/2024-S-GROUP4-SMTK/blob/main/docs/img/PlannedFeatures.pdf)
 
+
 Once a planned feature is successfully implemented it will be moved from this list into the features list.
+
+[Image of Chart Diagram for Creating Chatroom](https://github.com/UNLV-CS472-672/2024-S-GROUP4-SMTK/blob/main/docs/img/chatroomChart.png)
+
+## Testing
+This project utilizes the Jest testing suite for its unit tests. Our goal of testing coverage is 90%. When developing a test or simply wanting to run jest on the app, follow these steps:
+
+1. Navigate into the small-talk directory
+2. run the command 'npm install' to install any missing dependencies
+3. run one of the following jest scripts:  
+    3.1 'npm run test' - This simply runs the jest testing script and outputs the names of the tests being ran and whether they've been successful or not.  
+    3.2 'npm run test:watch' - Use this command when you are actively debugging a test and would like to see the test reran ever time you update the file. Each time you save a test file, jest will be ran on that file and output the results  
+    3.3 'npm run test:coverage' - Jest will be ran like usual but output a comprehensive report of the coverage for the app. It lists the files, percentages of statements, branches, functions, and lines, and lists the uncovered lines in the files. It will also print the targeted testing coverage percent and whether or not we've reached it.  
