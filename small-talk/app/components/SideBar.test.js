@@ -3,6 +3,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import SideBar from './SideBar';
 import buttons from "../data/sideBarButtons.json"
 
+// // @jest-environment node
+// global.TextEncoder = require('text-encoding').TextEncoder;
+
 /*
   Mock the SidebarButton component with a custom implementation
   that renders an identifiable element for each button that will
@@ -20,24 +23,22 @@ jest.mock('./SidebarButton');
 const expectedButtons = buttons;
 
 describe('SideBar Component', () => {
-  it('renders the correct number of SidebarButton components', () => {
-    render(<SideBar />);
+  it('renders the correct number of SidebarButton components when not expanded', () => {
+    render(<SideBar isExpanded={false}/>);
     const buttonElements = screen.getAllByTestId('sidebar-button');
     expect(buttonElements.length).toBe(expectedButtons.length);
   });
 
-  it('passes correct props to each SidebarButton component', () => {
-    render(<SideBar />);
+  it('passes correct props to each SidebarButton component when not expanded', () => {
+    render(<SideBar isExpanded={false}/>);
     const buttonElements = screen.getAllByTestId('sidebar-button');
 
     buttonElements.forEach((button, index) => {
-      const { redirect, imgSrc, altText, width, height, marginLeft } = expectedButtons[index];
-      expect(button).toHaveAttribute('data-redirect', redirect);
-      expect(button).toHaveAttribute('data-imgsrc', imgSrc);
-      expect(button).toHaveAttribute('alt', altText);
-      expect(button).toHaveStyle(`width: ${width}`);
-      expect(button).toHaveStyle(`height: ${height}`);
-      expect(button).toHaveStyle(`margin-left: ${marginLeft}`);
+      const { redirect, defaultImg, hoverImg, altText } = expectedButtons[index];
+      expect(button).toHaveAttribute('redirect', redirect);
+      expect(button).toHaveAttribute('defaultimg', defaultImg);
+      expect(button).toHaveAttribute('hoverimg', hoverImg);
+      expect(button).toHaveAttribute('alttext', altText)
     });
   });
 });

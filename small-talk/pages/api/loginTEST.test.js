@@ -1,3 +1,5 @@
+global.TextEncoder = require('text-encoding').TextEncoder;
+global.TextDecoder = require('text-encoding').TextDecoder;
 const Mongoboi = require("../../db/mongo.js");
 //Mongoboi.connect();
 const { createCookieHash } =  require("../../util/smolCwypto.js");
