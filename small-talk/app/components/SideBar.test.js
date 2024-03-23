@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import SideBar from './SideBar';
-import buttons from "../data/sideBarButtons.json"
+import buttons from "../data/sidebarButtons.json"
 
 // // @jest-environment node
 // global.TextEncoder = require('text-encoding').TextEncoder;
