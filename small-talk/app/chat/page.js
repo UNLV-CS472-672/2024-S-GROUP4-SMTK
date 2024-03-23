@@ -68,4 +68,4 @@ export default function Chat(){
 
 }
 
-module.exports = Chat;
+module.export = Chat;
