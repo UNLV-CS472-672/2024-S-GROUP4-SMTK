@@ -7,12 +7,12 @@ import React, { useEffect, useState } from 'react';
 export default function Chat(){
 	const [text, setText] = useState(null);
 	const [user, setUser] = useState(null);
-	  
+
 	useEffect(() => {
 		socket.auth = "random";
     	socket.connect();
 		setText("whatever");
-		
+
 		// getting all currently connected users
 		socket.on("users", (receivedUsers) => {
             console.log("Received users:", receivedUsers);
@@ -21,28 +21,31 @@ export default function Chat(){
             });
             setUser(receivedUsers);
         });
-		
+
 		// set the event to connected users
 		socket.on("user connected", (user) => {
-			console.log("User connected:", connectedUser);
-			this.users.push(user);
+			console.log("User connected:", user);
+			//this.users.push(user);     This was previously giving me testing errors, so instead, using setUser to update the user state
+			setUser(prevUsers => [...prevUsers, user]);
 		});
-		
+
+		// Commented out because an aspect is missing and will be added in a future PR
 		// handles connection error
-		socket.on("connect_error", (err) => {
-			if (err.message === "invalid username") {
-				this.usernameAlreadySelected = false;
-			}
-		});
-		
+		// socket.on("connect_error", (err) => {
+		// 	if (err.message === "invalid username") {
+		// 		this.usernameAlreadySelected = false
+		// 	}
+		// });
+
 		// disconnect socket
 		return () => {
 			socket.off("users");
 			socket.off("user connected");
 			socket.off("connect_error");
+			//socket.disconnect();
 		};
 	}, [text]);
-	
+
 	// Since autoConnect was set to false, we would have to manually connect
 	const onUsernameSelection = (username) => {
 		socket.auth = { username };
@@ -62,8 +65,7 @@ export default function Chat(){
             </div>
         </ThemeLayout>
 	);
-	
+
 }
 
-
-
+module.exports = Chat;
