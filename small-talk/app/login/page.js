@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
 //import Mongoboi from  "@/db/mongo"
-import handleSubmit from "@/db/hsTest"
+import handleSubmit from "@/db/handleLogin"
 //const Mongoboi = require("@/db/mongo");
 
 export default function LoginPage() {

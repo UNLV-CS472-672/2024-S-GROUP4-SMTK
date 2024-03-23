@@ -6,8 +6,12 @@ import ThemeLayout from '../components/ThemeLayout';
 export default function food() {
     return (
         <ThemeLayout>
-            <div>
-                <h1>Order Food Page</h1>          
+            <div className="flex flex-row">
+                <ul className="m-8 w-full">
+                    <li className="border-b border-gray-200 pb-2 mb-10">Order Food</li>
+                    <li className="border-b border-gray-200 pb-2 mb-10">Todays Menu</li>
+                    <li className="border-b border-gray-200 pb-2 mb-10">Delivery Time</li>
+                </ul>
             </div>
         </ThemeLayout>
     );
