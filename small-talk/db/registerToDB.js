@@ -16,12 +16,14 @@ export default async function handleRegister(username, password, firstname, last
 
   bcrypt.genSalt(10, async function(saltError, salt){ // generate a salt for password
     if (saltError) {
-      return saltError
+      console.log('Error salting password', saltError)
+      return null
     }
     else {
       bcrypt.hash(password, salt, function (hashError, hash){ // use hash algorithm to generate hashed password w/ salt
         if (hashError){
-          return hashError
+          console.log('Error hashing password', hashError)
+          return null
         }
         newUser.password = hash // if checks pass, implement hash/salt password to schema
       })
