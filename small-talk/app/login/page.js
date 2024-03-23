@@ -29,11 +29,7 @@ export default function LoginPage() {
       alert("All fields are necessary!");
       return ok;
     }
-    if(!(await validateInput(username))){
-      alert("INVALID"); // used less descriptive error code to hide the checks we use
-      return;
-    }
-    if(!(await validateInput(password))){
+    if(!(await validateInput(username)) || !(await validateInput(password))){
       alert("INVALID"); // used less descriptive error code to hide the checks we use
       return;
     }
