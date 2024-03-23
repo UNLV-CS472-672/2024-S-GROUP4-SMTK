@@ -22,9 +22,21 @@ export default async function POST(req,res)
         session_id : session_id
     }
     const collectionName = "patients"
-    await mongoboi.connect()
-    const result = await mongoboi.findOne("patients", query)
-    await mongoboi.disconnect()
-    if (result == null) { res.status(200).json({ found: false }); return; }
-    res.status(200).json({ found: true })
-}//
+    try 
+    {
+        await mongoboi.connect()
+        const result = await mongoboi.findOne("patients", query)
+    } catch (error) 
+    {
+        res.status(200).json({ found: false }); return;
+    }
+    finally
+    {
+        await mongoboi.disconnect()
+    }
+
+    if (result) {
+        res.status(200).json({ found: true }); return;
+    }
+    res.status(200).json({ found: false }); return;
+}
