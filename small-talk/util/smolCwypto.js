@@ -13,4 +13,4 @@ const createCookieHash = (data, secretKey) => {
   return hash;
 };
 
-export { createCookieHash }
+export { createCookieHash }//

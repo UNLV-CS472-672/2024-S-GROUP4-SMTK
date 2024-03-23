@@ -15,4 +15,4 @@ const successTest = (props) => {
     )
 }
 
-export default successTest
+export default successTest//

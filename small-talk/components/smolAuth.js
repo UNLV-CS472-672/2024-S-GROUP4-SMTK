@@ -53,3 +53,4 @@ export function smolAuth(getServerSidePropsFunc) {
       return await getServerSidePropsFunc(ctx);
     };
   }
+  //

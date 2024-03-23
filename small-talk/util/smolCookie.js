@@ -6,4 +6,4 @@ const getCookie = (name, cookies) => {
     return cookie
 };
 
-export { getCookie }
+export { getCookie }//
