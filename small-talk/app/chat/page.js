@@ -24,7 +24,7 @@ export default function Chat(){
 		
 		// set the event to connected users
 		socket.on("user connected", (user) => {
-			console.log("User connected:", connectedUser);
+			console.log("User connected:", user);
 			this.users.push(user);
 		});
 		
@@ -64,6 +64,3 @@ export default function Chat(){
 	);
 	
 }
-
-
-
