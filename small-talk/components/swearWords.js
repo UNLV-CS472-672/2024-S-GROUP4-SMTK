@@ -1,3 +1,7 @@
+// PLEASE BE ADVISED
+// DICTIONARY OF VULGAR LANGUAGE BELOW
+// VIEW AT OWN DISCRETION
+
 const swearWords = [
     "fuck",
     "shit",

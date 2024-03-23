@@ -58,6 +58,11 @@ export default function RegisterPage() {
           alert("Password: Too many characters or Use of prohibited characters");
           return;
         }
+
+        if(await vulgar(password)){
+          alert("*** Password: Vulgar Language Detected ***");
+          return;
+        }
         
         if(!(await validateInput(firstName))){
           alert("First Name: Too many characters or Use of prohibited characters");
