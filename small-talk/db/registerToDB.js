@@ -14,21 +14,14 @@ export default async function handleRegister(username, password, firstname, last
     dob: date,
   };
 
-  bcrypt.genSalt(10, async function(saltError, salt){ // generate a salt for password
-    if (saltError) {
-      console.log('Error salting password', saltError)
-      return null
-    }
-    else {
-      bcrypt.hash(password, salt, function (hashError, hash){ // use hash algorithm to generate hashed password w/ salt
-        if (hashError){
-          console.log('Error hashing password', hashError)
-          return null
-        }
-        newUser.password = hash // if checks pass, implement hash/salt password to schema
-      })
-    }
-  })
+  try {
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    newUser.password = hashedPassword;
+  } catch (error) {
+    console.error("Error salting or hashing password:", error);
+    return null; // Proper error handling
+  }
 
   try {
     await mongoboi.connect(); // establish connection to the database
