@@ -1,9 +1,9 @@
 [
-    { "redirect": "/health", "imgSrc": "/img/health-tab.png", "altText": "Health", "width": "45%", "height": "auto", "marginLeft": "7%" },
-    { "redirect": "/events", "imgSrc": "/img/event-tab.png'", "altText": "Events", "width": "60%", "height": "auto", "marginLeft": "15%" },
-    { "redirect": "/chat", "imgSrc": "/img/chat-tab.png", "altText": "Chat", "width": "60%", "height": "auto", "marginLeft": "10%" },
-    { "redirect": "/friends", "imgSrc": "/img/friend-tab.png", "altText": "Friends", "width": "60%", "height": "auto", "marginLeft": "5%" },
-    { "redirect": "/movie", "imgSrc": "/img/media-tab.png", "altText": "Movies", "width": "60%", "height": "auto", "marginLeft": "12%" },
-    { "redirect": "/food", "imgSrc": "/img/food-tab.png", "altText": "Order Food", "width": "65%", "height": "auto", "marginLeft": "10%" },
-    { "redirect": "/game", "imgSrc": "/img/games-tab.png", "altText": "Games", "width": "45%", "height": "auto", "marginLeft": "5%" }
-  ]
+    { "redirect": "/health", "defaultImg": "/img/buttons/health-default.png", "hoverImg": "/img/buttons/health-extend.png", "altText": "Health" },
+    { "redirect": "/events", "defaultImg": "/img/buttons/event-default.png", "hoverImg": "/img/buttons/event-extend.png", "altText": "Events" },
+    { "redirect": "/chat", "defaultImg": "/img/buttons/chat-default.png", "hoverImg": "/img/buttons/chat-extend.png", "altText": "Chat" },
+    { "redirect": "/friends", "defaultImg": "/img/buttons/friends-default.png", "hoverImg": "/img/buttons/friends-extend.png", "altText": "Friends" },
+    { "redirect": "/movie", "defaultImg": "/img/buttons/media-default.png", "hoverImg": "/img/buttons/media-extend.png", "altText": "Movies" },
+    { "redirect": "/food", "defaultImg": "/img/buttons/food-default.png", "hoverImg": "/img/buttons/food-extend.png", "altText": "Order Food" },
+    { "redirect": "/game", "defaultImg": "/img/buttons/game-default.png", "hoverImg": "/img/buttons/game-extend.png", "altText": "Games" }
+]

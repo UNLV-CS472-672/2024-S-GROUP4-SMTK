@@ -1,4 +1,5 @@
 module.exports = {
+  moduleDirectories: ['node_modules', '<rootDir>'],
   collectCoverageFrom: [
     "**/*.{js,jsx}",
     "!**/*.config.js",
@@ -23,5 +24,6 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    "@/(.*)": "<rootDir>/$1"
   },
 };
