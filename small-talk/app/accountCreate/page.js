@@ -3,6 +3,8 @@ import Link from 'next/link'
 import React, { useState } from 'react';
 import userExists from "@/db/username"
 import handleRegister from "@/db/registerToDB"
+import validateInput from '@/components/inputValidation';
+import vulgar from '@/components/vulgarLang';
 
 export default function RegisterPage() {
     var status = "Submit"; // name/text for the button
@@ -41,6 +43,37 @@ export default function RegisterPage() {
           alert("All fields are necessary!");
           return;
         }
+        
+        if(!(await validateInput(username))){
+          alert("Username: Too many characters or Use of prohibited characters");
+          return;
+        }
+
+        if(await vulgar(username)){
+          alert("*** Username: Vulgar Language Detected ***");
+          return;
+        }
+
+        if(!(await validateInput(password))){
+          alert("Password: Too many characters or Use of prohibited characters");
+          return;
+        }
+
+        if(await vulgar(password)){
+          alert("*** Password: Vulgar Language Detected ***");
+          return;
+        }
+        
+        if(!(await validateInput(firstName))){
+          alert("First Name: Too many characters or Use of prohibited characters");
+          return;
+        }
+        
+        if(!(await validateInput(lastName))){
+          alert("Last Name: Too many characters or Use of prohibited characters");
+          return;
+        }
+        
         
         if(username.toLowerCase().includes(firstName.toLowerCase()) || username.toLowerCase().includes(lastName.toLowerCase())){
           alert("Username cannot contain first or last name.");

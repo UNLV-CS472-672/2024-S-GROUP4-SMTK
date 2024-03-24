@@ -25,8 +25,10 @@ export default function Chat(){
 		// set the event to connected users
 		socket.on("user connected", (user) => {
 			console.log("User connected:", user);
+
 			//this.users.push(user);     This was previously giving me testing errors, so instead, using setUser to update the user state
 			setUser(prevUsers => [...prevUsers, user]);
+
 		});
 
 		// Commented out because an aspect is missing and will be added in a future PR
@@ -74,5 +76,4 @@ export default function Chat(){
 	);
 
 }
-
 module.export = Chat;

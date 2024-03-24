@@ -3,6 +3,7 @@ import { useState } from "react";
 //import Mongoboi from  "@/db/mongo"
 import handleSubmit from "@/db/handleLogin"
 //const Mongoboi = require("@/db/mongo");
+import validateInput from '@/components/inputValidation';
 
 export default function LoginPage() {
   var status = "Submit"; // name/text for the button
@@ -27,6 +28,10 @@ export default function LoginPage() {
     if(!username || !password){
       alert("All fields are necessary!");
       return ok;
+    }
+    if(!(await validateInput(username)) || !(await validateInput(password))){
+      alert("INVALID"); // used less descriptive error code to hide the checks we use
+      return;
     }
     
     // checks if the credentials are in the database

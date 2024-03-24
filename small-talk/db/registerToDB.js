@@ -5,17 +5,23 @@ import bcrypt from "bcryptjs";
 export default async function handleRegister(username, password, firstname, lastname, dob){ // function that sends the credentials to the database
   const mongoboi = new Mongoboi(uri, "Users");
   const date = new Date(dob).getTime() / 1000; // return the inputted date as a Unix timestamp
-  await mongoboi.connect();
-
-  const hashedpass = await bcrypt.hash(password, 10);
-
+  //await mongoboi.connect();
+  
   const newUser = { // schema for holding the values into certain fields for database organization
     username: username,
-    password: hashedpass,
     firstname: firstname,
     lastname: lastname,
     dob: date,
   };
+
+  try {
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    newUser.password = hashedPassword;
+  } catch (error) {
+    console.error("Error salting or hashing password:", error);
+    return null; // Proper error handling
+  }
 
   try {
     await mongoboi.connect(); // establish connection to the database

@@ -1,3 +1,7 @@
+// Avoids errors when using Jest
+global.TextEncoder = require('text-encoding').TextEncoder;
+global.TextDecoder = require('text-encoding').TextDecoder;
+
 const { MongoClient } = require('mongodb');
 
 class Mongoboi {
