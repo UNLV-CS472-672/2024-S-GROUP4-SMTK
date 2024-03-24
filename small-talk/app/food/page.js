@@ -9,7 +9,7 @@ export default function food() {
             <div className="flex flex-row">
                 <ul className="m-8 w-full">
                     <li className="border-b border-gray-200 pb-2 mb-10">Order Food</li>
-                    <li className="border-b border-gray-200 pb-2 mb-10">Todays Menu</li>
+                    <li className="border-b border-gray-200 pb-2 mb-10">Today&apos;s Menu</li>
                     <li className="border-b border-gray-200 pb-2 mb-10">Delivery Time</li>
                 </ul>
             </div>
