@@ -1,5 +1,4 @@
-const { createCookieHash } =  require("./smolCwypto.js");
-
+import { createCookieHash } from "@/util/smolCwypto.js";
 describe('createCookieHash', () => {
     const secretKey = 'mySecretKey';
 
