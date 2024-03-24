@@ -13,7 +13,7 @@ describe("Friends Page", () =>
 {
     it("Makes sure Friends page content renders properly", () =>
     {
-        // Render Food page
+        // Render Friends page
         render(<Friends />);
 
         // Get page content
