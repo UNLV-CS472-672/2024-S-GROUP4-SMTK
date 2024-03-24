@@ -1,7 +1,7 @@
-const React = require('react');
-const { render, fireEvent, waitFor } = require('@testing-library/react');
-const Chat = require('../chat/page.js');
-const socket = require('../../util/socket');
+import React from 'react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
+import Chat from '../chat/page.js';
+import socket from '../../util/socket';
 
 // Mock socket.io module
 jest.mock('../../util/socket', () => ({
@@ -39,27 +39,43 @@ describe('Chat Component', () => {
     });
 
     //last test checks that the socket is listening and updating the different states correctly. 
-    it('listens for socket events and updates state accordingly', () => {
+    it('listens for socket events and updates state accordingly', async () => {
+        // create a mock with 2 users
         const mockUsers = [
             { userID: '1', username: 'user1' },
             { userID: '2', username: 'user2' }
         ];
-
+    
         // render the chat
-        render(<Chat />);
-        // Following code will simulate the different events we have so far.
-
-        // Mock socket events
+        const { container } = render(<Chat />);
+        // following code will simulate the different events we have so far.
+    
+        // mock socket events
         const socketOnMock = jest.spyOn(socket, 'on');
-
-        // Simulate "users" event
+    
+        // simulate "users" event
         const usersEventHandler = socketOnMock.mock.calls.find(call => call[0] === 'users')[1];
         usersEventHandler(mockUsers);
-
-        // Simulate "user connected" event
+    
+        // get the user state from the chat
+        const usersElement = await waitFor(() => container.querySelector('.user-list'));
+        const usersTextContent = usersElement.textContent;
+        // check if the state is correctly updated
+        // so when button is clicked there should be a text on the screen where it says the users name, look for it
+        expect(usersTextContent).toContain('user1');
+        expect(usersTextContent).toContain('user2');
+    
+        // simulate "user connected" event
         const connectedUser = { userID: '3', username: 'newUser' };
         const userConnectedEventHandler = socketOnMock.mock.calls.find(call => call[0] === 'user connected')[1];
         userConnectedEventHandler(connectedUser);
-
+    
+        // get the updated user state from the chat
+        const updatedUsersElement = await waitFor(() => container.querySelector('.user-list'));
+        const updatedUsersTextContent = updatedUsersElement.textContent;
+    
+        // check if the connected user is added to the list of users 
+        expect(updatedUsersTextContent).toContain('newUser');
     });
+    
 });

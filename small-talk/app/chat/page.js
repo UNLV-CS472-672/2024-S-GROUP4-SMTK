@@ -5,8 +5,8 @@ import socket from "../../util/socket";
 import React, { useEffect, useState } from 'react';
 
 export default function Chat(){
-	const [text, setText] = useState(null);
-	const [user, setUser] = useState(null);
+	const [text, setText] = useState([]);
+	const [user, setUser] = useState([]);
 
 	useEffect(() => {
 		socket.auth = "random";
@@ -61,6 +61,13 @@ export default function Chat(){
         <ThemeLayout>
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
                 <h1>Chatroom Page</h1>
+				<div className="user-list">
+                {user.map((userInfo) => (
+                    <div key={userInfo.userID} className="user">
+                        <span>{userInfo.username}</span>
+                    </div>
+                ))}
+            	</div>
                 <button style={{ backgroundColor: 'pink' }} onClick={handleConnectButtonClick}>Connect</button>
             </div>
         </ThemeLayout>
