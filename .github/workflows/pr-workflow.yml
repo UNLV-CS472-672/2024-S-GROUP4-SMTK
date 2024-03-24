@@ -3,6 +3,12 @@ name: Pull Request Workflow
 on:
   pull_request:
     types: [edited, opened, ready_for_review, synchronize, reopened]
+  push:
+    branches-ignore:
+      - main
+  pull_request_target:
+    types:
+      - closed
 
 jobs:
   build:
@@ -19,6 +25,10 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./small-talk
+
+      - name: Test
+        run: npm run test
         working-directory: ./small-talk
 
       - name: Lint with ESLint
