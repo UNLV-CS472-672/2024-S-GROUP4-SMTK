@@ -40,4 +40,14 @@ io.on("connection", (socket) => {
     });
 });
 
+// creating an event listener for private message on socket connection
+// get the message (content) and send that (to) recipient's ID 
+io.on("private message", ({ content, to }) => {
+  console.log("private send " + socket.handshake.auth.username)
+  socket.to(to).emit("private message", {
+    content,
+    from: socket.id,
+  });
+});
+
 module.exports = [ io, httpServer ];
