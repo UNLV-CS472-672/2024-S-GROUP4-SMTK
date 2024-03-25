@@ -5,7 +5,6 @@ import bcrypt from "bcryptjs";
 export default async function handleRegister(username, password, firstname, lastname, dob){ // function that sends the credentials to the database
   const mongoboi = new Mongoboi(uri, "Users");
   const date = new Date(dob).getTime() / 1000; // return the inputted date as a Unix timestamp
-  //await mongoboi.connect();
   
   const newUser = { // schema for holding the values into certain fields for database organization
     username: username,
@@ -36,3 +35,5 @@ export default async function handleRegister(username, password, firstname, last
     await mongoboi.disconnect(); 
   }
 }
+
+module.exports = handleRegister;
