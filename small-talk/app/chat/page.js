@@ -127,7 +127,7 @@ export default function Chat(){
             </div>
 
             <h3 style = {{ color:'blue' }}>Users:</h3>
-            <ul style={{ color: 'purple', padding: 0, margin: 0, maxHeight: '120px', overflowY: 'auto' }}>
+            <ul className="user-list" style={{ color: 'purple', padding: 0, margin: 0, maxHeight: '120px', overflowY: 'auto' }}>
               {user.map(user => (
                 <li key={user.userID} onClick={() => setSelectedUser(user)}>
                   {user.username}
