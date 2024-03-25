@@ -1,9 +1,0 @@
-{
-  "devDependencies": {
-    "tailwindcss": "^3.4.1"
-  },
-  "dependencies": {
-    "socket.io": "^4.7.5",
-    "socket.io-client": "^4.7.5"
-  }
-}
