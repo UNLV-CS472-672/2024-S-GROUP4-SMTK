@@ -31,6 +31,10 @@ jobs:
         run: npm run test
         working-directory: ./small-talk
 
+      - name: Test Coverage Report
+        run: npm run test:coverage
+        working-directory: ./small-talk
+
       - name: Lint with ESLint
         run: npm run lint
         working-directory: ./small-talk
