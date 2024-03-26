@@ -15,7 +15,9 @@ export default async function handleRegister(username, password, firstname, last
 
   try {
     const salt = await bcrypt.genSalt(10);
+    console.log('Generated salt: ', salt);
     const hashedPassword = await bcrypt.hash(password, salt);
+    console.log('Hashed password:', hashedPassword);
     newUser.password = hashedPassword;
   } catch (error) {
     console.error("Error salting or hashing password:", error);

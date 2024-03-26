@@ -15,8 +15,8 @@ jest.mock('../db/mongo.js', () => {
 });
 //mocking bcrypt in order to use hashing functions
 jest.mock('bcryptjs', () => ({
-  hash: jest.fn(),
-  genSalt: jest.fn(),
+  hash: jest.fn(() => Promise.resolve('hashedPassword')),
+  genSalt: jest.fn(() => Promise.resolve('randomSalt')),
   compareSync: jest.fn(() => true),
 }));
 
