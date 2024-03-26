@@ -1,4 +1,5 @@
-export default function auth() {
+import React from 'react'; //Needed apparantley to be able to pass tests
+export default function auth() { 
   // will be navigated to this page after click chats button on homepage
   return <div></div>
 

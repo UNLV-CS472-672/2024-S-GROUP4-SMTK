@@ -1,3 +1,4 @@
+import React from 'react'; //Needed for testing
 import { Libre_Franklin } from "next/font/google";
 import Link from "next/link";
 
