@@ -1,7 +1,8 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import Chat from '../chat/page.js';
 import socket from '../../util/socket';
+import { sendMessage } from '../chat/page.js';
 
 // Mock socket.io module
 jest.mock('../../util/socket', () => ({
@@ -39,7 +40,7 @@ describe('Chat Component', () => {
     });
 
     //last test checks that the socket is listening and updating the different states correctly. 
-    it('listens for socket events and updates state accordingly', async () => {
+    it('listens for socket events and updates state accordingly, and disconnect', async () => {
         // create a mock with 2 users
         const mockUsers = [
             { userID: '1', username: 'user1' },
@@ -76,6 +77,102 @@ describe('Chat Component', () => {
     
         // check if the connected user is added to the list of users 
         expect(updatedUsersTextContent).toContain('newUser');
+
+        // testing disconnect
+        const disconnectEventHandler = socketOnMock.mock.calls.find(call => call[0] === 'disconnect')[1];
+        disconnectEventHandler();
+        
+        // Get the updated user state from the chat
+        const disconnectUsersElement = await waitFor(() => container.querySelector('.user-list'));
+        const disconnectUsersTextContent = disconnectUsersElement.textContent;
+        // Check if user disconnected
+        expect(disconnectUsersTextContent).toContain('user1user2newUser');
     });
     
+    it('listens for private messages and updates state accordingly', async () => {
+        // render the chat
+        const { container } = render(<Chat />);
+
+        // mock socket events
+        const socketOnMock = jest.spyOn(socket, 'on');
+
+        // Sets the private message
+        const message = { content: 'Hello', from: 'senderID' };
+        const privateMessageEventHandler = socketOnMock.mock.calls.find(call => call[0] === 'private message')[1];
+        privateMessageEventHandler(message);
+    
+        // Get the updated private messages state
+        const updatedPrivateMessages = await waitFor(() => container.querySelector('.private-messages-list')); 
+    
+        // Check if the state is correctly updated
+        expect(updatedPrivateMessages.textContent).toContain('Hello');
+    });
+});
+
+
+describe('sendMessage', () => {
+    let socket;
+    let setPrivateMessages;
+    let setInputMessage;
+    let inputMessage;
+    let selectedUser;
+
+    beforeEach(() => {
+        // Mock socket object with emit method
+        socket = { emit: jest.fn(), id: '123' };
+
+        // Mock setPrivateMessages and setInputMessage functions
+        setPrivateMessages = jest.fn();
+        setInputMessage = jest.fn();
+    });
+
+    it('should not send a message if no user is selected', () => {
+        inputMessage = 'Hello';
+        selectedUser = null;
+        // to test the message should not be send if theres no user selected
+        sendMessage(inputMessage, selectedUser, socket, setPrivateMessages, setInputMessage);
+        expect(socket.emit).not.toHaveBeenCalled();
+        expect(setPrivateMessages).not.toHaveBeenCalled();
+        expect(setInputMessage).not.toHaveBeenCalled();
+    });
+
+    it('should not send a message if the input message is empty', () => {
+        inputMessage = '';
+        selectedUser = { username: 'John', userID: '456' };
+        // if the input message is empty, the message wont be send
+        sendMessage(inputMessage, selectedUser, socket, setPrivateMessages, setInputMessage);
+        expect(socket.emit).not.toHaveBeenCalled();
+        expect(setPrivateMessages).not.toHaveBeenCalled();
+        expect(setInputMessage).not.toHaveBeenCalled();
+    });
+
+    it('should send a message if a user is selected and the input message is not empty', async() => {
+        inputMessage = 'Hello';
+        selectedUser = { username: 'John', userID: '456' };
+        // send successful message since both input message and user is selected
+        sendMessage(inputMessage, selectedUser, socket, setPrivateMessages, setInputMessage);
+        expect(socket.emit).toHaveBeenCalledWith('private message', { content: inputMessage, to: selectedUser.userID });
+        expect(setPrivateMessages).toHaveBeenCalledWith(expect.any(Function));
+        expect(setInputMessage).toHaveBeenCalledWith('');
+    });
+
+    it('calls setInputMessage with the correct value on input change', () => {
+        // Render the component
+        const { getByPlaceholderText } = render(<Chat />);
+        
+        // The chat box to input message
+        const inputField = getByPlaceholderText('Type your message here...');
+        fireEvent.change(inputField, { target: { value: 'Hello, World!' } });
+        
+        // Check if setInputMessage is called with the correct value
+        expect(inputField.value).toBe('Hello, World!');
+    });
+
+    it('calls sendMessage function with correct parameters when called', () => {
+        // Render the component
+        const { getByText } = render(<Chat />);
+        
+        // check if send button works
+        fireEvent.click(getByText('Send'));
+    });
 });

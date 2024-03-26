@@ -10,7 +10,7 @@ export default function Chat(){
 	const [selectedUser, setSelectedUser] = useState(null);
 	const [privateMessages, setPrivateMessages] = useState([]);
 	const [inputMessage, setInputMessage] = useState("");
-	  
+
 	useEffect(() => {
 		socket.auth = "random";
     	socket.connect();
@@ -52,9 +52,9 @@ export default function Chat(){
 
 			setUser(prevUsers => {
 				return prevUsers.map(user => {
-					if (user.self) {
-						return{...user, connecteded: false};
-					}
+					// if (user.self) {
+					// 	return{...user, connecteded: false};
+					// }
 					return user;
 				});
 			});
@@ -81,76 +81,83 @@ export default function Chat(){
         onUsernameSelection("randomusername");
     };
 
-	// to be able to send message with selected user
-    const sendMessage = () => {
-        if (inputMessage.trim() !== "" && selectedUser) {
-			console.log("send message:", selectedUser.username);
-            socket.emit("private message", { content: inputMessage, to: selectedUser.userID});
-			setPrivateMessages(prevMessages => [...prevMessages, { content: inputMessage, from: socket.id }]);
-            setInputMessage("");
-        }else{
-			console.log("No user selected or empty message");
-		}
+	const handleSendMessage = () => {
+        sendMessage(inputMessage, selectedUser, socket, setPrivateMessages, setInputMessage);
     };
-
 
 	return (
         <ThemeLayout>
-            <div style={{ // all the styles added in this file are temporary for testing purposes
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center', // Align items to the center horizontally
-              backgroundColor: 'pink',
-              color: 'black',
-              padding: '20px',
-              borderRadius: '10px',
-              maxWidth: '80%', // Limit the maximum width of the container
-              margin: '20vh auto 0', // Move the container down by 20% of viewport height
-              height: '70vh', // Set the height to 70% of the viewport height
-              maxHeight: '600px', // Limit the maximum height to 600px
-              overflow: 'hidden', // Hide overflow to prevent scrollbars on the container itself
-              boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', // Add a subtle shadow for depth
-            }}>
+            <div // all the styles added in this file are temporary for testing purposes
+				data-testid="chat-container" 
+				style={{ 
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'center', // Align items to the center horizontally
+					backgroundColor: 'pink',
+					color: 'black',
+					padding: '20px',
+					borderRadius: '10px',
+					maxWidth: '80%', // Limit the maximum width of the container
+					margin: '20vh auto 0', // Move the container down by 20% of viewport height
+					height: '70vh', // Set the height to 70% of the viewport height
+					maxHeight: '600px', // Limit the maximum height to 600px
+					overflow: 'hidden', // Hide overflow to prevent scrollbars on the container itself
+					boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', // Add a subtle shadow for depth
+            	}}>
 
-            <h2>Private Chat</h2>
-            <div style={{
-              height: 'calc(100% - 220px)', // Set the height of the message container dynamically
-              width: '100%',
-              overflowY: 'auto', // Allow vertical scrolling if content overflows
-              }}>
+				<h2>Private Chat</h2>
+				<div 
+					className="private-messages-list"
+					style={{
+						height: 'calc(100% - 220px)', // Set the height of the message container dynamically
+						width: '100%',
+						overflowY: 'auto', // Allow vertical scrolling if content overflows
+					}}>
 
-              {privateMessages.map((message, index) => (
-                <div key={index}>
-                  <strong>{message.from === socket.id ? "You" : "Recipient"}:</strong> {message.content}
-                </div>
-              ))}
-            </div>
+					{privateMessages.map((message, index) => (
+						<div key={index}>
+						<strong>{message.from === socket.id ? "You" : "Recipient"}:</strong> {message.content}
+						</div>
+					))}
+				</div>
 
-            <h3 style = {{ color:'blue' }}>Users:</h3>
-            <ul className="user-list" style={{ color: 'purple', padding: 0, margin: 0, maxHeight: '120px', overflowY: 'auto' }}>
-              {user.map(user => (
-                <li key={user.userID} onClick={() => setSelectedUser(user)}>
-                  {user.username}
-                </li>
-              ))}
-            </ul>
+				<h3 style = {{ color:'blue' }}>Users:</h3>
+				<ul className="user-list" style={{ color: 'purple', padding: 0, margin: 0, maxHeight: '120px', overflowY: 'auto' }}>
+					{user.map(user => (
+						<li key={user.userID} onClick={() => setSelectedUser(user)}>
+							{user.username}
+						</li>
+					))}
+				</ul>
 
-            <input
-              type="text"
-              value={inputMessage}
-              onChange={(e) => setInputMessage(e.target.value)}
-              placeholder="Type your message here..."
-              style={{ width: '100%', marginBottom: '10px' }} // Set the width to 100% and add some bottom margin
-            />
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <button style={{ backgroundColor: 'yellow', marginRight: '10px' }} onClick={handleConnectButtonClick}>Connect</button>
-              <button style={{ backgroundColor: 'green', marginRight: '10px' }} onClick={sendMessage}>Send</button>
-            </div>
+				<input
+					type="text"
+					value={inputMessage}
+					onChange={(e) => setInputMessage(e.target.value)}
+					placeholder="Type your message here..."
+					style={{ width: '100%', marginBottom: '10px' }} // Set the width to 100% and add some bottom margin
+				/>
+				<div style={{ display: 'flex', justifyContent: 'center' }}>
+					<button style={{ backgroundColor: 'yellow', marginRight: '10px' }} onClick={handleConnectButtonClick}>Connect</button>
+					<button style={{ backgroundColor: 'green', marginRight: '10px' }} onClick={handleSendMessage}>Send</button>
+				</div>
 
             </div>
 
         </ThemeLayout>
 	);
-
 }
+
+export const sendMessage = (inputMessage, selectedUser, socket, setPrivateMessages, setInputMessage) => {
+    if (typeof inputMessage === 'string' && inputMessage.trim() !== "" && selectedUser) {
+        console.log("send message:", selectedUser.username);
+        socket.emit("private message", { content: inputMessage, to: selectedUser.userID});
+        setPrivateMessages(prevMessages => [...prevMessages, { content: inputMessage, from: socket.id }]);
+        setInputMessage("");
+    } else {
+        console.log("No user selected or empty message");
+    }
+};
+
+
 module.export = Chat;
