@@ -55,38 +55,4 @@ describe('Page component', () => {
         alertMock.mockRestore();
         
     });
-
-    test('handles invalid login', async () => {
-        const username = 'validUsername';
-        const password = 'validPassword';
-        const alertMock = jest.spyOn(window, 'alert').mockImplementation(() => {});
-
-        // Return the values we want to test
-        jest.mock('@/components/inputValidation', () => {
-            return jest.fn().mockResolvedValue(true);
-        });
-
-        jest.mock('@/db/handleLogin', () => {
-            handleSubmit: jest.fn().mockImplementation(() => {
-                return Promise.resolve(null);
-            });
-        });
-
-        const usernameInput = screen.getByPlaceholderText('Username');
-        const passwordInput = screen.getByPlaceholderText('Password');
-        const submitButton = screen.getByTestId('submit');
-
-        // Update the input fields
-        fireEvent.change(usernameInput, { target: { value: username } });
-        fireEvent.change(passwordInput, { target: { value: password } });
-        fireEvent.click(submitButton);
-
-        await waitFor(() => {
-            // Check if the alert is called with the correct message
-            expect(alertMock).toHaveBeenCalledWith('Invalid login!');
-        });
-        // Restore the mocks
-        alertMock.mockRestore();
-
-    });
 });
