@@ -1,4 +1,5 @@
 "use client"
+import React from "react";
 import { useState } from "react";
 //import Mongoboi from  "@/db/mongo"
 import handleSubmit from "@/db/handleLogin"
@@ -46,9 +47,9 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="h-screen w-screen flex flex-col items-center justify-center text-black">
-        <img src="/img/logo.png" alt="Description of the image" width='300'></img>
-      <div className="rounded-md bg-sky-500/50 p-5 m-4">
+    <div data-testid='login' className="h-screen w-screen flex flex-col items-center justify-center text-black">
+        <img src="/placeholder-logo.png" alt="Description of the image"></img>
+      <div className="rounded-md bg-sky-500/50 p-10 m-4">
       {/* <form action={async (formData) => {
         const data = await handleSubmit(formData)
         if (data != null) {
@@ -62,6 +63,7 @@ export default function LoginPage() {
         <div>
           <input
             onChange={(e) => setUsername(e.target.value)}
+            data-testid='username'
             id="username"
             type="text"
             name="username"
@@ -74,6 +76,7 @@ export default function LoginPage() {
         <div>
           <input
             onChange={(e) => setPassword(e.target.value)}
+            data-testid='password'
             id="password"
             type="password"
             name="password"
@@ -95,6 +98,7 @@ export default function LoginPage() {
           />
         </div>
         <button 
+          data-testid='submit'
           id ="login"
           type="submit"
           className='p-5 m-5 rounded-md bg-green-400' 
