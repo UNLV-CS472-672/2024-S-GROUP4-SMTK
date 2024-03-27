@@ -30,7 +30,6 @@ export default function RegisterPage() {
       else{
         alert("Registration was unsuccessful");
       }
-      
     };
   
     const checkUP = async (event) => {
@@ -44,26 +43,6 @@ export default function RegisterPage() {
           return;
         }
         
-        if(!(await validateInput(username))){
-          alert("Username: Too many characters or Use of prohibited characters");
-          return;
-        }
-
-        if(await vulgar(username)){
-          alert("*** Username: Vulgar Language Detected ***");
-          return;
-        }
-
-        if(!(await validateInput(password))){
-          alert("Password: Too many characters or Use of prohibited characters");
-          return;
-        }
-
-        if(await vulgar(password)){
-          alert("*** Password: Vulgar Language Detected ***");
-          return;
-        }
-        
         if(!(await validateInput(firstName))){
           alert("First Name: Too many characters or Use of prohibited characters");
           return;
@@ -73,7 +52,26 @@ export default function RegisterPage() {
           alert("Last Name: Too many characters or Use of prohibited characters");
           return;
         }
-        
+
+        if(!(await validateInput(username))){
+          alert("Username: Too many characters or Use of prohibited characters");
+          return;
+        }
+
+        if(!(await validateInput(password))){
+          alert("Password: Too many characters or Use of prohibited characters");
+          return;
+        }
+
+        if(await vulgar(username)){
+          alert("*** Username: Vulgar Language Detected ***");
+          return;
+        }
+
+        if(await vulgar(password)){
+          alert("*** Password: Vulgar Language Detected ***");
+          return;
+        }
         
         if(username.toLowerCase().includes(firstName.toLowerCase()) || username.toLowerCase().includes(lastName.toLowerCase())){
           alert("Username cannot contain first or last name.");
@@ -111,15 +109,9 @@ export default function RegisterPage() {
   
     return (
       <div className="h-screen w-screen flex flex-col items-center justify-center text-black">
-        {(textInput == null) ? <div></div>: <div className="text-white">hello {textInput.firstname}</div>}
           <img src="/placeholder-logo.png" alt="Description of the image"></img>
         <div className="rounded-md bg-sky-500/50 p-10 m-4">
-        <form action={async (formData) => {
-          const data = await handleSubmit(formData)
-          if (data != null) {
-            setTextInput(data)
-          }
-        }}>
+        <form action>
             <div>
                 <label
                     for="fName"
