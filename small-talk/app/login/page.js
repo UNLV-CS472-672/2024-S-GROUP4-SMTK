@@ -1,4 +1,5 @@
 "use client"
+import React from "react";
 import { useState } from "react";
 //import Mongoboi from  "@/db/mongo"
 import handleSubmit from "@/db/handleLogin"
@@ -62,6 +63,7 @@ export default function LoginPage() {
         <div>
           <input
             onChange={(e) => setUsername(e.target.value)}
+            data-testid='username'
             id="username"
             type="text"
             name="username"
@@ -74,6 +76,7 @@ export default function LoginPage() {
         <div>
           <input
             onChange={(e) => setPassword(e.target.value)}
+            data-testid='password'
             id="password"
             type="password"
             name="password"
@@ -95,6 +98,7 @@ export default function LoginPage() {
           />
         </div>
         <button 
+          data-testid='submit'
           id ="login"
           type="submit"
           className='p-5 m-5 rounded-md bg-green-400' 
