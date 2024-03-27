@@ -109,7 +109,7 @@ export default function RegisterPage() {
   
     return (
       <div className="h-screen w-screen flex flex-col items-center justify-center text-black">
-          <img src="/placeholder-logo.png" alt="Description of the image"></img>
+          <img src="/img/logo.png" alt="Description of the image" width='300'></img>
         <div className="rounded-md bg-sky-500/50 p-10 m-4">
         <form action>
             <div>
