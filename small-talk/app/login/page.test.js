@@ -56,9 +56,7 @@ describe('Page component', () => {
         
     });
 
-    // Test case 4: Check if authenticateUP function handles invalid login
     test('handles invalid login', async () => {
-        // Mock the necessary functions and variables
         const username = 'validUsername';
         const password = 'validPassword';
         const alertMock = jest.spyOn(window, 'alert').mockImplementation(() => {});
