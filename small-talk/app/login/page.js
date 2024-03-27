@@ -46,7 +46,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="h-screen w-screen flex flex-col items-center justify-center text-black">
+    <div data-testid='login' className="h-screen w-screen flex flex-col items-center justify-center text-black">
         <img src="/img/logo.png" alt="Description of the image"  width='300'></img>
       <div className="rounded-md bg-sky-500/50 p-5 m-4">
       {/* <form action={async (formData) => {
