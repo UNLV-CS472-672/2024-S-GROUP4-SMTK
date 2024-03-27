@@ -14,6 +14,7 @@ import buttons from "../data/sidebarButtons.json"
   The mock is found in the __mocks__ directory
 */
 jest.mock('./SidebarButton');
+jest.mock('./SB_ExpandButton');
 
 /*
   The behavior we want to check is that what's rendered on the screen is in the 
@@ -40,5 +41,10 @@ describe('SideBar Component', () => {
       expect(button).toHaveAttribute('hoverimg', hoverImg);
       expect(button).toHaveAttribute('alttext', altText)
     });
+  });
+
+  it('renders SB_ExpandButton components when expanded', () => {
+    // Render the side bar expanded to true
+    render(<SideBar isExpanded={true} />);
   });
 });
