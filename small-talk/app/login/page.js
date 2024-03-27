@@ -98,6 +98,7 @@ export default function LoginPage() {
           />
         </div>
         <button 
+          data-testid='submit'
           id ="login"
           type="submit"
           className='p-5 m-5 rounded-md bg-green-400' 

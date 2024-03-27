@@ -39,7 +39,7 @@ describe('Page component', () => {
 
         const usernameInput = screen.getByPlaceholderText('Username');
         const passwordInput = screen.getByPlaceholderText('Password');
-        const submitButton = screen.getByText('Submit');
+        const submitButton = screen.getByTestId('submit');
 
         // Update the input fields
         fireEvent.change(usernameInput, { target: { value: username } });
@@ -74,7 +74,7 @@ describe('Page component', () => {
 
         const usernameInput = screen.getByPlaceholderText('Username');
         const passwordInput = screen.getByPlaceholderText('Password');
-        const submitButton = screen.getByText('Submit');
+        const submitButton = screen.getByTestId('submit');
 
         // Update the input fields
         fireEvent.change(usernameInput, { target: { value: username } });
@@ -85,8 +85,8 @@ describe('Page component', () => {
             // Check if the alert is called with the correct message
             expect(alertMock).toHaveBeenCalledWith('Invalid login!');
         });
-
         // Restore the mocks
         alertMock.mockRestore();
+
     });
 });
