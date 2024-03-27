@@ -1,6 +1,6 @@
 import Mongoboi from "@/db/mongo"
 import { headers } from "next/headers"
-import { NextResponse } from "next/server";
+
 
 export default async function POST(req,res) 
 {
@@ -22,10 +22,11 @@ export default async function POST(req,res)
         session_id : session_id
     }
     const collectionName = "patients"
+    let result
     try 
     {
         await mongoboi.connect()
-        const result = await mongoboi.findOne("patients", query)
+        result = await mongoboi.findOne("patients", query)
     } catch (error) 
     {
         res.status(200).json({ found: false }); return;
@@ -40,3 +41,5 @@ export default async function POST(req,res)
     }
     res.status(200).json({ found: false }); return;
 }
+
+module.exports = POST;
