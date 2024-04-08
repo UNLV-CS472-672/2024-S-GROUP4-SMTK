@@ -7,11 +7,11 @@ import Homepage from './page.js';
     Check that the page renders and check if the expected content exists in the render
 */
 
-// Mock FriendsList component
-const MockFriendsList = () => <div className="friends-list" data-testid='friends-list' />;
-MockFriendsList.displayName = 'FriendsList';
-jest.mock('../components/friends/FriendsList', () => MockFriendsList);
-
+jest.mock('../components/friends/FriendsList', () => {
+    return function MockedFriendsList() {
+        return <div className="friends-list" data-testid='friends-list' />;
+    }
+});
 // Test if Homepage renders properly 
 describe("Home Page", () =>
 {
