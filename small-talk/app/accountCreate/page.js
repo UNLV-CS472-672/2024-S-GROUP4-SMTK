@@ -114,7 +114,7 @@ export default function RegisterPage() {
         <form action>
             <div>
                 <label
-                    for="fName"
+                    htmlFor="fName"
                     >First Name
                 </label>
                 <input
@@ -130,7 +130,7 @@ export default function RegisterPage() {
 
             <div>
                 <label
-                    for="lname"
+                    htmlFor="lname"
                     >Last Name
                 </label>
                 <input
@@ -146,7 +146,7 @@ export default function RegisterPage() {
 
             <div>
                 <label
-                    for="dob"
+                    htmlFor="dob"
                     >Birth Date    
                 </label>
 
@@ -163,7 +163,7 @@ export default function RegisterPage() {
 
             <div>
                 <label
-                    for="user"
+                    htmlFor="user"
                     >Username
                 </label>
                 <input
@@ -179,7 +179,7 @@ export default function RegisterPage() {
 
             <div>
                 <label
-                    for="pw"
+                    htmlFor="pw"
                     >Password
                 </label>
                 <input

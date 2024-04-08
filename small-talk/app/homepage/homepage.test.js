@@ -7,6 +7,9 @@ import Homepage from './page.js';
     Check that the page renders and check if the expected content exists in the render
 */
 
+// Mock FriendsList component
+jest.mock('../components/friends/FriendsList', () => () => <div className="friends-list" data-testid='friends-list' />);
+
 // Test if Homepage renders properly 
 describe("Home Page", () =>
 {
@@ -18,7 +21,7 @@ describe("Home Page", () =>
         // Get page content
         const titleElement = screen.getByText("Home Page");
         const bb = screen.getByText("Bulletin Board");
-        const friends = screen.getByText("Friends");
+        const friends = screen.getByTestId("friends-list");
         const chat = screen.getByText("Chatroom");
 
         // Check if expected content exists

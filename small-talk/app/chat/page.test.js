@@ -4,6 +4,9 @@ import Chat from '../chat/page.js';
 import socket from '../../util/socket';
 import { sendMessage } from '../chat/page.js';
 
+// Mock FriendsList component
+jest.mock('../components/friends/FriendsList', () => () => <div className="friends-list" data-testid='friends-list'/>);
+
 // Mock socket.io module
 jest.mock('../../util/socket', () => ({
     auth: null,
@@ -13,6 +16,7 @@ jest.mock('../../util/socket', () => ({
     emit: jest.fn(),
     id: 'mockedSocketID'
 }));
+
 
 // create all the test cases for what is currently up in the page.js, can add more for future functionality 
 describe('Chat Component', () => {
