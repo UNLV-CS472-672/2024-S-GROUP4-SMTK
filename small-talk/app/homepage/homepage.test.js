@@ -8,7 +8,9 @@ import Homepage from './page.js';
 */
 
 // Mock FriendsList component
-jest.mock('../components/friends/FriendsList', () => () => <div className="friends-list" data-testid='friends-list' />);
+const MockFriendsList = () => <div className="friends-list" data-testid='friends-list' />;
+MockFriendsList.displayName = 'FriendsList';
+jest.mock('../components/friends/FriendsList', () => MockFriendsList);
 
 // Test if Homepage renders properly 
 describe("Home Page", () =>

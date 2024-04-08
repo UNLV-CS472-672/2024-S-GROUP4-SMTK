@@ -5,7 +5,9 @@ import socket from '../../util/socket';
 import { sendMessage } from '../chat/page.js';
 
 // Mock FriendsList component
-jest.mock('../components/friends/FriendsList', () => () => <div className="friends-list" data-testid='friends-list'/>);
+const MockFriendsList = () => <div className="friends-list" data-testid='friends-list' />;
+MockFriendsList.displayName = 'FriendsList';
+jest.mock('../components/friends/FriendsList', () => MockFriendsList);
 
 // Mock socket.io module
 jest.mock('../../util/socket', () => ({
