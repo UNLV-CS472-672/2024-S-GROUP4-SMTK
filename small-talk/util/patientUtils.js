@@ -6,17 +6,33 @@ import { getAllUsernamesInDB } from './mongoUtils.js';
 *
 * @param {Array} users - An array of patient's username strings. Defaults to all patients in the database.
 * @returns {Array} - An array of objects in the form of {username: string, online: boolean}.
+*                    Returns an empty list if any errors are handled in its implementation.
 */
 export const getPatientsOnlineStatus = async (usernames) => {
     // TODO: form function to attach user online status to each user
     // Currently only returns a list of all users with all online
-    if (!usernames) {
+    if (!usernames) 
         usernames = await getAllPatientUsernames();
-    }
 
+    // Check once again in case no usernames could be found. Return an empty list if so
+    if (usernames.length === 0)
+        return [];
+    
     const otherUsernames = removeCurrentUsername(usernames);
     const onlineUsernames = makeAllOnline(otherUsernames);
     return onlineUsernames;
+}
+
+
+/**
+ * Retrieves all users from the database with their online statuses.
+ * Temporarily defaults to all online.
+ * 
+ * @returns {Array} - An array of all username strings from the database.
+ */
+export const getAllPatientUsernames = async () => {
+    const usernames = await getAllUsernamesInDB('Users', 'patients');
+    return usernames;
 }
 
 
@@ -41,18 +57,6 @@ export const getCurrentUsername = () =>{
     // Currently only returns a default username that exists in the database
     // Will be expanded to get the username from the sessionID hash
     return "hello";
-}
-
-
-/**
- * Retrieves all users from the database with their online statuses.
- * Temporarily defaults to all online.
- * 
- * @returns {Array} - An array of all username strings from the database.
- */
-export const getAllPatientUsernames = async () => {
-    const usernames = await getAllUsernamesInDB('Users', 'patients');
-    return usernames;
 }
 
 

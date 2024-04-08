@@ -42,6 +42,11 @@ export const disconnectMongoboi = async (myMongoboi) => {
  */
 export const getAllUsernamesInDB = async (db, collection) => {
     const users = await getAllUsersByQuery(db, collection, {}, {username: 1, _id: 0});
+    
+    // In case errors were encountered in the implementation, return an empty list
+    if (!users)
+        return [];
+    
     const usernames = users.map(user => user.username);
     return usernames;
 }

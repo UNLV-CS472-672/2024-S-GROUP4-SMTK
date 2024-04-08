@@ -23,6 +23,7 @@ describe('getConnectedMongoboi', () => {
     });
 });
 
+
 describe('disconnectMongoboi', () => {
     beforeEach(() => {
       // Clear all instances and calls to constructor and all methods:
@@ -38,6 +39,7 @@ describe('disconnectMongoboi', () => {
     });
   });
 
+
   describe('getAllUsernamesInDB', () => {
     beforeEach(() => {
       // Clear all instances and calls to constructor and all methods:
@@ -45,14 +47,16 @@ describe('disconnectMongoboi', () => {
     });
   
     it('should send a basic query to getAllUsersByQuery, which should make a call go findAll', async () => {
-        // Mock the findAll method
+        // Start by defining the environment variables
         process.env.DB_USER = 'testUser';
         process.env.DB_PASS = 'testPass';
-
         const expectedUri = 'mongodb+srv://testUser:testPass@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority';
+    
+        // Set up the mocks
         const mockFindAll = jest.fn().mockResolvedValue([{username: 'testUser1'}, {username: 'testUser2'}]);
         jest.spyOn(Mongoboi.prototype, 'findAll').mockImplementation(mockFindAll);
         
+        // Call the function and verify the results
         var usernames = await getAllUsernamesInDB('testDB', 'testCollection');
         
         expect(Mongoboi).toHaveBeenCalledTimes(1);
