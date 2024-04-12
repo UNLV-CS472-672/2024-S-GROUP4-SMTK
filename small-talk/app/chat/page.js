@@ -3,6 +3,7 @@ import Link from 'next/link'
 import ThemeLayout from '../components/ThemeLayout';
 import socket from "../../util/socket";
 import React, { useEffect, useState } from 'react';
+import FriendsList from '../components/friends/FriendsList';
 
 export default function Chat(){
 	const [text, setText] = useState(null);
@@ -87,6 +88,7 @@ export default function Chat(){
 
 	return (
         <ThemeLayout>
+			<FriendsList />
             <div // all the styles added in this file are temporary for testing purposes
 				data-testid="chat-container" 
 				style={{ 
