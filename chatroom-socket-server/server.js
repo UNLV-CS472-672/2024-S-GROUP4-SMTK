@@ -6,21 +6,26 @@ const io = require("socket.io")(httpServer, {
   },
 });
 
-// when socket.connect on react gets called, this runs
-io.use((socket, next) => {
-    console.log("connected " + socket.handshake.auth.username)
-    const username = socket.handshake.auth.username
+io.on("connection", (socket) => {
+    // the user connected is undefined because the cookie is not set up
+    console.log("A user connected: " + socket.handshake.auth.username);
+    
+    // Your existing user authentication logic here...
+    const username = socket.handshake.auth.username;
     if (!username) {
-        return next(new Error("invalid"))
+        socket.emit("error", "Invalid username");
+        socket.disconnect();
+        return;
     }
     socket.username = username;
-    console.log("connect is called and received by server")
-    next();
-}) 
 
-// io.of("/").sockets
-// map of all CURRENTLY CONNECTED SOCKET INSTANCES INDEXED BY ID
-io.on("connection", (socket) => {
+    // Notify existing users about the new connection
+    io.emit("user connected", {
+        userID: socket.id,
+        username: socket.username,
+    });
+
+    // Send the list of users to the newly connected client
     const users = [];
     for (let [id, socket] of io.of("/").sockets) {
         users.push({
@@ -29,25 +34,24 @@ io.on("connection", (socket) => {
         });
     }
     socket.emit("users", users);
-})
 
+    // Listen for private messages
+    socket.on("private message", ({ content, to }) => {
+      socket.to(to).emit("private message", {
+        content,
+        from: socket.id,
+      });
+      console.log("Private message from: " + socket.handshake.auth.username + " content: " + content + " to:  " + to);
+    });
 
-io.on("connection", (socket) => {
-    // notify existing users
-    socket.broadcast.emit("user connected", {
-      userID: socket.id,
-      username: socket.username,
+    // Handle disconnection
+    socket.on("disconnect", () => {
+        console.log("User disconnected: " + socket.username);
+        io.emit("user disconnected", {
+            userID: socket.id,
+            username: socket.username,
+        });
     });
 });
 
-// creating an event listener for private message on socket connection
-// get the message (content) and send that (to) recipient's ID 
-io.on("private message", ({ content, to }) => {
-  console.log("private send " + socket.handshake.auth.username)
-  socket.to(to).emit("private message", {
-    content,
-    from: socket.id,
-  });
-});
-
-module.exports = [ io, httpServer ];
+module.exports = { io, httpServer };
