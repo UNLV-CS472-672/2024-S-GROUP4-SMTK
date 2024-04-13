@@ -1,7 +1,7 @@
 "use client"
-import Link from 'next/link'
 import React from 'react';
-import ThemeLayout from '../components/ThemeLayout';
+import ThemeLayout from '@/app/components/ThemeLayout';
+import FriendsList from '../components/friends/FriendsList';
 
 export default function Homepage() {
     return (
@@ -10,7 +10,9 @@ export default function Homepage() {
                 <ul className="m-8 w-full">
                     <li className="border-b border-gray-200 pb-2 mb-10">Home Page</li>
                     <li className="border-b border-gray-200 pb-2 mb-10">Bulletin Board</li>
-                    <li className="border-b border-gray-200 pb-2 mb-10">Friends</li>
+                    <li className="border-b border-gray-200 pb-2 mb-10">
+                        <FriendsList  />
+                    </li>
                     <li className="border-b border-gray-200 pb-2 mb-10">Chatroom</li>
                 </ul>
             </div>
