@@ -1,20 +1,29 @@
+/**
+ * ThemeLayout.js is a higher level component that wraps the TopBar and SideBar component in order for reusability
+ * throughout the site. It is also responsible for managing the responsiveness and states of the website.
+ * 
+ * @param children - the content of the pages that is wrapped between ThemeLayout.
+ */
+
 import React, { useState } from "react";
 import TopBar from "./TopBar";
 import SideBar from "./SideBar";
 
 const ThemeLayout = ({ children }) => {
-    const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
+    const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
     const toggleSidebar = () => {
-        setIsSidebarExpanded(!isSidebarExpanded);
+        setIsSidebarVisible(!isSidebarVisible);
     };
 
-    return(
-        <div className="w-full min-h-screen flex flex-col">
+    return (
+        <div className="relative min-h-screen">
             <TopBar toggleSidebar={toggleSidebar}/>
-            <SideBar isExpanded={isSidebarExpanded}/>
-            <div className="pt-[7.4%] pl-[15%]">
-                {children}
+            <div className="flex">
+                <SideBar isExpanded={isSidebarVisible}/>
+                <div className={`flex-1 mt-24 md:mt-32 ${isSidebarVisible ? 'ml-64' : 'ml-0'} transition-margin duration-300 ease-in-out`}>
+                    {children}
+                </div>
             </div>
         </div>
     );
