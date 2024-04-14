@@ -37,5 +37,3 @@ export default async function handleRegister(username, password, firstname, last
     await mongoboi.disconnect(); 
   }
 }
-
-module.exports = handleRegister;
