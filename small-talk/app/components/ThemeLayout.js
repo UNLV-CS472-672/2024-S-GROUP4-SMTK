@@ -20,7 +20,7 @@ const ThemeLayout = ({ children }) => {
         <div className="relative min-h-screen">
             <TopBar toggleSidebar={toggleSidebar}/>
             <div className="flex">
-                <SideBar isExpanded={isSidebarVisible}/>
+                <SideBar isVisible={isSidebarVisible}/>
                 <div className={`flex-1 mt-24 md:mt-32 ${isSidebarVisible ? 'ml-64' : 'ml-0'} transition-margin duration-300 ease-in-out`}>
                     {children}
                 </div>
