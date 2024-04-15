@@ -1,8 +1,8 @@
 //importing from other directorys and using uri
-const handleRegister = require("../db/registerToDB.js");
 const uri = "mongodb+srv://smt_root:pokemonwithguns@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority"
 import Mongoboi from "./mongo"
 import bcrypt from "bcryptjs";
+import handleRegister from "../db/registerToDB.js";
 //mocking mongo js in order to use functions
 jest.mock('../db/mongo.js', () => {
   const mongoboi = {

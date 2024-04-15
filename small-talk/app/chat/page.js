@@ -3,6 +3,7 @@ import Link from 'next/link'
 import ThemeLayout from '../components/ThemeLayout';
 import socket from "../../util/socket";
 import React, { useEffect, useState } from 'react';
+import FriendsList from '../components/friends/FriendsList';
 import handleMessageSave from "@/db/messageSave"
 
 export default function Chat(){
@@ -43,15 +44,15 @@ export default function Chat(){
 			socket.off("private message");
 			socket.off("disconnect");
 		};
-	}, []); 
+	}, [privateMessages]); 
 
 	const handleConnectButtonClick = () => {
 		onUsernameSelection("randomusername");
 	};
 
 	const handleSendMessage = () => {
-		sendMessage(inputMessage, selectedUser, setPrivateMessages, setInputMessage);
-	};
+        	sendMessage(inputMessage, selectedUser, setPrivateMessages, setInputMessage);
+    	};
 
 	const onUsernameSelection = (username) => {
 		socket.auth = { username };
@@ -60,6 +61,7 @@ export default function Chat(){
 
 	return (
 		<ThemeLayout>
+		<FriendsList />
 		<div
 			data-testid="chat-container" 
 			style={{ 
