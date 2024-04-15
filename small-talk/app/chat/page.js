@@ -11,12 +11,10 @@ export default function Chat(){
 	const [selectedUser, setSelectedUser] = useState(null);
 	const [privateMessages, setPrivateMessages] = useState([]);
 	const [inputMessage, setInputMessage] = useState("");
+	const [room, setRoom] = useState(""); 
 
 	useEffect(() => {
 		handleConnectButtonClick();
-		// socket.auth = "randomusername";
-		// socket.connect();
-	
 		socket.on("users", (receivedUsers) => {
 			receivedUsers.forEach((user) => {
 				user.self = user.userID === socket.id;
@@ -28,7 +26,7 @@ export default function Chat(){
 			setUser(prevUsers => [...prevUsers, user]);
 		});
 	
-		socket.on("private message", ({ content, from }) => {
+		socket.on("private message", ({ content, from, room }) => {
 			setPrivateMessages(prevMessages => [...prevMessages, { content, from }]);
 			console.log("private message:", privateMessages);
 		});
@@ -47,6 +45,7 @@ export default function Chat(){
 	}, [privateMessages]); 
 
 	const handleConnectButtonClick = () => {
+		// replace this with the proper usename taken from the cookie 
 		onUsernameSelection("randomusername");
 	};
 
@@ -122,16 +121,16 @@ export default function Chat(){
 	);
 }
 
-export const sendMessage = (inputMessage, selectedUser, setPrivateMessages, setInputMessage) => {
-	if (typeof inputMessage === 'string' && inputMessage.trim() !== "" && selectedUser) {
-		console.log("sent message from:" + selectedUser.username + " with message: " + inputMessage);
-		socket.emit("private message", { content: inputMessage, to: selectedUser.userID});
-		setPrivateMessages(prevMessages => [...prevMessages, { content: inputMessage, from: socket.id }]);
-		setInputMessage("");
-		handleMessageSave(inputMessage);
-	} else {
-		console.log("No user selected or empty message");
-	}
+export const sendMessage = (inputMessage, selectedUser, setPrivateMessages, setInputMessage, room) => {
+    if (typeof inputMessage === 'string' && inputMessage.trim() !== "" && selectedUser && typeof setPrivateMessages === 'function' && typeof setInputMessage === 'function') {
+        console.log("sent message from:" + selectedUser.username + " with message: " + inputMessage);
+        socket.emit("private message", { content: inputMessage, to: selectedUser.userID});
+        setPrivateMessages(prevMessages => [...prevMessages, { content: inputMessage, from: socket.id }]);
+        setInputMessage("");
+        handleMessageSave(inputMessage);
+    } else {
+        console.log("No user selected or empty message");
+    }
 };
 
 module.export = Chat;
