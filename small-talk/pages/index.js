@@ -1,7 +1,7 @@
-import Announcements from "@/components/announcements";
+//import Announcements from "@/components/announcements";
 import Layout from "@/components/layout";
 import { smolAuth } from "@/components/smolAuth";
-import Welcome from "@/components/welcome";
+//import Welcome from "@/components/welcome";
 import { getCookie } from "@/util/smolCookie";
 import { useEffect, useState } from "react";
 /*
@@ -50,11 +50,16 @@ export const Home = ({data}) => {
     return (
         <div className='bg-slate-800'>
             <Layout width={windowWidth} renderHeader={true} renderFooter={true}>
-                <Welcome data={data.user}/>
-                <Announcements data={data.announcements}/>
             </Layout>
         </div>
     )
 }
-
+/*
+        <div className='bg-slate-800'>
+            <Layout width={windowWidth} renderHeader={true} renderFooter={true}>
+                <Welcome data={data.user}/>
+                <Announcements data={data.announcements}/>
+            </Layout>
+        </div> 
+*/
 export default Home;
