@@ -1,0 +1,60 @@
+[
+    {
+      "id": 1,
+      "name": "Grilled Chicken Salad",
+      "description": "A fresh mix of lettuce, tomatoes, cucumbers, and grilled chicken with your choice of dressing.",
+      "imgPath": "/img/food/lunch/chicken.jpg",
+      "nutritionalInfo": "Calories: 250, Protein: 20g, Carbs: 10g, Fat: 15g"
+    },
+    {
+      "id": 2,
+      "name": "Avocado Toast",
+      "description": "Crispy whole grain bread topped with smashed avocado, a touch of lime, and a sprinkle of salt.",
+      "imgPath": "/img/food/lunch/avocado-toast.jpg",
+      "nutritionalInfo": "Calories: 300, Protein: 9g, Carbs: 30g, Fat: 17g"
+    },
+    {
+      "id": 3,
+      "name": "Oatmeal with Fresh Berries",
+      "description": "Warm oatmeal served with fresh strawberries, blueberries, a drizzle of honey, and a dash of cinnamon.",
+      "imgPath": "/img/food/lunch/oatmeal-berries.jpg",
+      "nutritionalInfo": "Calories: 220, Protein: 6g, Carbs: 45g, Fat: 3g"
+    },
+    {
+      "id": 4,
+      "name": "Turkey Club Sandwich",
+      "description": "A classic turkey club sandwich with bacon, lettuce, tomato, and mayo, served on toasted bread.",
+      "imgPath": "/img/food/lunch/turkey-club.jpg",
+      "nutritionalInfo": "Calories: 510, Protein: 25g, Carbs: 45g, Fat: 25g"
+    },
+    {
+      "id": 5,
+      "name": "Chicken Quesadilla",
+      "description": "A delicious flour tortilla stuffed with grilled chicken, a three cheese blend, rice, and a red salsa.",
+      "imgPath": "/img/food/lunch/chicken-queso.jpg",
+      "nutritionalInfo": "Calories: 420, Protein: 25g, Carbs: 55g, Fat: 18g"
+    },
+    {
+      "id": 6,
+      "name": "Grilled Salmon with Asparagus",
+      "description": "Freshly grilled salmon served with a side of roasted asparagus and a lemon butter sauce.",
+      "imgPath": "/img/food/lunch/grilled-salmon.jpg",
+      "nutritionalInfo": "Calories: 470, Protein: 34g, Carbs: 5g, Fat: 35g"
+    },
+    {
+      "id": 7,
+      "name": "Beef Stir-Fry",
+      "description": "Tender slices of beef stir-fried with a mix of bell peppers, broccoli, and onions in a savory sauce.",
+      "imgPath": "/img/food/lunch/beef-stirfry.jpg",
+      "nutritionalInfo": "Calories: 325, Protein: 22g, Carbs: 20g, Fat: 18g"
+    },
+    {
+        "id": 8,
+        "name": "Caprese Sandwich",
+        "description": "A delightful sandwich filled with fresh mozzarella, tomatoes, and aromatic basil leaves, drizzled with balsamic glaze and served on a freshly baked ciabatta roll.",
+        "imgPath": "/img/food/lunch/caprese-sandwich.jpg",
+        "nutritionalInfo": "Calories: 410, Protein: 22g, Carbs: 46g, Fat: 16g"
+      }
+      
+  ]
+  
