@@ -1,0 +1,9 @@
+Privacy and Security: Implemented secure authentication, anonymity, and vulgar language detection to ensure a safe environment. 
+
+User Interface Design: Enhanced color scheme and and bitmoji images for a welcoming platform. 
+
+Database Management:  (Please Add)
+
+Real-time Chat Functionality: Overcame connectivity issues and automated connection process. Chatting privately with friends. 
+
+HIPAA and COPPA Compliance: Drafting comprehensive policies for user data control and compliance with regulations.
