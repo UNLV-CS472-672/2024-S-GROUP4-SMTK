@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import VisualMenuComponent from '../../food/foodComponents/VisualMenuComponent'; // Ensure path is correct
+import VisualMenuComponent from './VisualMenuComponent'; // Ensure path is correct
 import PastOrders from './PastOrders';
 import orderHistory from '../../data/foodData/orderHistory';
 import MealCustomization from './MealCustomization';
 
 function MenuTabs() {
+    // State variables to control main and sub-tabs
     const [mainTab, setMainTab] = useState('orderFood'); // Control the main tabs
     const [subTab, setSubTab] = useState(''); // Control the sub-tabs under "Order Food"
 
@@ -26,18 +27,21 @@ function MenuTabs() {
             <div className="text-lg border-b-2 border-gray-200 mb-4">
                 {/* Main Tabs at the top like a filing folder */}
                 <div className="flex justify-between">
+                    {/* Button for "Order Food" tab */}
                     <button
                         onClick={() => handleMainTabChange('orderFood')}
                         className={`py-2 px-6 text-base font-bold ${mainTab === 'orderFood' ? 'bg-blue-500 text-white' : 'bg-white-300 hover:bg-gray-400'}`}
                     >
                         Order Food
                     </button>
+                    {/* Button for "Past Orders" tab */}
                     <button
                         onClick={() => handleMainTabChange('pastOrders')}
                         className={`py-2 px-6 text-base font-bold ${mainTab === 'pastOrders' ? 'bg-blue-500 text-white' : 'bg-white-300 hover:bg-gray-400'}`}
                     >
                         Past Orders
                     </button>
+                    {/* Button for "Meal Customization" tab */}
                     <button
                         onClick={() => handleMainTabChange('mealCustomization')}
                         className={`py-2 px-6 text-base font-bold ${mainTab === 'mealCustomization' ? 'bg-blue-500 text-white' : 'bg-white-300 hover:bg-gray-400'}`}
@@ -49,6 +53,7 @@ function MenuTabs() {
                 {/* Content below the tabs */}
                 <div>
                     {mainTab === 'orderFood' && (
+                        // Render sub-tabs and corresponding components for "Order Food" tab
                         <div className="pl-4 pt-4">
                             <button
                                 onClick={() => handleSubTabChange('breakfast')}
@@ -77,6 +82,7 @@ function MenuTabs() {
                     )}
 
                     {mainTab === 'pastOrders' && (
+                        // Render past orders component for "Past Orders" tab
                         <div className="p-4">
                             {orderHistory.length > 0 ? (
                                 <PastOrders orders={orderHistory} />
@@ -87,13 +93,14 @@ function MenuTabs() {
                     )}
 
                     {mainTab === 'mealCustomization' && (
+                        // Render meal customization component for "Meal Customization" tab
                         <div className="p-4">
-                          <MealCustomization />
+                            <MealCustomization />
                         </div>
                     )}
                 </div>
             </div>
-        </div>
+            </div>
     );
 }
 
