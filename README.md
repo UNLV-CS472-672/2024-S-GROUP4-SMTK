@@ -29,3 +29,15 @@ This project utilizes the Jest testing suite for its unit tests. Our goal of tes
     3.1 'npm run test' - This simply runs the jest testing script and outputs the names of the tests being ran and whether they've been successful or not.  
     3.2 'npm run test:watch' - Use this command when you are actively debugging a test and would like to see the test reran ever time you update the file. Each time you save a test file, jest will be ran on that file and output the results  
     3.3 'npm run test:coverage' - Jest will be ran like usual but output a comprehensive report of the coverage for the app. It lists the files, percentages of statements, branches, functions, and lines, and lists the uncovered lines in the files. It will also print the targeted testing coverage percent and whether or not we've reached it.  
+
+## How to run the Chatroom
+This project utilizes socket.io to create a connection between the users and the chatroom. In order to run the chatroom on your own machine you will need to follow the following steps:
+
+1. Open two terminal windows
+2. In the first terminal: Navigate to the small-talk directory 
+    2.1 'npm install' - used to install any missing dependencies
+    2.2 'npm run dev' - This will simply run the website on your localhost 
+3. In the second terminal: Navigate to the chatroom-socket-server directory
+    3.1 'npm install' - used to install any missing dependencies
+    3.2 'npm start' - This will run the socket server 
+4. You can confirm this is working properly by going to the chatroom page and see if you connect to the page by your username appearing on the list of online users. 
