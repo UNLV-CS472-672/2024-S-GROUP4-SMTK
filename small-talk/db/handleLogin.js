@@ -9,7 +9,7 @@ export default async function handleSubmit(username, password) {
     username: username,
   }
   await mongoboi.connect();
-  const user = await mongoboi.findOne("patients", findUser) // ensure that the username occurs in the databasecd ..
+  const user = await mongoboi.findOne("patients", findUser) // ensure that the username occurs in the database
   await mongoboi.disconnect();
   if (user == null){ // will return null if username is not found in the database
     return null;
