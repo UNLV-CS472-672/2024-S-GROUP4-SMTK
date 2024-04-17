@@ -1,5 +1,5 @@
 "use server"
-const uri = "mongodb+srv://smt_root:pokemonwithguns@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@" + process.env.DB_URL
 import bcrypt from 'bcryptjs'
 import Mongoboi from "./mongo"
 export default async function handleSubmit(username, password) {
