@@ -14,3 +14,15 @@ export const sendMessage = (inputMessage, selectedUser, setPrivateMessages, setI
         console.log("No user selected or empty message");
     }
 };
+
+/**
+ * Currently only logs the user that the chat room is being set up with.
+ * In the future will need to implement socket connections and chat room setup.
+ */
+export const setupChatRoom = (username) => {
+    if (typeof username === 'string') {
+        console.log("Setting up chat room with: " + username);
+    } else {
+        console.log("Invalid username");
+    }
+};

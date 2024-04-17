@@ -1,14 +1,25 @@
 import socket from "../../util/socket";
 import React, { useEffect, useState } from 'react';
-import { sendMessage } from '../../util/chatUtils';
+import { sendMessage, setupChatRoom } from '../../util/chatUtils';
 import '@/styles/custom.css';
 
-const Chatbox = () => { 
+const Chatbox = ({selectedFriend}) => { 
     const [user, setUser] = useState([]);
 	const [selectedUser, setSelectedUser] = useState(null);
 	const [privateMessages, setPrivateMessages] = useState([]);
 	const [inputMessage, setInputMessage] = useState("");
 	const [room, setRoom] = useState(""); 
+
+    // Define a useEffect hook that runs when a new user is selected
+    useEffect(() => {
+        // If a user is selected, set the room to the selected user's username
+        // There will likely be a lot more functionality that needs to be added or changed
+        // depending on how the chat system is implemented
+        console.log("Selected friend: ", selectedFriend)
+        if (selectedFriend) {
+            setupChatRoom(selectedFriend.username);
+        }
+    }, [selectedFriend]);
 
 	useEffect(() => {
 		handleConnectButtonClick();
@@ -47,8 +58,8 @@ const Chatbox = () => {
 	};
 
 	const handleSendMessage = () => {
-        	sendMessage(inputMessage, selectedUser, setPrivateMessages, setInputMessage, 'dummy-room', socket);
-    	};
+        sendMessage(inputMessage, selectedUser, setPrivateMessages, setInputMessage, 'dummy-room', socket);
+    };
 
 	const onUsernameSelection = (username) => {
 		socket.auth = { username };
