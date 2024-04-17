@@ -34,10 +34,10 @@ This project utilizes the Jest testing suite for its unit tests. Our goal of tes
 This project utilizes socket.io to create a connection between the users and the chatroom. In order to run the chatroom on your own machine you will need to follow the following steps:
 
 1. Open two terminal windows
-2. In the first terminal: Navigate to the small-talk directory 
+2. In the first terminal - Navigate to the small-talk directory:
     2.1 'npm install' - used to install any missing dependencies
     2.2 'npm run dev' - This will simply run the website on your localhost 
-3. In the second terminal: Navigate to the chatroom-socket-server directory
+3. In the second terminal - Navigate to the chatroom-socket-server directory:
     3.1 'npm install' - used to install any missing dependencies
     3.2 'npm start' - This will run the socket server 
 4. You can confirm this is working properly by going to the chatroom page and see if you connect to the page by your username appearing on the list of online users. 
