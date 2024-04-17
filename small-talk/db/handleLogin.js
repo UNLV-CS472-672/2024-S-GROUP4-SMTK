@@ -1,5 +1,5 @@
 "use server"
-const uri = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@" + process.env.DB_URL
 import bcrypt from 'bcryptjs'
 import Mongoboi from "./mongo"
 export default async function handleSubmit(username, password) {
@@ -9,7 +9,7 @@ export default async function handleSubmit(username, password) {
     username: username,
   }
   await mongoboi.connect();
-  const user = await mongoboi.findOne("patients", findUser) // ensure that the username occurs in the database
+  const user = await mongoboi.findOne("patients", findUser) // ensure that the username occurs in the databasecd ..
   await mongoboi.disconnect();
   if (user == null){ // will return null if username is not found in the database
     return null;

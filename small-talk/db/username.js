@@ -1,5 +1,5 @@
 "use server"
-const uri = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@" + process.env.DB_URL
 import Mongoboi from "./mongo"
 export default async function userExists(username) {
     "use server"
