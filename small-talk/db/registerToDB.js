@@ -1,5 +1,5 @@
 "use server"
-const uri = "mongodb+srv://smt_root:pokemonwithguns@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority"
 import Mongoboi from "./mongo"
 import bcrypt from "bcryptjs";
 export default async function handleRegister(username, password, firstname, lastname, dob){ // function that sends the credentials to the database

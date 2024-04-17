@@ -311,6 +311,12 @@ describe('RegisterPage Component', () => {
     });
   });
 
+  /* GENERATIVE AI TOOL USED FOR THIS TEST
+    Utilized tool: ChatGPT
+    Lines said tool suggested: 324-326, 335
+    Human Modifications: None (no other method found)
+    Rationale behind use: Repeated problem other team members encountered when testing a redirect change; referred to ChatGPT to gain insight on a potential solution
+  */
   it('redirects to login page when goLogin is called', () => {
     render(<RegisterPage />);
     
