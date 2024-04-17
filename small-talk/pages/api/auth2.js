@@ -41,5 +41,3 @@ export default async function POST(req,res)
     }
     res.status(200).json({ found: false }); return;
 }
-
-module.exports = POST;

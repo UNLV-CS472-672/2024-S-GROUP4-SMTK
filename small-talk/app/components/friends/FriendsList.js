@@ -1,6 +1,7 @@
 import React from 'react';
 import UserStatus from './UserStatus';
 import { useState, useEffect } from 'react';
+import '@/styles/custom.css';
 
 
 /**
@@ -32,13 +33,13 @@ const FriendsList = () => {
     // Defines the grid that will be rendered with all the patients. Maps all patients to a unique UserStatus component with its username and online status
     // The grid will scroll when overflowing. The grid is set to display in rows of 3, but this can be changed to any number of rows
     return (
-        <div className="overflow-x-auto" data-testid='friends-list'>
-            <div className="grid grid-flow-col grid-rows-3 gap-4 p-4">
-            {patients.map((user, index) => (
-                <div key={index} className="flex flex-col items-center">
-                    <UserStatus username={user.username} onlineStatus={user.online} />
-                </div>
-            ))}
+        <div className="overflow-y-auto max-h-[600px] friends-list" data-testid='friends-list'>
+            <div className="grid grid-cols-1 gap-4 p-4">
+                {patients.map((user, index) => (
+                    <div key={index} className="flex flex-col items-center">
+                        <UserStatus username={user.username} onlineStatus={user.online} />
+                    </div>
+                ))}
             </div>
         </div>
     );

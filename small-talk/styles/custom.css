@@ -1,0 +1,12 @@
+/* custom.css */
+.chat-container {
+    @apply flex items-start;
+}
+
+.friends-list {
+    @apply flex-none; /* This ensures that FriendsList only takes up space it needs */
+}
+
+.chatbox {
+    @apply flex-auto; /* This makes Chatbox expand to fill the remaining space */
+}
