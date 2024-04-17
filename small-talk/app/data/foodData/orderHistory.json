@@ -1,0 +1,70 @@
+[
+    {
+        "date": "2024-04-17",
+        "meals": [
+            {
+                "name": "Grilled Salmon with Asparagus"
+            }
+        ]
+    },
+    {
+        "date": "2024-04-16",
+        "meals": [
+            {
+                "name": "Grilled Chicken Salad"
+            },
+            {
+                "name": "Grilled Salmon with Asparagus"
+            }
+        ]
+    },
+    {
+        "date": "2024-04-15",
+        "meals": [
+            {
+                "name": "Caprese Sandwich"
+            }
+        ]
+    },
+    {
+        "date": "2024-04-14",
+        "meals": [
+            {
+                "name": "Avocado Toast"
+            }
+        ]
+    },
+    {
+        "date": "2024-04-13",
+        "meals": [
+            {
+                "name": "Caprese Sandwich"
+            }
+        ]
+    },
+    {
+        "date": "2024-04-12",
+        "meals": [
+            {
+                "name": "Beef Stir-Fry"
+            },
+            {
+                "name": "Turkey Club Sandwich"
+            },
+            {
+                "name": "Avocado Toast"
+            }
+        ]
+    },
+    {
+        "date": "2024-04-11",
+        "meals": [
+            {
+                "name": "Caprese Sandwich"
+            },
+            {
+                "name": "Grilled Salmon with Asparagus"
+            }
+        ]
+    }
+]

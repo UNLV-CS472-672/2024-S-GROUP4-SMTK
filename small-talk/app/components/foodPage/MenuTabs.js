@@ -1,43 +1,96 @@
 import React, { useState } from 'react';
 import VisualMenuComponent from '../../food/foodComponents/VisualMenuComponent'; // Ensure path is correct
+import PastOrders from './PastOrders';
+import orderHistory from '../../data/foodData/orderHistory';
+import MealCustomization from './MealCustomization';
 
 function MenuTabs() {
-    const [activeTab, setActiveTab] = useState('');
+    const [mainTab, setMainTab] = useState('orderFood'); // Control the main tabs
+    const [subTab, setSubTab] = useState(''); // Control the sub-tabs under "Order Food"
 
-    const toggleTab = (tab) => {
-        setActiveTab(activeTab === tab ? '' : tab);
+    // Function to handle main tab changes
+    const handleMainTabChange = (tab) => {
+        setMainTab(tab);
+        if (tab !== 'orderFood') {
+            setSubTab(''); // Reset sub-tabs when moving away from "Order Food"
+        }
+    };
+
+    // Function to handle sub-tab changes for "Order Food"
+    const handleSubTabChange = (tab) => {
+        setSubTab(subTab === tab ? '' : tab);
     };
 
     return (
-        <div className="menu-container w-full max-w-4xl mx-auto p-4">
-            <div className="text-lg">  {/* Increase base text size for better readability */}
-                <div className="border-b-2 border-gray-200 mb-4">
+        <div className="menu-container w-full max-w-7xl mx-auto p-4">
+            <div className="text-lg border-b-2 border-gray-200 mb-4">
+                {/* Main Tabs at the top like a filing folder */}
+                <div className="flex justify-between">
                     <button
-                        className={`py-3 px-6 text-base font-bold block w-full text-left rounded-md transition duration-300 ease-in-out ${activeTab === 'breakfast' ? 'bg-blue-100 text-white' : 'bg-gray-20 hover:bg-gray-300'
-                            }`}
-                        onClick={() => toggleTab('breakfast')}
+                        onClick={() => handleMainTabChange('orderFood')}
+                        className={`py-2 px-6 text-base font-bold ${mainTab === 'orderFood' ? 'bg-blue-500 text-white' : 'bg-white-300 hover:bg-gray-400'}`}
                     >
-                        Breakfast {activeTab === 'breakfast' ? '▲' : '▼'}
+                        Order Food
                     </button>
-                    {activeTab === 'breakfast' && <VisualMenuComponent menuDataPath="breakfastMenu.json" />}
+                    <button
+                        onClick={() => handleMainTabChange('pastOrders')}
+                        className={`py-2 px-6 text-base font-bold ${mainTab === 'pastOrders' ? 'bg-blue-500 text-white' : 'bg-white-300 hover:bg-gray-400'}`}
+                    >
+                        Past Orders
+                    </button>
+                    <button
+                        onClick={() => handleMainTabChange('mealCustomization')}
+                        className={`py-2 px-6 text-base font-bold ${mainTab === 'mealCustomization' ? 'bg-blue-500 text-white' : 'bg-white-300 hover:bg-gray-400'}`}
+                    >
+                        Meal Customization
+                    </button>
+                </div>
 
-                    <button
-                        className={`py-3 px-6 text-base font-bold block w-full text-left rounded-md transition duration-300 ease-in-out ${activeTab === 'lunch' ? 'bg-blue-500 text-white' : 'bg-gray-20 hover:bg-gray-300'
-                            }`}
-                        onClick={() => toggleTab('lunch')}
-                    >
-                        Lunch {activeTab === 'lunch' ? '▲' : '▼'}
-                    </button>
-                    {activeTab === 'lunch' && <VisualMenuComponent menuDataPath="lunchMenu.json" />}
+                {/* Content below the tabs */}
+                <div>
+                    {mainTab === 'orderFood' && (
+                        <div className="pl-4 pt-4">
+                            <button
+                                onClick={() => handleSubTabChange('breakfast')}
+                                className={`py-2 px-4 text-sm font-bold block w-full text-left ${subTab === 'breakfast' ? 'bg-blue-100 text-black' : 'bg-white-300 hover:bg-blue-200'}`}
+                            >
+                                Breakfast {subTab === 'breakfast' ? '▲' : '▼'}
+                            </button>
+                            {subTab === 'breakfast' && <VisualMenuComponent menuDataPath="breakfastMenu.json" />}
 
-                    <button
-                        className={`py-3 px-6 text-base font-bold block w-full text-left rounded-md transition duration-300 ease-in-out ${activeTab === 'dinner' ? 'bg-blue-500 text-white' : 'bg-gray-20 hover:bg-gray-300'
-                            }`}
-                        onClick={() => toggleTab('dinner')}
-                    >
-                        Dinner {activeTab === 'dinner' ? '▲' : '▼'}
-                    </button>
-                    {activeTab === 'dinner' && <VisualMenuComponent menuDataPath="dinnerMenu.json" />}
+                            <button
+                                onClick={() => handleSubTabChange('lunch')}
+                                className={`py-2 px-4 text-sm font-bold block w-full text-left ${subTab === 'lunch' ? 'bg-blue-100 text-black' : 'bg-white-300 hover:bg-blue-200'}`}
+                            >
+                                Lunch {subTab === 'lunch' ? '▲' : '▼'}
+                            </button>
+                            {subTab === 'lunch' && <VisualMenuComponent menuDataPath="lunchMenu.json" />}
+
+                            <button
+                                onClick={() => handleSubTabChange('dinner')}
+                                className={`py-2 px-4 text-sm font-bold block w-full text-left ${subTab === 'dinner' ? 'bg-blue-100 text-black' : 'bg-white-300 hover:bg-blue-200'}`}
+                            >
+                                Dinner {subTab === 'dinner' ? '▲' : '▼'}
+                            </button>
+                            {subTab === 'dinner' && <VisualMenuComponent menuDataPath="dinnerMenu.json" />}
+                        </div>
+                    )}
+
+                    {mainTab === 'pastOrders' && (
+                        <div className="p-4">
+                            {orderHistory.length > 0 ? (
+                                <PastOrders orders={orderHistory} />
+                            ) : (
+                                <p>No past orders available.</p>
+                            )}
+                        </div>
+                    )}
+
+                    {mainTab === 'mealCustomization' && (
+                        <div className="p-4">
+                          <MealCustomization />
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
