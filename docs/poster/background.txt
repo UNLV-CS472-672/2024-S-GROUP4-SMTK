@@ -1,0 +1,9 @@
+Inspired by the personal experience of a member of our development team, who struggled with isolation while undergoing treatment for aplastic anemia.
+
+
+Research collectively points towards a significant gap in pediatric healthcare: the lack of a dedicated platform for young patients to connect, share, and find solace.
+
+SmallTalk seeks to mitigate the feelings of isolation, inadequate care coordination, and the lack of engaging communication tools in hospital settings, thereby improving the overall hospital experience for children.
+
+
+The application features customizable user profiles, illness-specific chat rooms, integrated options for playing games and watching movies together, and in-app food ordering.
