@@ -1,29 +1,19 @@
-// import React from 'react';
-// import { render, screen } from '@testing-library/react';
-// import Food from './page.js'; // file name component is from has to be exact ...
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import Food from './page'; // Ensure the correct file path and component name are used
+import ThemeLayout from '../components/ThemeLayout'; // Ensure correct path
+import MenuTabs from '../components/foodPage/MenuTabs'; // Ensure correct path
 
-// /*
-//     Test case for the Food page in .../small-talk/app/food
-//     Simply renders the page then checks if the expected content exists in the render
-// */
+// Optional: Mock the MenuTabs if it depends on external data or contexts
+jest.mock('../components/foodPage/MenuTabs', () => () => <div>MenuTabs Mock</div>);
 
+describe("Food Page", () => {
+    it("renders the MenuTabs components", () => {
+        render(<Food />);
 
-// // Test if food page renders properly
-// describe("Food Page", () =>
-// {
-//     it("Makes sure Food page content renders properly", () =>
-//     {
-//         // Render Food page
-//         render(<Food />);
+        // Check if MenuTabs component is rendered
+        const menuTabs = screen.getByText("MenuTabs Mock");
+        expect(menuTabs).toBeInTheDocument();
+    });
 
-//         // Get page content
-//         const orderFood = screen.getByText("Order Food");
-//         const todaysMenu = screen.getByText("Today's Menu");
-//         const deliveryTime = screen.getByText("Delivery Time");
-
-//         // Check if expected content exists
-//         expect(orderFood).toBeInTheDocument();
-//         expect(todaysMenu).toBeInTheDocument();
-//         expect(deliveryTime).toBeInTheDocument();
-//     })
-// })
+});
