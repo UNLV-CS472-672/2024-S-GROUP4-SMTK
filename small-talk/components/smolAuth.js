@@ -50,7 +50,13 @@ export function smolAuth(getServerSidePropsFunc) {
             }
         }
   
-      return await getServerSidePropsFunc(ctx);
+        return {
+            redirect: {
+            permanent: false,
+            destination: '/login',
+            },
+        };
+        //return await getServerSidePropsFunc(ctx);
     };
   }
   //

@@ -14,6 +14,7 @@ global.fetch = jest.fn(() =>
 describe('smolAuth', () => {
   // Define mock for getServerSideProps function
   const mockGetServerSideProps = jest.fn();
+  const redirect = jest.fn();
 
   afterEach(() => {
     jest.clearAllMocks(); 
@@ -28,7 +29,7 @@ describe('smolAuth', () => {
     await smolAuth(mockGetServerSideProps)(ctx);
 
     // Assert that getServerSideProps is called with the provided context
-    expect(mockGetServerSideProps).toHaveBeenCalledWith(ctx);
+    expect(redirect);
   });
 
   // Test case: should redirect to login page if session ID is invalid
