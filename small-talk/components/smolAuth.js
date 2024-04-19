@@ -37,6 +37,10 @@ export function smolAuth(getServerSidePropsFunc) {
                         },
                     };
                 }
+                else
+                {
+                    return await getServerSidePropsFunc(ctx);
+                }
             } catch (error) {
                 // Failure in the query or any error should fallback here
                 // this route is possibly forbidden means the cookie is invalid
