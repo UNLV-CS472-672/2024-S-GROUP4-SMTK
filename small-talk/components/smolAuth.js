@@ -48,14 +48,6 @@ export function smolAuth(getServerSidePropsFunc) {
                     },
                 };
             }
-        }else
-        {
-            return {
-                redirect: {
-                    permanent: false,
-                    destination: '/login',
-                },
-            };
         }
   
       return await getServerSidePropsFunc(ctx);
