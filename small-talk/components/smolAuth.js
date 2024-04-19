@@ -26,7 +26,7 @@ export function smolAuth(getServerSidePropsFunc) {
                         },
                     };
                 }
-                console.log(json)
+                //console.log(json)
                 let isFound = (json.found != null) ? json.found : false;
 
                 if (isFound == false) {
@@ -48,6 +48,14 @@ export function smolAuth(getServerSidePropsFunc) {
                     },
                 };
             }
+        }else
+        {
+            return {
+                redirect: {
+                    permanent: false,
+                    destination: '/login',
+                },
+            };
         }
   
       return await getServerSidePropsFunc(ctx);
