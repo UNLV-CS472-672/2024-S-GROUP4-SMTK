@@ -1,6 +1,6 @@
 import Mongoboi from "@/db/mongo"
 import  {createCookieHash}  from "@/util/smolCwypto"
-var uri = "mongodb+srv://smt_root:pokemonwithguns@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority"
+var uri = "mongodb+srv://"+ "vercel-admin-user" + ":" + "pokemonwithguns" + "@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority"
 // POST, preferably with SSL because parameters with GET get cached all over the place
 export default async function POST(req, res) {
   let data = {

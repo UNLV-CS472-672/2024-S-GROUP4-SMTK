@@ -16,7 +16,7 @@ export default async function POST(req,res)
         res.status(200).json({ found: false }); return;
     }
 
-    const uri = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority"
+    const uri = "mongodb+srv://" + "vercel-admin-user" + ":" + "pokemonwithguns" + "@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority"
     const mongoboi = new Mongoboi(uri, "Users")
     const query = {
         session_id : session_id
