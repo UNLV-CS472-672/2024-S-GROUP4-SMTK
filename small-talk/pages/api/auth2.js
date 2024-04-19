@@ -5,7 +5,7 @@ import { headers } from "next/headers"
 export default async function POST(req,res) 
 {
     let session_id;
-    console.log(req.headers)
+    //console.log(req.headers)
     if (req.headers.authorization) 
     {
         session_id = req.headers.authorization
