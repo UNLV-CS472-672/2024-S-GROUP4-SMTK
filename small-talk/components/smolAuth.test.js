@@ -26,10 +26,15 @@ describe('smolAuth', () => {
     const ctx = { req: { headers: {} } };
 
     // Call smolAuth function with the mocked context
-    await smolAuth(mockGetServerSideProps)(ctx);
+    const result = await smolAuth(mockGetServerSideProps)(ctx);
 
     // Assert that getServerSideProps is called with the provided context
-    expect(redirect);
+    expect(result).toEqual({
+      redirect: {
+        permanent: false,
+        destination: '/login',
+      },
+    });
   });
 
   // Test case: should redirect to login page if session ID is invalid
