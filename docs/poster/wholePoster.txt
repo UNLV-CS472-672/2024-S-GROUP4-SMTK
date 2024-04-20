@@ -1,0 +1,54 @@
+SmallTalk
+
+Connecting Young Patients through Secure, Supportive Communication
+
+Background
+
+The Problem
+
+Children undergoing medical treatment often experience  feelings of loneliness and isolation during their hospital stays. Separated from their usual social circles and facing unique health challenges, these young patients seek connection, understanding, and support.
+
+Inspired by the personal experience of a member of our development team, who struggled with isolation while undergoing treatment for aplastic anemia.
+
+
+Research collectively points towards a significant gap in pediatric healthcare: the lack of a dedicated platform for young patients to connect, share, and find solace.
+
+SmallTalk seeks to mitigate the feelings of isolation, inadequate care coordination, and the lack of engaging communication tools in hospital settings, thereby improving the overall hospital experience for children.
+
+
+The application features customizable user profiles, illness-specific chat rooms, integrated options for playing games and watching movies together, and in-app food ordering.
+
+Our Solution
+
+SmallTalk provides a safe and interactive platform where children in hospitals can connect with peers facing similar health journeys. By fostering friendships, sharing experiences, and offering personalized support, SmallTalk aims to brighten the hospital experience and bring smiles to young faces.
+
+Challenges
+
+Meet the Team
+
+Privacy and Security: Implemented secure authentication, anonymity, and vulgar language detection to ensure a safe environment. 
+
+User Interface Design: Enhanced color scheme and and bitmoji images for a welcoming platform. 
+
+Database Management:  (Please Add)
+
+Real-time Chat Functionality: Overcame connectivity issues and automated connection process. Chatting privately with friends. 
+
+HIPAA and COPPA Compliance: Drafting comprehensive policies for user data control and compliance with regulations.
+
+
+Team Pic
+
+Cade Aihara
+MacGyver Codilla
+Blake Gilmore 
+Alvaro Hernandez-Chavez
+Alec Him
+
+Justin Vence Llamas
+Johnson Nguyen
+Matthew Ocampo
+Xiaojun Ruan
+Warren Salazar
+
+References
