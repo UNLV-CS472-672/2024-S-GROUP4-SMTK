@@ -16,16 +16,12 @@ const SidebarButton = ({ redirect, defaultImg, hoverImg, altText }) => {
     const onMouseLeave = () => setIsHovered(false);
 
     return (
-        <div 
-            className="bg-white h-[17.6%] m-0"
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-        >
+        <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
             <Link href={ redirect }>
                 {!isHovering ? (
-                    <img src={ defaultImg } alt={ altText } style={{ width: "67%" }}/>
+                    <img src={ defaultImg } alt={ altText } className="w-2/3 h-20 flex "/>
                 ) : (
-                    <img src={ hoverImg } alt={ altText } className="m-0"/>
+                    <img src={ hoverImg } alt={ altText } className="m-0 h-20"/>
                 )}
             </Link>
         </div>
