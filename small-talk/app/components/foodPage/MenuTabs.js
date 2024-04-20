@@ -84,11 +84,7 @@ function MenuTabs() {
                     {mainTab === 'pastOrders' && (
                         // Render past orders component for "Past Orders" tab
                         <div className="p-4">
-                            {orderHistory.length > 0 ? (
-                                <PastOrders orders={orderHistory} />
-                            ) : (
-                                <p>No past orders available.</p>
-                            )}
+                                <PastOrders orders={orderHistory} /> 
                         </div>
                     )}
 
