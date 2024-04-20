@@ -5,10 +5,24 @@ import VisualMenuComponent from './VisualMenuComponent'; // Assuming this is moc
 import PastOrders from './PastOrders'; // Assuming this is mocked
 import MealCustomization from './MealCustomization'; // Assuming this is mocked
 
-jest.mock('./VisualMenuComponent', () => () => <div>VisualMenuComponent Content</div>);
-jest.mock('./PastOrders', () => () => <div>Past Orders Content</div>);
-jest.mock('./MealCustomization', () => () => <div>MealCustomization Content</div>);
-
+jest.mock('./VisualMenuComponent', () => {
+    const MockVisualMenuComponent = () => <div>VisualMenuComponent Content</div>;
+    MockVisualMenuComponent.displayName = 'VisualMenuComponent';
+    return MockVisualMenuComponent;
+  });
+  
+  jest.mock('./PastOrders', () => {
+    const MockPastOrders = () => <div>Past Orders Content</div>;
+    MockPastOrders.displayName = 'PastOrders';
+    return MockPastOrders;
+  });
+  
+  jest.mock('./MealCustomization', () => {
+    const MockMealCustomization = () => <div>MealCustomization Content</div>;
+    MockMealCustomization.displayName = 'MealCustomization';
+    return MockMealCustomization;
+  });
+  
 
 describe('MenuTabs Component', () => {
     beforeEach(() => {
