@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Settings from './index.js';
+import Settings from '../../../pages/settings/index.js';
 
 describe("Settings Page", () => {
     it("Makes sure Settings page content renders properly", () => {

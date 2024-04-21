@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Friends from './index.js';
+import Friends from '../../../pages/friends/index.js';
 
 describe("Friends Page", () => {
     it("Makes sure Friends page content renders properly", () => {

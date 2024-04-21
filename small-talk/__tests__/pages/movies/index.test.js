@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Movies from './index.js';
+import Movies from '../../../pages/movies/index.js';
 
 describe("Movies Page", () => {
     it("Makes sure Movies page content renders properly", () => {

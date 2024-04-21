@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Profile from './index.js';
+import Profile from '../../../pages/profile/index.js';
 
 describe("Profile Page", () => {
     it("Makes sure Profile page content renders properly", () => {

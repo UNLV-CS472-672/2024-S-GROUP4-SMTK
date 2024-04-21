@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Health from './index.js';
+import Health from '../../../pages/health/index.js';
 
 describe("Health Page", () => {
     it("Makes sure Health page content renders properly", () => {
