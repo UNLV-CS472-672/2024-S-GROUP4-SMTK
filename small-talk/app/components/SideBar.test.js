@@ -1,7 +1,8 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import SideBar from './SideBar';
-import buttons from "../data/sidebarButtons.json"
+import buttons from "../data/sidebarButtons.json";
+import expand from "../data/sidebarExpand.json";
 
 // // @jest-environment node
 // global.TextEncoder = require('text-encoding').TextEncoder;
@@ -22,29 +23,70 @@ jest.mock('./SB_ExpandButton');
   we're not failing a test.
 */
 const expectedButtons = buttons;
+const expectedExpand = expand;
+
+// AI Provided Code: WindowWidth + different describe views
+const setupWindowWidth = (width) => {
+    global.innerWidth = width;
+    global.dispatchEvent(new Event('resize'));
+};
 
 describe('SideBar Component', () => {
-  it('renders the correct number of SidebarButton components when not expanded', () => {
-    render(<SideBar isExpanded={false}/>);
-    const buttonElements = screen.getAllByTestId('sidebar-button');
-    expect(buttonElements.length).toBe(expectedButtons.length);
-  });
+    describe('in desktop view', () => {
+        beforeEach(() => {
+            setupWindowWidth(1024);
+        });
 
-  it('passes correct props to each SidebarButton component when not expanded', () => {
-    render(<SideBar isExpanded={false}/>);
-    const buttonElements = screen.getAllByTestId('sidebar-button');
+        it('renders the correct number of SidebarButton components when not expanded', () => {
+            render(<SideBar isVisible={true} />);
+            const buttonElements = screen.getAllByTestId('sidebar-button');
+            expect(buttonElements.length).toBe(expectedButtons.length);
+        });
 
-    buttonElements.forEach((button, index) => {
-      const { redirect, defaultImg, hoverImg, altText } = expectedButtons[index];
-      expect(button).toHaveAttribute('redirect', redirect);
-      expect(button).toHaveAttribute('defaultimg', defaultImg);
-      expect(button).toHaveAttribute('hoverimg', hoverImg);
-      expect(button).toHaveAttribute('alttext', altText)
+        it('passes correct props to each SidebarButton component when not expanded', () => {
+            render(<SideBar isVisible={true} />);
+            const buttonElements = screen.getAllByTestId('sidebar-button');
+        
+            buttonElements.forEach((button, index) => {
+                const { redirect, defaultImg, hoverImg, altText } = expectedButtons[index];
+                expect(button).toHaveAttribute('redirect', redirect);
+                expect(button).toHaveAttribute('defaultimg', defaultImg);
+                expect(button).toHaveAttribute('hoverimg', hoverImg);
+                expect(button).toHaveAttribute('alttext', altText);
+            });
+          });
     });
-  });
 
-  it('renders SB_ExpandButton components when expanded', () => {
-    // Render the side bar expanded to true
-    render(<SideBar isExpanded={true} />);
-  });
+    describe('in mobile view', () => {
+        beforeEach(() => {
+            setupWindowWidth(500);
+        });
+
+        it('renders the correct number of SB_ExpandButton components when expanded', () => {
+            // Render the side bar visible to true
+            render(<SideBar isVisible={true} />);
+            const expandButtons = screen.getAllByTestId('expand-button');
+            expect(expandButtons.length).toBe(expand.length);
+        });
+
+        it('passes correct props to each SB_ExpandButton component when expanded', () => {
+            render(<SideBar isVisible={true} />);
+            const expandButtons = screen.getAllByTestId('expand-button');
+            
+            expandButtons.forEach((button, index) => {
+                const { redirect, imgSrc, altText, textClass, imageClass, backgroundColor } = expectedExpand[index];
+                
+                const linkElement = within(button).getByRole('link');
+                const imageElement = within(button).getByRole('img');
+                const textElement = within(button).getByText(altText).closest('p');
+    
+                expect(linkElement).toHaveAttribute('href', redirect);
+                expect(imageElement).toHaveAttribute('src', imgSrc);
+                expect(imageElement).toHaveAttribute('alt', altText);
+                expect(textElement).toHaveClass(textClass);
+                expect(imageElement).toHaveClass(imageClass);
+                expect(button).toHaveStyle(`background-color: ${backgroundColor}`);
+            });
+        });
+    });
 });

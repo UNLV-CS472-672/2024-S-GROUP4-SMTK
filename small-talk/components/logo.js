@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const Logo = () => {
     return (
         <div className="sm:flex items-center justify-center">

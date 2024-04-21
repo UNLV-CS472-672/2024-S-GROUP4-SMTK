@@ -11,12 +11,12 @@
     {   "redirect": "/friends", "imgSrc": "/img/icons/friend-tab.png", "altText": "Friends", 
         "textClass": "text-lg ml-4", "imageClass": "m-2 h-16", "backgroundColor": "bg-green-400" },
     
-    {   "redirect": "/movie", "imgSrc": "/img/icons/media-tab.png", "altText": "Movies", 
+    {   "redirect": "/movies", "imgSrc": "/img/icons/media-tab.png", "altText": "Movies", 
         "textClass": "text-lg ml-4", "imageClass": "m-2 h-16", "backgroundColor": "bg-blue-400" },
     
     {   "redirect": "/food", "imgSrc": "/img/icons/food-tab.png", "altText": "Order Food", 
         "textClass": "text-lg ml-4", "imageClass": "m-2 h-16", "backgroundColor": "bg-purple-400" },
     
-    {   "redirect": "/game", "imgSrc": "/img/icons/games-tab.png", "altText": "Games", 
+    {   "redirect": "/games", "imgSrc": "/img/icons/games-tab.png", "altText": "Games", 
         "textClass": "text-lg ml-4", "imageClass": "m-2 h-16", "backgroundColor": "bg-pink-200" }
 ]

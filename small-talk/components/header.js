@@ -2,6 +2,7 @@ import Logo from "./logo";
 import Sushi from "./sushi";
 import tailwindConfig from "@/tailwind.config";
 import { Tabs } from "./data";
+import React from 'react';
 
 export const Header = ({width, isOpen, setIsOpen}) => {
 

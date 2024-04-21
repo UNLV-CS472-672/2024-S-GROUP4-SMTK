@@ -22,7 +22,7 @@ const TopBar = ({ toggleSidebar }) => {
                 <img src="/img/icons/three-bar.png" alt="Three Bar" className="ml-4 h-12 md:h-16 md:ml-8"/>
             </button>
             <button>
-                <Link href='/homepage'>
+                <Link href='/homepage' data-testid="logo-home">
                     <img src="/img/logo.png" alt="Logo" className="h-20 md:h-28"/>
                 </Link>
             </button>
