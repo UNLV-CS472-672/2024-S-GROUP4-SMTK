@@ -9,12 +9,19 @@
  * @param {string} imageClass - className style to use in images
  * @param {string} backgroundColor - the color for each individual button
  */
-import React from "react";
+import React, {useState } from "react";
 import Link from "next/link";
 
 const SB_ExpandButton = ({ redirect, imgSrc, altText, textClass, imageClass, backgroundColor}) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const handleMouseEnter = () => setIsHovered(true);
+    const handleMouseLeave = () => setIsHovered(false);
+
     return (
-        <div className={`flex items-center items-stretch ${backgroundColor} hover:bg-cyan-400`}>
+        <div className={`flex items-center items-stretch ${backgroundColor} ${isHovered ? "bg-cyan-400" : ""}`}
+             onMouseEnter={handleMouseEnter}
+             onMouseLeave={handleMouseLeave}
+        >
             <Link href={ redirect }>
                 <div className="flex items-center">
                     <img src={ imgSrc } alt={ altText } className={ imageClass } />

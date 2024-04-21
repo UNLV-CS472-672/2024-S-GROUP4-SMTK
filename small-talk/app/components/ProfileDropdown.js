@@ -15,12 +15,13 @@
  * - @param imageClass - className style to use for image
  * - @param textClass - className style to use in text
  */
-import Link from 'next/link';
+import React from "react"
+import Link from "next/link";
 
 const DropdownItem = ({ redirect, imgSrc, altText, itemText, imageClass, textClass }) => {
     return (
         <li className="flex items-center text-m text-gray-700 hover:bg-gray-100 text-left p-3">
-            <Link href={ redirect }>
+            <Link href={ redirect } data-testid={`dropdown-link-${itemText.toLowerCase()}`}>
                 <div className="flex items-center">
                     <img src={ imgSrc } alt={ altText } className={ imageClass }/>
                     <a className={ textClass }>{ itemText }</a>
