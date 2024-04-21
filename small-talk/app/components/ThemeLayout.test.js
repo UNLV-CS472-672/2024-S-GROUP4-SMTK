@@ -8,17 +8,22 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
     Test 2: Checks if toggleSidebar function works properly **doesn't work properly
 */
 
+// AI Provided Code: MockTopBar and MockSideBar const added to pass npm run lint test
 // Mock TopBar component to toggleSideBar when clicked
 jest.mock("./TopBar", () => {
-    return ({ toggleSidebar }) => (
-        <div data-testid="top-bar" onClick={toggleSidebar}></div>
-    );
+    const MockTopBar = ({ toggleSidebar }) => (
+        <div data-testid="top-bar" onClick={toggleSidebar}/>
+    )
+    MockTopBar.displayName = 'MockTopBar';
+    return MockTopBar;
 });
 
 jest.mock("./SideBar", () => {
-    return ({ isVisible }) => (
-        <div data-testid="side-bar" className={isVisible ? "expanded" : "collapsed"}></div>
+    const MockSideBar = ({ isVisible }) => (
+        <div data-testid="side-bar" className={isVisible ? "expanded" : "collapsed"}/>
     );
+    MockSideBar.displayName = 'MockSideBar';
+    return MockSideBar;
 });
 
 describe("ThemeLayout Component", () =>

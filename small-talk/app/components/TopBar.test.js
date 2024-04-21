@@ -2,7 +2,12 @@ import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import TopBar from './TopBar';
 
-jest.mock('./ProfileDropdown', () => ({ isVisible }) => isVisible ? <div>Profile Options</div> : null);
+// AI Provided Code: Added MockProfileDropdown const to pass npm run lint test
+jest.mock('./ProfileDropdown', () => {
+    const MockProfileDropdown = ({ isVisible }) => isVisible ? <div>Profile Options</div> : null;
+    MockProfileDropdown.displayName = 'MockProfileDropdown';
+    return MockProfileDropdown;
+});
 
 describe('TopBar Component', () => {
     let toggleSidebarMock;
