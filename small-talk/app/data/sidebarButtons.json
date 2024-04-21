@@ -3,7 +3,7 @@
     { "redirect": "/events", "defaultImg": "/img/buttons/event-default.png", "hoverImg": "/img/buttons/event-extend.png", "altText": "Events" },
     { "redirect": "/chat", "defaultImg": "/img/buttons/chat-default.png", "hoverImg": "/img/buttons/chat-extend.png", "altText": "Chat" },
     { "redirect": "/friends", "defaultImg": "/img/buttons/friends-default.png", "hoverImg": "/img/buttons/friends-extend.png", "altText": "Friends" },
-    { "redirect": "/movie", "defaultImg": "/img/buttons/media-default.png", "hoverImg": "/img/buttons/media-extend.png", "altText": "Movies" },
+    { "redirect": "/movies", "defaultImg": "/img/buttons/media-default.png", "hoverImg": "/img/buttons/media-extend.png", "altText": "Movies" },
     { "redirect": "/food", "defaultImg": "/img/buttons/food-default.png", "hoverImg": "/img/buttons/food-extend.png", "altText": "Order Food" },
-    { "redirect": "/game", "defaultImg": "/img/buttons/game-default.png", "hoverImg": "/img/buttons/game-extend.png", "altText": "Games" }
+    { "redirect": "/games", "defaultImg": "/img/buttons/game-default.png", "hoverImg": "/img/buttons/game-extend.png", "altText": "Games" }
 ]

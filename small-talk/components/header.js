@@ -20,7 +20,7 @@ export const Header = ({width, isOpen, setIsOpen}) => {
             <Sushi isOpen={isOpen} setIsOpen={setIsOpen}/>
             <div className='flex justify-around items-center gap-5'>
             {Tabs.map((i, idx) => (
-                <a key={idx} href={i.slug} className={`rounded w-[128px] text-center hover:bg-gradient-to-r ${i.color}`}>
+                <a key={idx} href={i.slug} className={`px-2 rounded w-[128px] text-center hover:bg-gradient-to-r ${i.color}`}>
                     {i.name}
                 </a>
             ))}

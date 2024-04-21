@@ -1,9 +1,13 @@
-import React, { useState } from "react";
-import Link from "next/link";
+/**
+ * Topbar.js is a component that wraps the three-bar functionality, the logo, and the profile functionality to display
+ * uniformly on the website. 
+ * 
+ * @param toggleSidebar - Manages the state of the sidebar to determine whether it should be visible or not.
+ */
 
-const handleRedirect = (path) => () => {
-    window.location.href = path;
-}
+import React, { useState } from "react";
+import ProfileDropdown from "./ProfileDropdown";
+import Link from "next/link";
 
 const TopBar = ({ toggleSidebar }) => {
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -13,31 +17,19 @@ const TopBar = ({ toggleSidebar }) => {
     }
     
     return (
-        <div className="flex flex-row fixed top-0 h-[15%] w-full bg-[#3CAFFF]">
-            <button onClick={toggleSidebar} className="ml-[2%] mt-[0.5%]"><img src="/img/three-bar.png" alt="Tab" style={{ height: '50%' }}/></button>
-            <button onClick={handleRedirect('/homepage')} style={{ display: 'block', marginLeft: '2%', marginTop: '0.5%', marginBottom: '0.5%' }}><img src="/img/logo.png" alt="Logo" style={{ height: '100%' }}/></button>
-            <img src="/img/notif-icon.png" alt="Notifications" style={{ height: '65%', marginLeft: 'auto', marginRight: '1%', marginTop: 'auto', marginBottom: '0.5%' }}/>
-
-            {/* Profile Dropdown Menu */}
-            <button onClick={toggleDropdown} style={{ display: 'block', marginRight: '2%', marginTop: '0.5%', marginBottom: '0.5%' }}><img src="/img/profile-temp.png" alt="Profile" style={{ height: '100%' }}/></button>
-            {isDropdownVisible && (
-                <div className="absolute right-0 mt-[8%] mr-[1%] py-[1%] w-[11%] bg-white rounded-lg">
-                    <ul>
-                        <li className="flex block px-[10%] py-[5%] text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
-                            <img src="/img/profile-icon.png" style={{ marginLeft: "2%", width: "15%" }} alt="Profile"/>
-                            <Link href="/profile" className="ml-[11%] mt-[2%]">Profile</Link>
-                        </li>
-                        <li className="flex block px-[10%] py-[5%] text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
-                            <img src="/img/setting-icon.png" style={{ width: "20%" }} alt="Settings"/>
-                            <Link href="/setting" className="ml-[7.5%] mt-[2%]">Setting</Link>
-                        </li>
-                        <li className="flex block px-[10%] py-[5%] text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
-                            <img src="/img/logout-icon.png" style={{ width: "20%" }} alt="Logout"/>
-                            <Link href="/" className="ml-[7.5%] mt-[1%]">Logout</Link>
-                        </li>
-                    </ul>
-                </div>
-            )}
+        <div className="flex flex-row justify-between fixed h-24 w-full bg-[#3CAFFF] md:h-32">
+            <button onClick={toggleSidebar}>
+                <img src="/img/icons/three-bar.png" alt="Three Bar" className="ml-4 h-12 md:h-16 md:ml-8"/>
+            </button>
+            <button>
+                <Link href='/homepage'>
+                    <img src="/img/logo.png" alt="Logo" className="h-20 md:h-28"/>
+                </Link>
+            </button>
+            <button onClick={toggleDropdown}>
+                <img src="/img/icons/profile-temp.png" alt="Profile" className="mr-4 h-20 md:h-28 md:mr-8"/>
+                <ProfileDropdown isVisible={isDropdownVisible}/>
+            </button>
         </div>
     );
 };
