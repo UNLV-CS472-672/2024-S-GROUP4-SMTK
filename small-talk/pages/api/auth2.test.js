@@ -2,8 +2,7 @@ import Mongoboi from "@/db/mongo"
 //import { Request, NextResponse } from "next";
 //import { headers } from "next"
 
-
-const POST = require("../../pages/api/auth2.js");
+import POST from "../../pages/api/auth2.js";
 
 jest.mock("@/db/mongo"); // Mocking Mongoboi class
 

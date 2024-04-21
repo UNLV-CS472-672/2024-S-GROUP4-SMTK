@@ -1,0 +1,20 @@
+/* custom.css */
+.chat-container {
+    @apply flex items-start;
+}
+
+.friends-list {
+    @apply flex-none overflow-y-auto max-h-[600px] grid grid-cols-1 gap-4 p-4; /* This ensures that FriendsList only takes up space it needs */
+}
+
+.friend-selection{
+    @apply flex flex-col items-center p-2 rounded-lg cursor-pointer;
+}
+
+.selected-friend{
+    @apply bg-red-200;
+}
+
+.chatbox {
+    @apply flex-auto; /* This makes Chatbox expand to fill the remaining space */
+}

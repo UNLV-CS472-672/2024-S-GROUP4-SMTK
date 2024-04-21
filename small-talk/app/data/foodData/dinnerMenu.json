@@ -1,0 +1,59 @@
+[
+    {
+      "id": 1,
+      "name": "Cheeseburger and Fries",
+      "description": "A juicy grilled cheeseburger served with a side of crispy french fries.",
+      "imgPath": "/img/food/dinner/cheeseburger-fries.jpg",
+      "nutritionalInfo": "Calories: 600, Protein: 25g, Carbs: 50g, Fat: 35g"
+    },
+    {
+      "id": 2,
+      "name": "Chicken Tenders",
+      "description": "Golden fried chicken tenders served with ketchup and a side of fries.",
+      "imgPath": "/img/food/dinner/chicken-tenders.jpg",
+      "nutritionalInfo": "Calories: 450, Protein: 32g, Carbs: 30g, Fat: 25g"
+    },
+    {
+        "id": 3,
+        "name": "Mini Meatball Sliders",
+        "description": "Tender mini meatballs tucked inside small, soft buns, topped with a touch of marinara sauce and a sprinkle of mozzarella cheese.",
+        "imgPath": "/img/food/dinner/mini-meatball-sliders.jpg",
+        "nutritionalInfo": "Calories: 320, Protein: 18g, Carbs: 25g, Fat: 15g"
+    },
+    {
+      "id": 4,
+      "name": "Mini Pizzas",
+      "description": "Personal-sized pizzas with tomato sauce, mozzarella cheese, and pepperoni.",
+      "imgPath": "/img/food/dinner/mini-pizzas.jpg",
+      "nutritionalInfo": "Calories: 300, Protein: 12g, Carbs: 35g, Fat: 12g"
+    },
+    {
+      "id": 5,
+      "name": "Spaghetti and Meatballs",
+      "description": "Spaghetti topped with savory meatballs and a rich tomato sauce.",
+      "imgPath": "/img/food/dinner/spaghetti-meatballs.jpg",
+      "nutritionalInfo": "Calories: 500, Protein: 20g, Carbs: 65g, Fat: 20g"
+    },
+    {
+      "id": 6,
+      "name": "Fish Sticks with Tartar Sauce",
+      "description": "Crispy fish sticks served with tartar sauce and a side of green peas.",
+      "imgPath": "/img/food/dinner/fish-sticks.jpg",
+      "nutritionalInfo": "Calories: 360, Protein: 14g, Carbs: 25g, Fat: 18g"
+    },
+    {
+      "id": 7,
+      "name": "Grilled Cheese Sandwich",
+      "description": "Toasted bread filled with melted cheddar cheese, served with tomato soup.",
+      "imgPath": "/img/food/dinner/grilled-cheese-tomato.jpg",
+      "nutritionalInfo": "Calories: 400, Protein: 10g, Carbs: 30g, Fat: 25g"
+    },
+    {
+      "id": 8,
+      "name": "Turkey and Cheese Wrap",
+      "description": "A whole wheat wrap filled with turkey, cheese, lettuce, and tomato, served with apple slices.",
+      "imgPath": "/img/food/dinner/turkey-cheese-wrap.jpg",
+      "nutritionalInfo": "Calories: 300, Protein: 18g, Carbs: 40g, Fat: 8g"
+    }
+  ]
+  

@@ -1,0 +1,59 @@
+[
+    {
+      "id": 1,
+      "name": "Pancakes with Syrup",
+      "description": "Fluffy pancakes served with butter and sweet maple syrup.",
+      "imgPath": "/img/food/breakfast/pancakes.jpg",
+      "nutritionalInfo": "Calories: 350, Protein: 6g, Carbs: 60g, Fat: 10g"
+    },
+    {
+      "id": 2,
+      "name": "Waffles with Fruit",
+      "description": "Golden waffles topped with fresh berries and a dollop of whipped cream.",
+      "imgPath": "/img/food/breakfast/waffles-fruit.jpg",
+      "nutritionalInfo": "Calories: 280, Protein: 5g, Carbs: 50g, Fat: 7g"
+    },
+    {
+      "id": 3,
+      "name": "Scrambled Eggs and Toast",
+      "description": "Lightly scrambled eggs served with whole wheat toast and a side of ketchup.",
+      "imgPath": "/img/food/breakfast/scrambled-eggs-toast.jpg",
+      "nutritionalInfo": "Calories: 300, Protein: 20g, Carbs: 30g, Fat: 12g"
+    },
+    {
+      "id": 4,
+      "name": "Fruit Yogurt Parfait",
+      "description": "Layered yogurt parfait with granola and seasonal fruit toppings.",
+      "imgPath": "/img/food/breakfast/yogurt-parfait.jpg",
+      "nutritionalInfo": "Calories: 250, Protein: 10g, Carbs: 40g, Fat: 5g"
+    },
+    {
+      "id": 5,
+      "name": "Oatmeal with Banana and Cinnamon",
+      "description": "Warm oatmeal served with slices of banana and a sprinkle of cinnamon.",
+      "imgPath": "/img/food/breakfast/oatmeal-banana.jpg",
+      "nutritionalInfo": "Calories: 200, Protein: 5g, Carbs: 35g, Fat: 3g"
+    },
+    {
+      "id": 6,
+      "name": "French Toast Sticks",
+      "description": "Crispy French toast sticks served with a side of syrup for dipping.",
+      "imgPath": "/img/food/breakfast/french-toast-sticks.jpg",
+      "nutritionalInfo": "Calories: 320, Protein: 8g, Carbs: 45g, Fat: 12g"
+    },
+    {
+      "id": 7,
+      "name": "Bagel with Cream Cheese",
+      "description": "A soft bagel spread with cream cheese, available in plain or with sesame seeds.",
+      "imgPath": "/img/food/breakfast/bagel-cream-cheese.jpg",
+      "nutritionalInfo": "Calories: 290, Protein: 11g, Carbs: 55g, Fat: 4g"
+    },
+    {
+      "id": 8,
+      "name": "Cereal with Milk",
+      "description": "A bowl of your favorite cereal served with fresh milk.",
+      "imgPath": "/img/food/breakfast/cereal-milk.jpg",
+      "nutritionalInfo": "Calories: 180, Protein: 7g, Carbs: 30g, Fat: 2g"
+    }
+  ]
+  
