@@ -1,0 +1,21 @@
+.medication-schedule-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.medication-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    width: 300px;
+}
+
+.medication-item.taken {
+    background-color: lightgreen;
+}
+
+.notification-setting {
+    margin-top: 20px;
+}

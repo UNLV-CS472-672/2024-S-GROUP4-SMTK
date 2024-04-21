@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "name": "Medication A",
+        "dose": "250mg",
+        "time": "08:00 AM",
+        "taken": false
+    },
+    {
+        "id": 2,
+        "name": "Medication B",
+        "dose": "100mg",
+        "time": "12:00 PM",
+        "taken": false
+    }
+]
