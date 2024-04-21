@@ -1,9 +1,22 @@
 [
-    { "redirect": "/health", "imgSrc": "/img/health-tab.png", "altText": "Health", "width": "30%", "height": "auto", "marginLeft": "5%","margin": "5%", "backgroundColor": "rgb(248 113 113)" },
-    { "redirect": "/events", "imgSrc": "/img/event-tab.png", "altText": "Events", "width": "25%", "height": "auto", "marginLeft": "10%", "margin": "5%", "backgroundColor": "rgb(251 146 60)" },
-    { "redirect": "/chat", "imgSrc": "/img/chat-tab.png", "altText": "Chat", "width": "25%", "height": "auto", "marginLeft": "10%", "margin": "5%", "backgroundColor": "rgb(253 224 71)" },
-    { "redirect": "/friends", "imgSrc": "/img/friend-tab.png", "altText": "Friends", "width": "30%", "height": "auto", "marginLeft": "5%", "margin": "5%", "backgroundColor": "rgb(74 222 128)" },
-    { "redirect": "/movie", "imgSrc": "/img/media-tab.png", "altText": "Movies", "width": "27.5%", "height": "auto", "marginLeft": "7%", "margin": "5%", "backgroundColor": "rgb(96 165 250)" },
-    { "redirect": "/food", "imgSrc": "/img/food-tab.png", "altText": "Order Food", "width": "30%", "height": "auto", "marginLeft": "5%", "margin": "5%", "backgroundColor": "rgb(192 132 252)" },
-    { "redirect": "/game", "imgSrc": "/img/games-tab.png", "altText": "Games", "width": "30%", "height": "auto", "marginLeft": "5%", "margin": "5%", "backgroundColor": "rgb(251 207 232)" }
+    {   "redirect": "/health", "imgSrc": "/img/icons/health-tab.png", "altText": "Health", 
+        "textClass": "text-lg ml-4", "imageClass": "m-2 h-16", "backgroundColor": "bg-red-400" },
+    
+    {   "redirect": "/events", "imgSrc": "/img/icons/event-tab.png", "altText": "Events", 
+        "textClass": "text-lg ml-4", "imageClass": "m-2 h-16", "backgroundColor": "bg-orange-400" },
+    
+    {   "redirect": "/chat", "imgSrc": "/img/icons/chat-tab.png", "altText": "Chat", 
+        "textClass": "text-lg ml-4", "imageClass": "m-2 h-16", "backgroundColor": "bg-yellow-300" },
+    
+    {   "redirect": "/friends", "imgSrc": "/img/icons/friend-tab.png", "altText": "Friends", 
+        "textClass": "text-lg ml-4", "imageClass": "m-2 h-16", "backgroundColor": "bg-green-400" },
+    
+    {   "redirect": "/movies", "imgSrc": "/img/icons/media-tab.png", "altText": "Movies", 
+        "textClass": "text-lg ml-4", "imageClass": "m-2 h-16", "backgroundColor": "bg-blue-400" },
+    
+    {   "redirect": "/food", "imgSrc": "/img/icons/food-tab.png", "altText": "Order Food", 
+        "textClass": "text-lg ml-4", "imageClass": "m-2 h-16", "backgroundColor": "bg-purple-400" },
+    
+    {   "redirect": "/games", "imgSrc": "/img/icons/games-tab.png", "altText": "Games", 
+        "textClass": "text-lg ml-4", "imageClass": "m-2 h-16", "backgroundColor": "bg-pink-200" }
 ]
