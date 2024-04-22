@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "username": "w1r3fram3",
+        "name": "Lauren B",
+        "status": false
+    },
+    {
+        "id": 2,
+        "username": "justbecause6",
+        "name": "Ashley C.",
+        "status": true
+    },
+    {
+        "id": 3,
+        "username": "toointeresting",
+        "name": "Brandon K.",
+        "status": true
+    }
+]
