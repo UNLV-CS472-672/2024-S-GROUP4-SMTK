@@ -41,3 +41,5 @@ export const Tabs =
         color: "from-rose-300 to-pink-500"
     }
 ]
+
+export default Tabs;
