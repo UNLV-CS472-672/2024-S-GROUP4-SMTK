@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Sushi from './sushi.js';
 import { render, screen, fireEvent } from '@testing-library/react';
-
+//ai-gen start (ChatGPT-4, 1)
 describe('Sushi component', () => {
     it('should render without crashing', () => {
         const setIsOpen = jest.fn();
@@ -18,3 +18,4 @@ describe('Sushi component', () => {
         expect(setIsOpen).toHaveBeenCalled();
     });
 });
+//ai-gen end
