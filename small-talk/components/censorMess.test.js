@@ -1,5 +1,5 @@
 import censor from './censorMess.js';
-
+//ai-gen start (ChatGPT-4, 1)
 // Mock the swearWords module
 jest.mock('./swearWords.js', () => {
     return ['badword', 'anotherbadword'];
@@ -17,3 +17,4 @@ describe('censor function', () => {
         expect(censor(input)).toBe(input);
     });
 });
+//ai-gen end
