@@ -1,0 +1,58 @@
+[
+    {
+        "id": "pain-level",
+        "type": "slider",
+        "question": "Rate your pain level today (0 to 10)",
+        "min": 0,
+        "max": 10,
+        "step": 1
+    },
+    {
+        "id": "mood-status",
+        "type": "options",
+        "question": "How would you describe your mood today?",
+        "options": ["Happy", "Sad", "Anxious", "Calm", "Neutral"]
+    },
+    {
+        "id": "sleep-quality",
+        "type": "options",
+        "question": "How would you rate your sleep quality last night?",
+        "options": ["Poor", "Fair", "Good", "Excellent"]
+    },
+    {
+        "id": "appetite-level",
+        "type": "options",
+        "question": "How was your appetite today?",
+        "options": ["Poor", "Average", "Good", "Excellent"]
+    },
+    {
+        "id": "activity-level",
+        "type": "options",
+        "question": "What was your level of physical activity today?",
+        "options": ["None", "Light", "Moderate", "Vigorous"]
+    },
+    {
+        "id": "social-interaction",
+        "type": "options",
+        "question": "How much social interaction did you have today?",
+        "options": ["None", "Some", "Plenty"]
+    },
+    {
+        "id": "symptom-tracker",
+        "type": "open",
+        "question": "List any new or worsening symptoms you experienced today.",
+        "placeholder": "Type your symptoms here..."
+    },
+    {
+        "id": "medication-side-effects",
+        "type": "open",
+        "question": "Have you noticed any side effects from your medications?",
+        "placeholder": "Describe any side effects..."
+    },
+    {
+        "id": "general-comments",
+        "type": "open",
+        "question": "Any other comments or concerns?",
+        "placeholder": "Add additional comments here..."
+    }
+]
