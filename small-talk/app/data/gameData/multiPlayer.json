@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "name": "Board Games",
+      "imgPath": "/img/games/multiPlayer/board-game.jpeg"
+    },
+    {
+      "id": 2,
+      "name": "Pac Man",
+      "imgPath": "/img/games/multiPlayer/game-console.jpeg"
+    },
+    {
+      "id": 3,
+      "name": "Card Game",
+      "imgPath": "/img/games/multiPlayer/card-games.jpeg"
+    },
+    {
+      "id": 4,
+      "name": "Fighting Game",
+      "imgPath": "/img/games/multiPlayer/fighting.jpeg"
+    },
+    {
+      "id": 5,
+      "name": "Adventure",
+      "imgPath": "/img/games/multiPlayer/adventure.jpeg"
+    },
+    {
+      "id": 6,
+      "name": "Chess",
+      "imgPath": "/img/games/multiPlayer/chess.jpeg"
+    }
+]
+  

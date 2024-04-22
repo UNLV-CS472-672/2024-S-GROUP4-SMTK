@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "name": "Snake",
+      "imgPath": "/img/games/singlePlayer/snake.jpeg"
+    },
+    {
+      "id": 2,
+      "name": "Aiming Skill",
+      "imgPath": "/img/games/singlePlayer/Aiming.jpeg"
+    },
+    {
+      "id": 3,
+      "name": "Adventure",
+      "imgPath": "/img/games/singlePlayer/action.jpeg"
+    },
+    {
+      "id": 4,
+      "name": "Hide and Seek",
+      "imgPath": "/img/games/singlePlayer/action-game.jpeg"
+    },
+    {
+      "id": 5,
+      "name": "Jigsaw",
+      "imgPath": "/img/games/singlePlayer/jigsaw.jpeg"
+    },
+    {
+      "id": 6,
+      "name": "Tetris",
+      "imgPath": "/img/games/singlePlayer/tetris.jpeg"
+    }
+]
+  
