@@ -1,5 +1,5 @@
 import Tabs from './data.js';
-
+//ai-gen start (ChatGPT-4, 2)
 describe('Tabs array', () => {
     it('should contain the correct number of tabs', () => {
         expect(Tabs.length).toBe(8);
@@ -22,5 +22,5 @@ describe('Tabs array', () => {
         });
     });
 
-    // Add similar tests for other tabs if needed
 });
+//ai-gen end
