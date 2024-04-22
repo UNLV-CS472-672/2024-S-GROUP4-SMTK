@@ -1,0 +1,36 @@
+[
+    {
+        "id": 1,
+        "name": "Amoxicillin",
+        "dose": "500mg",
+        "time": "08:00 AM",
+        "taken": false,
+        "warnings": ["Take with water"]
+    },
+    {
+        "id": 2,
+        "name": "Ibuprofen",
+        "dose": "200mg",
+        "time": "12:00 PM",
+        "taken": false,
+        "warnings": ["Take after meals", "Avoid if pregnant"]
+    },
+    {
+        "id": 3,
+        "name": "Acetaminophen",
+        "dose": "500mg",
+        "time": "03:00 PM",
+        "taken": false,
+        "usage": "Relieves pain and fever.",
+        "warnings": ["Avoid other Tylenol-containing products"]
+    },
+    {
+        "id": 4,
+        "name": "Cetirizine",
+        "dose": "10mg",
+        "time": "08:00 PM",
+        "taken": false,
+        "usage": "Used to relieve allergy symptoms.",
+        "warnings": ["May cause drowsiness", "Avoid operating heavy machinery"]
+    }
+]
