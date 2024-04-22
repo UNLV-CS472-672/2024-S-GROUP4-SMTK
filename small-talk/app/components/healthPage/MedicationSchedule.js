@@ -18,13 +18,12 @@ function MedicationSchedule() {
     return (
         <div className="bg-white shadow-md rounded-lg p-5 mb-6">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">Daily Medication Schedule</h2>
-            <div className="space-y-4">
+            <div className="grid grid-cols-3 gap-4">
                 {medications.map(med => (
                     <MedicationItem
                         key={med.id}
                         details={med}
                         onToggleTaken={() => toggleMedicationTaken(med.id)}
-                        className="text-gray-900" // Ensuring text is visible
                     />
                 ))}
             </div>
