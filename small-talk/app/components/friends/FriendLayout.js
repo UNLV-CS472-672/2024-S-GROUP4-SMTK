@@ -1,6 +1,6 @@
 import React from 'react';
 import IndividualFriend from './individualFriend';
-import exampleFriendData from '../../data/exampleFriendData.json';
+import exampleFriendData from '../../data/friendData/exampleFriendData.json';
 
 function FriendLayout() {
     return (
