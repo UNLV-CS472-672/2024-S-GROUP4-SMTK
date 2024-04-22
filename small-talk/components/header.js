@@ -3,6 +3,7 @@ import Sushi from "./sushi";
 import tailwindConfig from "@/tailwind.config";
 import { Tabs } from "./data";
 import React from 'react';
+import Profile from './profile.js';
 
 export const Header = ({width, isOpen, setIsOpen}) => {
 
@@ -36,6 +37,7 @@ export const Header = ({width, isOpen, setIsOpen}) => {
                 <div className="grid grid-cols-3 w-full lg:w-[1024px]">
                     <Sushi isOpen={isOpen} setIsOpen={setIsOpen}/>
                     <Logo/>
+                    <Profile/>
                 </div>
                 :
                 renderModal()
