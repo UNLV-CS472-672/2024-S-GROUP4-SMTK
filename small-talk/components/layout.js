@@ -1,8 +1,9 @@
 import "@/styles/globals.css";
 import Footer from "./footer";
 import Header from "./header";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Tabs } from "./data";
+
 
 const Layout = ({ children, width, renderFooter = true, renderHeader = false }) => {
     const [modalIsOpen, setModalIsOpen ] = useState(false);
