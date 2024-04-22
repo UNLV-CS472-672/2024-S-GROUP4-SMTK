@@ -14,7 +14,7 @@ export const Events = ({data}) =>{
     return(
         <div className='bg-slate-800 text-white'>
             <Layout width={windowWidth} renderHeader={true} renderFooter={true}>
-                <h1 className = 'font-bold'>Today's Events</h1>
+                <h1 className = 'font-bold'>Today&apos;s Events</h1>
                 <ul className = 'divide-y divide-solid'>
                     <li className = 'list-disc'>
                         <ul>
@@ -44,15 +44,15 @@ export const Events = ({data}) =>{
                     <li className = 'list-disc'>
                         <ul>
                             <li>2024-5-9</li>
-                            <li>Doctor's Appointment</li>
-                            <li>I have my regular appointment with Doctor Lee today, don't forget!!</li>
+                            <li>Doctor&apos;s Appointment</li>
+                            <li>I have my regular appointment with Doctor Lee today, don&apos;t forget!!</li>
                         </ul>
                     </li>
                     <li className = 'list-disc'>
                         <ul>
                             <li>2024-5-11</li>
-                            <li>Amy's Birthday!</li>
-                            <li>Today is Amy's birthday!! We're going to have so much fun!!!</li>
+                            <li>Amy&apos;s Birthday!</li>
+                            <li>Today is Amy&apos;s birthday!! We&apos;re going to have so much fun!!!</li>
                         </ul>
                     </li>
                     <li className = 'list-disc'>
