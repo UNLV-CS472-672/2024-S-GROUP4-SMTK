@@ -1,6 +1,6 @@
 import Mongoboi from "@/db/mongo"
 import  {createCookieHash}  from "@/util/smolCwypto"
-var uri = "mongodb+srv://"+ "smt_root" + ":" + "pokemonwithguns" + "@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@" + process.env.DB_URL
 // POST, preferably with SSL because parameters with GET get cached all over the place
 export default async function POST(req, res) {
   let data = {

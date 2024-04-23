@@ -1,5 +1,5 @@
 //importing from other directorys and using uri
-const uri = "mongodb+srv://smt_root:pokemonwithguns@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@" + process.env.DB_URL
 import Mongoboi from "./mongo"
 import bcrypt from "bcryptjs";
 import handleRegister from "../db/registerToDB.js";
