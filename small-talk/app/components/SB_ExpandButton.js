@@ -5,31 +5,29 @@
  * @param {string} redirect - the redirect path for the specific button
  * @param {string} imgSrc - the path for the image associated with this sidebar button
  * @param {string} altText - the name of the button used for when the image cannot load (or other defined cases)
- * @param {string} width
- * @param {string} height
- * @param {string} marginLeft - intended to straighten the text from the image
- * @param {string} margin - width, height, and margin define the custom sizes for the images to look good in the sidebar
- *                          these images should be resized to be more responsive and consistent down the line.
+ * @param {string} textClass - className style to use in text
+ * @param {string} imageClass - className style to use in images
  * @param {string} backgroundColor - the color for each individual button
  */
-
-import React, { useState } from "react";
+import React, {useState } from "react";
 import Link from "next/link";
 
-const SB_ExpandButton = ({ redirect, imgSrc, altText, width, height, marginLeft, margin, backgroundColor}) => {
-    const [isHovering, setIsHovered] = useState(false);
-    // Use 
-    const hoverColor = "rgb(34 211 238)";
+const SB_ExpandButton = ({ redirect, imgSrc, altText, textClass, imageClass, backgroundColor}) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const handleMouseEnter = () => setIsHovered(true);
+    const handleMouseLeave = () => setIsHovered(false);
 
     return (
-        <div 
-            className={"flex justify-start items-center cursor-pointer h-[14.8%]"}
-            style={{ backgroundColor: isHovering ? hoverColor : backgroundColor }}
-            onMouseEnter = {() => setIsHovered(true)}
-            onMouseLeave = {() => setIsHovered(false)}
+        <div className={`flex items-center items-stretch ${backgroundColor} ${isHovered ? "bg-cyan-400" : ""}`}
+             onMouseEnter={handleMouseEnter}
+             onMouseLeave={handleMouseLeave}
         >
-            <img src={imgSrc} alt={altText} style={{ width, height, margin }} />
-            <Link href={redirect} style={{ marginLeft }}>{altText}</Link>
+            <Link href={ redirect }>
+                <div className="flex items-center">
+                    <img src={ imgSrc } alt={ altText } className={ imageClass } />
+                    <a className={ textClass }>{ altText }</a>
+                </div>
+            </Link>
         </div>
     );
 }

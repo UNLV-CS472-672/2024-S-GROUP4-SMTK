@@ -20,6 +20,7 @@ export const getServerSideProps = smolAuth(
     const {req} = _ctx;
 
     const session_id = getCookie("session_id", req.headers.cookie);
+    /*
     const homeblob = await fetch("http://" + req.headers.host + "/api/home/", {
         method: "POST",
         headers: {
@@ -27,8 +28,11 @@ export const getServerSideProps = smolAuth(
             "Authorization" : session_id
         }
     })
-
-    let userdata = await homeblob.json();
+    */
+    let userdata = {
+        announcements: [],
+        user: {}
+    } //await homeblob.json();
 
     return {
         props: {

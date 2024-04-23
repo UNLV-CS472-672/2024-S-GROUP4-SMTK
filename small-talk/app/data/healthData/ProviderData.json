@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "Dr. Sarah Lee",
+        "role": "Pediatrician",
+        "available": true,
+        "lastSeen": "2024-04-21 21:34:06"
+    },
+    {
+        "id": 2,
+        "name": "Nurse James Elton",
+        "role": "Nurse",
+        "available": false,
+        "lastSeen": "2024-04-21 21:34:06"
+    },
+    {
+        "id": 3,
+        "name": "Dr. Emily Chen",
+        "role": "Cardiologist",
+        "available": true,
+        "lastSeen": "2024-04-21 21:34:06"
+    },
+    {
+        "id": 4,
+        "name": "Nurse John Doe",
+        "role": "Nurse",
+        "available": true,
+        "lastSeen": "2024-04-21 21:34:06"
+    }
+]

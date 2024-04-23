@@ -26,7 +26,7 @@ export function smolAuth(getServerSidePropsFunc) {
                         },
                     };
                 }
-                console.log(json)
+                //console.log(json)
                 let isFound = (json.found != null) ? json.found : false;
 
                 if (isFound == false) {
@@ -36,6 +36,10 @@ export function smolAuth(getServerSidePropsFunc) {
                         destination: '/login',
                         },
                     };
+                }
+                else
+                {
+                    return await getServerSidePropsFunc(ctx);
                 }
             } catch (error) {
                 // Failure in the query or any error should fallback here
@@ -50,7 +54,13 @@ export function smolAuth(getServerSidePropsFunc) {
             }
         }
   
-      return await getServerSidePropsFunc(ctx);
+        return {
+            redirect: {
+            permanent: false,
+            destination: '/login',
+            },
+        };
+        //return await getServerSidePropsFunc(ctx);
     };
   }
   //
