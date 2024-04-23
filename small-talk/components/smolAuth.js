@@ -30,6 +30,7 @@ export function smolAuth(getServerSidePropsFunc) {
                 let isFound = (json.found != null) ? json.found : false;
 
                 if (isFound == false) {
+                    //console.log("SMOLAUTH: NOT FOUND")
                     return {
                         redirect: {
                         permanent: false,
@@ -39,7 +40,8 @@ export function smolAuth(getServerSidePropsFunc) {
                 }
                 else
                 {
-                    return await getServerSidePropsFunc(ctx);
+                    //console.log("SMOLAUTH: FOUND")
+                    return getServerSidePropsFunc(ctx);
                 }
             } catch (error) {
                 // Failure in the query or any error should fallback here
@@ -53,7 +55,7 @@ export function smolAuth(getServerSidePropsFunc) {
                 };
             }
         }
-  
+        //console.log("SMOLAUTH: FOUND2")
         return {
             redirect: {
             permanent: false,
