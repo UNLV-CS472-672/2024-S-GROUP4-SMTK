@@ -17,8 +17,9 @@ describe('Tabs array', () => {
         const homeTab = Tabs.find(tab => tab.name === 'Home');
         expect(homeTab).toEqual({
             name: 'Home',
-            slug: '/',
-            color: 'from-cyan-400 to-sky-500'
+            slug: '/homepage',
+            color: 'from-cyan-400 to-sky-500',
+            imgSrc: '/img/logo-no_font.png'
         });
     });
 
