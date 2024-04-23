@@ -1,5 +1,4 @@
-import { compare } from 'bcryptjs';
-import React from 'react';
+import React, { useState } from 'react';
 
 function EventsList({events})
 {
@@ -48,11 +47,13 @@ function EventsList({events})
     const listEvent = (event) =>
     {
         return(
-            <div>
-                <li>{event.date.year}-{event.date.month}-{event.date.day}</li>
-                <li className = 'font-semibold'>{event.title}</li>
+            <ul className = 'bg-amber-500 rounded-lg p-3 divide-y divide-solid divide-gray-800'>
+                <li className = 'grid grid-cols-2'>
+                    <span className = 'font-semibold text-left'>{event.title}</span> 
+                    <span className = 'text-right'>{event.date.year}-{event.date.month}-{event.date.day}</span>
+                </li>
                 <li>{event.description}</li>
-            </div>
+            </ul>
         );
     };
 
@@ -75,20 +76,47 @@ function EventsList({events})
             return(listEvent(event));
         }
     }
+    
+    // Check if given event is in past, if so list it
+    const listPastEvents = (event) =>
+    {
+        // Compare today's date and event's date -- see if event's date is in past
+        if(compareDates(event) == -1)
+        {
+            return(listEvent(event));
+        }
+    }
+
+    // Dropdown for past events
+    const [subTab, setSubTab] = useState('');
+
+    // Handle past events tab click
+    const handleSubTabChange = (tab) => {
+        setSubTab(subTab === tab ? '' : tab);
+    };
 
     return(
         <div className = 'space-y-10'> {/* Adds space between event categories */}
-            <div className = 'bg-white rounded-lg text-gray-800 text-center my-10'>
-                <h2 className = 'font-bold'>Today&apos;s Events</h2>
-                <ul className = 'divide-y divide-solid'>
+            <div className = 'bg-white rounded-lg text-gray-800 my-10'>
+                <h2 className = 'font-bold text-center pt-4'>Today&apos;s Events</h2>
+                <ul className = 'p-4 flex-col-reverse space-y-3'>
                     {events.map(listTodaysEvents) /* Lists all events occurring today */} 
                 </ul>
             </div>
     
-            <div className = 'bg-white rounded-lg text-gray-800 text-center'>
-                <h2 className = 'font-bold'>Upcoming Events</h2>
-                <ul className = 'divide-y divide-solid'>
-                    {events.map(listUpcomingEvents) /* Lists all events occuring in future */}
+            <div className = 'bg-white rounded-lg text-gray-800'>
+                <h2 className = 'font-bold text-center pt-4'>Upcoming Events</h2>
+                <ul className = 'p-4 flex-col-reverse space-y-3'>
+                    {events.map(listUpcomingEvents) /* Lists all events occurring in future */}
+                </ul>
+            </div>
+
+            <div className = 'bg-white rounded-lg text-gray-800 flex flex-col'>
+                <button onClick = {() => handleSubTabChange('past')}>
+                    <h2 className = {`font-bold text-center ${subTab == 'past' ? 'pt-4' : ''}`}>Past Events {subTab == 'past' ? '▲' : '▼'}</h2>
+                </button>
+                <ul className = {`flex-col-reverse space-y-3 ${subTab == 'past' ? 'p-4' : ''}`}>
+                    {subTab == 'past' && events.map(listPastEvents) /* Lists all events occurred in past when clicked */}
                 </ul>
             </div>
         </div>
