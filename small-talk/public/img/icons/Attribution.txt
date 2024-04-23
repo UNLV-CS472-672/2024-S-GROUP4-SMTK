@@ -1,0 +1,9 @@
+Tab Icons provided by FreePik and FlatIcon
+-----------------------------
+chat-tab.png: https://www.freepik.com/icon/chat_2169782
+event-tab.png: https://www.freepik.com/icon/newspaper_8497627
+food-tab.png: https://www.flaticon.com/free-icon/cutlery_7577888
+friend-tab.png: https://www.freepik.com/icon/friends_4828212
+game-tab.png: https://www.freepik.com/icon/game-controller_7654577
+health-tab.png: https://www.freepik.com/icon/healthcare_2679387
+media-tab.png: https://www.freepik.com/icon/tv_2073241

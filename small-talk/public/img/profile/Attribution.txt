@@ -1,0 +1,14 @@
+Profile Icons provided by FreePik
+---------------------------------
+bat.png: https://www.freepik.com/icon/bat_8493880
+bunny.png: https://www.freepik.com/icon/bunny_4313457
+cat.png: https://www.freepik.com/icon/cat_1089472
+deer.png: https://www.freepik.com/icon/rudolf_6273637
+dog.png: https://www.freepik.com/icon/dog_3089526
+elephant.png: https://www.freepik.com/icon/elephant_3519738
+fox.png: https://www.freepik.com/icon/fox_6267185
+monkey.png: https://www.freepik.com/icon/monkey_3195966
+owl.png: https://www.freepik.com/icon/owl_10292310
+pig.png: https://www.freepik.com/icon/saving_6109677
+snake.png: https://www.freepik.com/icon/snake_3974487
+tiger.png: https://www.freepik.com/icon/tiger_9098859
