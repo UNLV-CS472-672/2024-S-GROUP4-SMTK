@@ -1,0 +1,27 @@
+[
+    {
+        "id": "netflix",
+        "name": "Netflix",
+        "logo": "/img/movies/netflix-logo.png"
+    },
+    {
+        "id": "hulu",
+        "name": "Hulu",
+        "logo": "/img/movies/hulu-logo.png"
+    },
+    {
+        "id": "disneyPlus",
+        "name": "Disney Plus",
+        "logo": "/img/movies/disney-plus-logo.jpeg"
+    },
+    {
+        "id": "hboMax",
+        "name": "HBO Max",
+        "logo": "/img/movies/hbo-max-logo.jpg"
+    },
+    {
+        "id": "amazonPrime",
+        "name": "Amazon Prime Video",
+        "logo": "/img/movies/amazon-prime-logo.png"
+    }
+]
