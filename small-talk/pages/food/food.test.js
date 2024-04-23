@@ -1,10 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Food from './page'; // Ensure the correct file path and component name are used
-import ThemeLayout from '../../app/components/ThemeLayout'; // Ensure correct path
-import MenuTabs from '../../app/components/foodPage/MenuTabs'; // Ensure correct path
+import Food from '.'; // Ensure the correct file path and component name are used
 
-jest.mock('../components/foodPage/MenuTabs', () => {
+jest.mock('@/app/components/foodPage/MenuTabs', () => {
     const MenuTabsMock = () => <div>MenuTabs Mock</div>;
     MenuTabsMock.displayName = 'MenuTabsMock';
     return MenuTabsMock;
