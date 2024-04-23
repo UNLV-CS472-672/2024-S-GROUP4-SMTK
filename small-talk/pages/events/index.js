@@ -16,7 +16,7 @@ export const Events = ({data}) =>{
     return(
         <div className='bg-slate-800 text-white'>
             <Layout width={windowWidth} renderHeader={true} renderFooter={true}>
-                <EventsList events = {eventsData} />
+                <EventsList events = {eventsData} /> {/* Render EventsList using data from JSON */}
             </Layout>  
         </div>
     )
