@@ -11,19 +11,21 @@ export default function Food() {
         setWindowWidth(window.innerWidth);
     },[]);
     return(
-        <Layout width={windowWidth} renderHeader={true} renderFooter={true}>
-            <div style={{
-                    // Styling for the container div
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    maxWidth: '100%', // Ensure the content doesn't exceed the width of its container
-                    padding: '20px'
-                }}>
-                {/* Render the MenuTabs component */}
-                <MenuTabs />
-            </div>
-        </Layout>
+        <div className='bg-slate-800 text-white'>
+            <Layout width={windowWidth} renderHeader={true} renderFooter={true}>
+                <div style={{
+                        // Styling for the container div
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        maxWidth: '100%', // Ensure the content doesn't exceed the width of its container
+                        padding: '20px'
+                    }}>
+                    {/* Render the MenuTabs component */}
+                    <MenuTabs />
+                </div>
+            </Layout>
+        </div>
     );
 }
