@@ -16,10 +16,22 @@ export default function RegisterPage() {
     //in the future we can do something with patient history
     //const history = useHistory();
     const [textInput, setTextInput] = useState(null);
+    const [PrivacyChecked, setPrivacyChecked] = useState(false); // New state for checkbox
     
     const goLogin = () => {
       window.location.href = "/login"; // Redirect to the login
     }
+
+    const getAge = (dob) => {
+      var today = new Date();
+      var birthDate = new Date(dob);
+      var age = today.getFullYear() - birthDate.getFullYear();
+      var m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
+      }
+      return age;
+  }
 
     const RegisterPatient = async () => {
       // if login sucessful
@@ -100,6 +112,15 @@ export default function RegisterPage() {
         if (!password.match(pwPattern)){
             alert("Password must contain at least: \n- one number \n- one uppercase letter \n- one lowercase letter \n- eight(8) characters");
             return
+        }
+
+        if(await !PrivacyChecked){
+          alert("Please agree to the Privacy Policy / Terms & Conditions.")
+          return
+        }
+
+        if(await getAge(dob) < 13){
+          alert("By using this web app, you confirm that you are 13 years of age or older, or have obtained parental consent. If you are under 13, please do not use this app without parental permission. We are committed to protecting the privacy of children online and comply with the Children's Online Privacy Protection Act (COPPA). For more information, please review our Privacy Policy.")
         }
       
         RegisterPatient() //calls for redirection to login page
@@ -204,6 +225,21 @@ export default function RegisterPage() {
                 
                 />
              </div>
+
+          
+            
+            
+            <div>
+                <label htmlFor="privacyCheckbox">
+                  <input
+                    type="checkbox"
+                    id="privacyCheckbox"
+                    onChange={(e) => setPrivacyChecked(e.target.checked)}
+                    required
+                  />
+                    I have read the Privacy Policy / Terms and Conditions
+                </label>
+            </div>
 
             <button 
                 id ="login"

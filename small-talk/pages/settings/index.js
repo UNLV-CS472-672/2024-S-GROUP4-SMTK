@@ -12,7 +12,7 @@ export const Settings = ({data}) => {
     },[])
 
     return (
-        <div className='bg-slate-800'>
+        <div className='bg-slate-800 text-white'>
             <Layout width={windowWidth} renderHeader={true} renderFooter={true}>
                 <h3>Settings Page</h3>
             </Layout>

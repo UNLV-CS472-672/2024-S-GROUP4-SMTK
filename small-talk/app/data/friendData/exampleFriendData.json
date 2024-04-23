@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "username": "aloha",
+        "name": "Sarah M.",
+        "status": false
+    },
+    {
+        "id": 2,
+        "username": "rawrXD",
+        "name": "David S.",
+        "status": true
+    },
+    {
+        "id": 3,
+        "username": "minecraft",
+        "name": "Emily L.",
+        "status": true
+    },
+    {
+        "id": 4,
+        "username": "btest2",
+        "name": "Jason H.",
+        "status": false
+    },
+    {
+        "id": 5,
+        "username": "powerkids1",
+        "name": "Samantha P.",
+        "status": true
+    },
+    {
+        "id": 6,
+        "username": "judger",
+        "name": "Michael K.",
+        "status": false
+    }
+]
