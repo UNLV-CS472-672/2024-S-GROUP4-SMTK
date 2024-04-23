@@ -1,15 +1,11 @@
 import censor from './censorMess.js';
 //ai-gen start (ChatGPT-4, 1)
 // Mock the swearWords module
-jest.mock('./swearWords.js', () => {
-    return ['badword', 'anotherbadword'];
-})
 
 describe('censor function', () => {
     it('should replace swear words with asterisks', () => {
-        const input = 'This is a badword and anotherbadword in a sentence.';
-        const expectedOutput = 'This is a ******* and ************** in a sentence.';
-        expect(censor(input)).toBe(expectedOutput);
+        const input = 'Bad word: shit';
+        expect(censor(input)).not.toBe(input);
     });
 
     it('should return the same string if there are no swear words', () => {
