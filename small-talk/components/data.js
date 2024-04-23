@@ -49,3 +49,5 @@ export const Tabs =
         imgSrc: "/img/icons/games-tab.png"
     }
 ]
+
+export default Tabs;
