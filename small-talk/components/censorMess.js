@@ -1,13 +1,20 @@
-import swearWords from './swearWords.js';
+import vulgar from './vulgarLang';
+import {
+	RegExpMatcher,
+	TextCensor,
+	englishDataset,
+	englishRecommendedTransformers,
+} from 'obscenity';
 
 export default function censor(input) {
-    let censored = input;
-    for (let swearWord of swearWords) { // check for all swear words
-        const regex = new RegExp(`\\b${swearWord}\\b`, 'gi'); // used AI to match words and replace
-        // checks for case insensitivity
-        // returns unaltered message otherwise
-     
-        censored = censored.replace(regex, '*'.repeat(swearWord.length)); // replaces vulgar language with ****
+    if (vulgar(input)) {
+        const matcher = new RegExpMatcher({
+            ...englishDataset.build(),
+            ...englishRecommendedTransformers,
+        });
+        const censor = new TextCensor();
+        const matches = matcher.getAllMatches(input);
+        return censor.applyTo(input, matches);
     }
-    return censored;
+    return input;
 }

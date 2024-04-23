@@ -1,16 +1,16 @@
-// PLEASE BE ADVISED
-// DICTIONARY OF VULGAR LANGUAGE BELOW
-// VIEW AT OWN DISCRETION
-
-
-import swearWords from './swearWords.js';
+const {
+	RegExpMatcher,
+	englishDataset,
+	englishRecommendedTransformers,
+} = require('obscenity');
 
 export default async function vulgar(input) {
-    const inputinput = input.toLowerCase(); // make sure check for all cases
-    for (let swearWord of swearWords) { // check for all swear words
-        if (inputinput.includes(swearWord)) {
-            return true; // bad lang detected
-        }
+    const matcher = new RegExpMatcher({
+        ...englishDataset.build(),
+        ...englishRecommendedTransformers,
+    });
+    if (matcher.hasMatch(input)) {
+        return true;
     }
     return false;
 }
