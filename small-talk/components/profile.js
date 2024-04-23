@@ -13,7 +13,7 @@ export const Profile = () => {
     }
     
     return (
-        <div className="relative flex flex-col items-end">
+        <div className="relative flex flex-col justify-self-end">
             <button onClick={ toggleDropdown }>
                 {/* TODO: Store IDs in MongoDB and get values for user specific layouts */}
                 <ProfileIcon avatarID={1} backgroundID={2}/>

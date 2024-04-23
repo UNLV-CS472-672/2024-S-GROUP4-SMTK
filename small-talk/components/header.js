@@ -13,6 +13,7 @@ export const Header = ({width, isOpen, setIsOpen}) => {
             <div className="grid grid-cols-3 w-full lg:w-[1024px]">
                 <Sushi isOpen={isOpen} setIsOpen={setIsOpen}/>
                 <Logo/>
+                <Profile/>
             </div>
             )
         }
@@ -21,12 +22,13 @@ export const Header = ({width, isOpen, setIsOpen}) => {
         <div className="grid grid-cols-3 w-full lg:w-[1024px]">
             <Sushi isOpen={isOpen} setIsOpen={setIsOpen}/>
             <div className='flex justify-around items-center gap-5'>
-            {Tabs.map((i, idx) => (
-                <a key={idx} href={i.slug} className={`px-2 rounded w-[128px] text-center hover:bg-gradient-to-r ${i.color}`}>
-                    {i.name}
-                </a>
-            ))}
+                {Tabs.map((i, idx) => (
+                    <a key={idx} href={i.slug} className={`px-2 rounded w-[128px] text-center hover:bg-gradient-to-r ${i.color}`}>
+                        {i.name}
+                    </a>
+                ))}
             </div>
+            <Profile/>
         </div>
         )
     }
