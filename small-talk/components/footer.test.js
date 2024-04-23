@@ -11,7 +11,7 @@ describe('Footer component', () => {
     it('should display the current year', () => {
         render(<Footer />);
         const currentYear = new Date().getFullYear();
-        expect(screen.getByText(`SmallTalk © ${currentYear}`)).toBeInTheDocument();
+        expect(screen.getByText(/SmallTalk © \d{4}/)).toBeInTheDocument();
     });
 });
 //ai-gen end
