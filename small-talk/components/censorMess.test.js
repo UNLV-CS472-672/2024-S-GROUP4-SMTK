@@ -4,7 +4,8 @@ import censor from './censorMess.js';
 
 describe('censor function', () => {
     it('should replace swear words with asterisks', () => {
-        const input = 'Bad word: shit';
+        const input = 'Bad word: fuck';
+        console.log(censor(input));
         expect(censor(input)).not.toBe(input);
     });
 

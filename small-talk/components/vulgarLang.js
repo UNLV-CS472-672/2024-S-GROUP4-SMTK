@@ -4,13 +4,10 @@ const {
 	englishRecommendedTransformers,
 } = require('obscenity');
 
-export default async function vulgar(input) {
+export default function vulgar(input) {
     const matcher = new RegExpMatcher({
         ...englishDataset.build(),
         ...englishRecommendedTransformers,
     });
-    if (matcher.hasMatch(input)) {
-        return true;
-    }
-    return false;
+    return matcher.hasMatch(input);
 }

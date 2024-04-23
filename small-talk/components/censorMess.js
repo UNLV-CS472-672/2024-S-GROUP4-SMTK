@@ -14,6 +14,7 @@ export default function censor(input) {
         });
         const censor = new TextCensor();
         const matches = matcher.getAllMatches(input);
+        console.log(censor.applyTo(input, matches));
         return censor.applyTo(input, matches);
     }
     return input;
