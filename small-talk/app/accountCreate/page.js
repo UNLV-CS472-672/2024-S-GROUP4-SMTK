@@ -114,12 +114,12 @@ export default function RegisterPage() {
             return
         }
 
-        if(!PrivacyChecked){
+        if(await !PrivacyChecked){
           alert("Please agree to the Privacy Policy / Terms & Conditions.")
           return
         }
 
-        if(getAge(dob) < 13){
+        if(await getAge(dob) < 13){
           alert("By using this web app, you confirm that you are 13 years of age or older, or have obtained parental consent. If you are under 13, please do not use this app without parental permission. We are committed to protecting the privacy of children online and comply with the Children's Online Privacy Protection Act (COPPA). For more information, please review our Privacy Policy.")
         }
       
