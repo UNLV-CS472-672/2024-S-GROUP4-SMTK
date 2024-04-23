@@ -5,7 +5,7 @@ import Games from '../../../pages/games/index.js';
 describe("Games Page", () => {
     it("Makes sure Games page content renders properly", () => {
         render(<Games />);
-        const titleElement = screen.getByText("Games Page");
+        const titleElement = screen.getByText("Game Page");
         expect(titleElement).toBeInTheDocument();
     })
 })
