@@ -2,6 +2,9 @@ import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import VisualGameComponent from './VisualGameComponent';
 
+// ai-gen start (ChatGPT-3.5, 2)
+// used ai for documentation
+
 // Mocking the game data for single player
 jest.mock('../../data/gameData/singlePlayer.json', () => [
     { id: 1, name: 'Snake', imgPath: '/img/snake.jpeg'},
@@ -59,3 +62,5 @@ describe('VisualGameComponent', () => {
         expect(window.alert).toHaveBeenCalledWith('Your Game is Loading and will be Opening soon!');
     });
 });
+
+// ai-gen end
