@@ -37,7 +37,9 @@ export default async function POST(req,res)
     }
 
     if (result) {
+        console.log("AUTH2: FOUND")
         res.status(200).json({ found: true }); return;
     }
+    console.log("AUTH2: NOT FOUND")
     res.status(200).json({ found: false }); return;
 }

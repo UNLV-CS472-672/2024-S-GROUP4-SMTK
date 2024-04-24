@@ -30,7 +30,11 @@ export function smolAuth(getServerSidePropsFunc) {
                 let isFound = (json.found != null) ? json.found : false;
 
                 if (isFound == false) {
+
+                    console.log("SMOLAUTH: NOT FOUND")
+
                     //console.log("SMOLAUTH: NOT FOUND")
+
                     return {
                         redirect: {
                         permanent: false,
@@ -56,6 +60,7 @@ export function smolAuth(getServerSidePropsFunc) {
             }
         }
         //console.log("SMOLAUTH: FOUND2")
+
         return {
             redirect: {
             permanent: false,
