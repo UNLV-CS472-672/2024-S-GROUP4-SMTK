@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "Spider-Man: No Way Home",
+        "poster": "/img/movies/spiderman_no_way_home.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Avengers: Endgame",
+        "poster": "/img/movies/avengers_endgame.jpg"
+    },
+    {
+        "id": 6,
+        "title": "Spider-Man: Across the Spider-Verse",
+        "poster":"/img/movies/spiderman_across.jpg"
+    },
+    {
+        "id": 7,
+        "title": "Black Panther",
+        "poster":"/img/movies/black_panther.jpg"
+    },
+    {
+        "id": 8,
+        "title": "Shazam!",
+        "poster":"/img/movies/shazam.jpg"
+    },
+    {
+        "id": 9,
+        "title": "Wonder Woman 1984",
+        "poster":"/img/movies/wonder_woman_1984.jpg"
+    }
+]

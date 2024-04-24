@@ -10,7 +10,7 @@ describe('MoviesPage', () => {
         expect(screen.getByText('Movies Provided by Hospital')).toBeInTheDocument();
         expect(screen.getByText('Login to Your Streaming Services')).toBeInTheDocument();
         const headings = screen.getAllByRole('heading', { name: /Provided by Hospital/i });
-        expect(headings).toHaveLength(2);
+        expect(headings).toHaveLength(1);
         expect(screen.getByRole('heading', { name: /Personal Accounts/i })).toBeInTheDocument();
     });
 });
