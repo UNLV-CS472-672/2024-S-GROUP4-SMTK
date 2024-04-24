@@ -50,7 +50,8 @@ describe('disconnectMongoboi', () => {
         // Start by defining the environment variables
         process.env.DB_USER = 'testUser';
         process.env.DB_PASS = 'testPass';
-        const expectedUri = 'mongodb+srv://testUser:testPass@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority';
+        process.env.DB_URL = 'testURL'
+        const expectedUri = 'mongodb+srv://testUser:testPass@testURL';
     
         // Set up the mocks
         const mockFindAll = jest.fn().mockResolvedValue([{username: 'testUser1'}, {username: 'testUser2'}]);
