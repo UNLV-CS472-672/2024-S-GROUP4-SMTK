@@ -36,7 +36,7 @@ const ProfileDropdown = ({ isVisible }) => {
 
     const itemList = [
         { redirect: '/profile', imgSrc: '/img/icons/profile-icon.png', altText: 'Profile', itemText: 'Profile', imageClass: 'w-8 ml-2 md:w-6', textClass: 'ml-4'},
-        { redirect: '/setting', imgSrc: '/img/icons/setting-icon.png', altText: 'Settings', itemText: 'Settings', imageClass: 'w-10 ml-1 md:w-8', textClass: 'ml-3'},
+        { redirect: '/settings', imgSrc: '/img/icons/setting-icon.png', altText: 'Settings', itemText: 'Settings', imageClass: 'w-10 ml-1 md:w-8', textClass: 'ml-3'},
         { redirect: '/', imgSrc: '/img/icons/logout-icon.png', altText: 'Logout', itemText: 'Logout', imageClass: 'w-10 ml-1 md:w-8', textClass: 'ml-3'}
     ]
 

@@ -29,7 +29,7 @@ describe("ProfileDropdown Component", () =>{
         const logout = screen.getByTestId('dropdown-link-logout');
 
         expect(profile).toHaveAttribute('href', '/profile');
-        expect(settings).toHaveAttribute('href', '/setting');
+        expect(settings).toHaveAttribute('href', '/settings');
         expect(logout).toHaveAttribute('href', '/');
     });
 });

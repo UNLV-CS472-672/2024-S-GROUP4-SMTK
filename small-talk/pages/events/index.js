@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "@/components/layout";
 import EventsList from "@/app/components/EventsList";
 import eventsData from "@/app/data/eventsData";
+import Title from '@/components/title'
 
 export const Events = ({data}) =>{
     const [windowWidth, setWindowWidth] = useState(null);
@@ -16,6 +17,7 @@ export const Events = ({data}) =>{
     return(
         <div className='bg-slate-800 text-white'>
             <Layout width={windowWidth} renderHeader={true} renderFooter={true}>
+                <Title page = "Events" />
                 <EventsList events = {eventsData} /> {/* Render EventsList using data from JSON */}
             </Layout>  
         </div>
