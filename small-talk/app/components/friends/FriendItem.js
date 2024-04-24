@@ -1,6 +1,4 @@
-import Friends from '@/pages/friends';
 import React, { useState } from 'react';
-import RecommendedFriend from './RecommendedFriends';
 
 function FriendItem(){
     return (
