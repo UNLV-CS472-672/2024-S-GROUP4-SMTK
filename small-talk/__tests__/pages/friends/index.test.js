@@ -5,7 +5,7 @@ import Friends from '../../../pages/friends/index.js';
 describe("Friends Page", () => {
     it("Makes sure Friends page content renders properly", () => {
         render(<Friends />);
-        const titleElement = screen.getByText("Friends Page");
+        const titleElement = screen.getByText("Friends");
         expect(titleElement).toBeInTheDocument();
     })
 })

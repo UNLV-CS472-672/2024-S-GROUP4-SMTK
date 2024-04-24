@@ -3,18 +3,24 @@
         "id": 1,
         "username": "w1r3fram3",
         "name": "Lauren B.",
-        "status": false
+        "status": false,
+        "avatar": 8 ,
+        "background": 8
     },
     {
         "id": 2,
-        "username": "justbecause6",
+        "username": "justbcz6",
         "name": "Ashley C.",
-        "status": true
+        "status": true,
+        "avatar": 9,
+        "background": 2
     },
     {
         "id": 3,
-        "username": "toointeresting",
+        "username": "king2all",
         "name": "Brandon K.",
-        "status": true
+        "status": true,
+        "avatar": 10,
+        "background": 6
     }
 ]
