@@ -29,8 +29,6 @@ export const Settings = () => {
         setLayoutTheme(nextThemeClass);
     }
 
-    // Profile States and Functions
-
     return (
         <div className={ layoutTheme }>
             <Layout width={windowWidth} renderHeader={true} renderFooter={true}>
