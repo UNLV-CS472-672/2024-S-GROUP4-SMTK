@@ -19,7 +19,6 @@ export const Friends = ({data}) => {
             <Layout width={windowWidth} renderHeader={true} renderFooter={true}>
             <Title page="Friends"/>
             <div className="flex-grow p-4">  {/* Added padding for all sides */}
-                    <Title page="Friends"/>
                     <div className="space-y-10"> {/* This will add space between each component */}
                         <FriendLayout /> {/* Just adding this comment to be able to push */}
                         <R_FriendLayout />
