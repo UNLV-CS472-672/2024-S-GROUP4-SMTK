@@ -269,7 +269,7 @@ describe('RegisterPage Component', () => {
     });
   });
 
-  it('shows an alert if registration was unsuccessful', async () => {
+  it('shows an alert if registration was successful', async () => {
     validateInput.mockResolvedValueOnce(true);
     validateInput.mockResolvedValueOnce(true);
     validateInput.mockResolvedValueOnce(true);
@@ -283,10 +283,13 @@ describe('RegisterPage Component', () => {
     fireEvent.change(screen.getByPlaceholderText('Date of Birth'), { target: { value: '1990-01-01' } });
     fireEvent.change(screen.getByPlaceholderText('Username'), { target: { value: 'od1924' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'Lime1234!' } });
+    const privacyCheckbox = screen.getByRole('checkbox');
+    fireEvent.click(privacyCheckbox); // Uncheck the privacy policy checkbox
     fireEvent.click(screen.getByText('Submit'));
   
     await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith("Registration was SUCCESSFUL"); // handleRegister didn't return null
+      //expect(window.alert).toHaveBeenCalledWith("Please agree to the Privacy Policy / Terms & Conditions."); 
+      expect(window.alert).toHaveBeenCalledWith("Registration was SUCCESSFUL");// handleRegister didn't return null
     });
   });
 
@@ -304,9 +307,13 @@ describe('RegisterPage Component', () => {
     fireEvent.change(screen.getByPlaceholderText('Date of Birth'), { target: { value: '1990-01-01' } });
     fireEvent.change(screen.getByPlaceholderText('Username'), { target: { value: 'od1924' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'Lime1234!' } });
+    //fireEvent.click(screen.getAllByLabelText('privacyCheckbox'), { target: { value: true } });
+    const privacyCheckbox = screen.getByRole('checkbox');
+    fireEvent.click(privacyCheckbox); // Uncheck the privacy policy checkbox
     fireEvent.click(screen.getByText('Submit'));
   
     await waitFor(() => {
+      //expect(window.alert).toHaveBeenCalledWith("Please agree to the Privacy Policy / Terms & Conditions.");
       expect(window.alert).toHaveBeenCalledWith("Registration was unsuccessful"); // handleRegister returned null
     });
   });
@@ -333,5 +340,50 @@ describe('RegisterPage Component', () => {
 
     // Restore the original window.location
     window.location = originalLocation;
+  });
+
+  it('shows an alert if privacy checkbox is not checked', async () => {
+    validateInput.mockResolvedValueOnce(true);
+    validateInput.mockResolvedValueOnce(true);
+    validateInput.mockResolvedValueOnce(true);
+    validateInput.mockResolvedValueOnce(true);
+
+    handleRegister.mockResolvedValueOnce(!null); // handleRegister does return a user
+  
+    render(<RegisterPage />);
+    fireEvent.change(screen.getByPlaceholderText('John'), { target: { value: 'Test' } });
+    fireEvent.change(screen.getByPlaceholderText('Doe'), { target: { value: 'Case' } });
+    fireEvent.change(screen.getByPlaceholderText('Date of Birth'), { target: { value: '1990-01-01' } });
+    fireEvent.change(screen.getByPlaceholderText('Username'), { target: { value: 'od1924' } });
+    fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'Lime1234!' } });
+
+    fireEvent.click(screen.getByText('Submit'));
+  
+    await waitFor(() => {
+      expect(window.alert).toHaveBeenCalledWith("Please agree to the Privacy Policy / Terms & Conditions."); 
+    });
+  });
+
+  it('shows an alert if registration was successful', async () => {
+    validateInput.mockResolvedValueOnce(true);
+    validateInput.mockResolvedValueOnce(true);
+    validateInput.mockResolvedValueOnce(true);
+    validateInput.mockResolvedValueOnce(true);
+
+    handleRegister.mockResolvedValueOnce(!null); // handleRegister does return a user
+  
+    render(<RegisterPage />);
+    fireEvent.change(screen.getByPlaceholderText('John'), { target: { value: 'Test' } });
+    fireEvent.change(screen.getByPlaceholderText('Doe'), { target: { value: 'Case' } });
+    fireEvent.change(screen.getByPlaceholderText('Date of Birth'), { target: { value: '2022-01-01' } });
+    fireEvent.change(screen.getByPlaceholderText('Username'), { target: { value: 'od1924' } });
+    fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'Lime1234!' } });
+    const privacyCheckbox = screen.getByRole('checkbox');
+    fireEvent.click(privacyCheckbox); // Uncheck the privacy policy checkbox
+    fireEvent.click(screen.getByText('Submit'));
+  
+    await waitFor(() => {
+      expect(window.alert).toHaveBeenCalledWith("By using this web app, you confirm that you are 13 years of age or older, or have obtained parental consent. If you are under 13, please do not use this app without parental permission. We are committed to protecting the privacy of children online and comply with the Children's Online Privacy Protection Act (COPPA). For more information, please review our Privacy Policy.");
+    });
   });
 });
