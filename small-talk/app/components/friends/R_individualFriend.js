@@ -1,9 +1,11 @@
 import React from 'react';
+import ProfileIcon from '@/components/profileIcon';
 
 function R_IndividualFriend({ details }) {
     return (
         <div className="border p-4 bg-gray-100 rounded-lg flex items-center justify-between">
-            <img src={details.img} width="50" height="50"></img>  
+            {/* add profileIcon component here */}
+            <ProfileIcon avatarID={details.avatar} backgroundID={details.background} avatarClass={'w-10'} backgroundClass={'p-2'}/>
             <div>
                 <p className="font-bold">{details.name}</p>
                 <h3 className="font-thin">{details.username}</h3>

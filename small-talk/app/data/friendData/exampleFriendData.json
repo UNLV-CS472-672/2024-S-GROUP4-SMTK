@@ -4,41 +4,47 @@
         "username": "aloha",
         "name": "Sarah M.",
         "status": false,
-        "img": "/img/profile/bat.png"
+        "avatar": 2,
+        "background": 2
     },
     {
         "id": 2,
         "username": "rawrXD",
         "name": "David S.",
         "status": true,
-        "img": "/img/profile/cat.png"
+        "avatar": 3,
+        "background": 3
     },
     {
         "id": 3,
         "username": "minecraft",
         "name": "Emily L.",
         "status": true,
-        "img": "/img/profile/deer.png"
+        "avatar": 4,
+        "background": 4
     },
     {
         "id": 4,
         "username": "btest2",
         "name": "Jason H.",
         "status": false,
-        "img": "/img/profile/dog.png"
+        "avatar": 5,
+        "background": 5
     },
     {
         "id": 5,
         "username": "powerkids1",
-        "name": "Samantha P.",
+        "name": "Sam P.",
         "status": true,
-        "img": "/img/profile/elephant.png"
+        "avatar": 6,
+        "background": 6
     },
     {
         "id": 6,
         "username": "judger",
         "name": "Michael K.",
         "status": false,
-        "img": "/img/profile/fox.png"
+        "avatar": 7,
+        "background": 7
     }
 ]
