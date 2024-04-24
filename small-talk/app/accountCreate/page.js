@@ -22,21 +22,10 @@ export default function RegisterPage() {
       window.location.href = "/login"; // Redirect to the login
     }
 
-    const getAge = (dob) => {
-      var today = new Date();
-      var birthDate = new Date(dob);
-      var age = today.getFullYear() - birthDate.getFullYear();
-      var m = today.getMonth() - birthDate.getMonth();
-      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-          age--;
-      }
-      return age;
-  }
-
     const RegisterPatient = async () => {
       // if login sucessful
       if(await handleRegister(username, password, firstName, lastName, dob) != null){
-        alert("Registration was SUCCESSFUL");
+        alert("Account successfully created!\n\nNOTE: By using this web app, you confirm that you are 13 years of age or older, or have obtained parental consent. If you are under 13, please do not use this app without parental permission. We are committed to protecting the privacy of children online and comply with the Children's Online Privacy Protection Act (COPPA). For more information, please review our Privacy Policy.");
         window.location.href = "/login"; // Redirect to the login page
       }
       else{
@@ -117,10 +106,6 @@ export default function RegisterPage() {
         if(await !PrivacyChecked){
           alert("Please agree to the Privacy Policy / Terms & Conditions.")
           return
-        }
-
-        if(await getAge(dob) < 13){
-          alert("By using this web app, you confirm that you are 13 years of age or older, or have obtained parental consent. If you are under 13, please do not use this app without parental permission. We are committed to protecting the privacy of children online and comply with the Children's Online Privacy Protection Act (COPPA). For more information, please review our Privacy Policy.")
         }
       
         RegisterPatient() //calls for redirection to login page
