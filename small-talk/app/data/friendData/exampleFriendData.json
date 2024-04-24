@@ -3,36 +3,42 @@
         "id": 1,
         "username": "aloha",
         "name": "Sarah M.",
-        "status": false
+        "status": false,
+        "img": "/img/profile/bat.png"
     },
     {
         "id": 2,
         "username": "rawrXD",
         "name": "David S.",
-        "status": true
+        "status": true,
+        "img": "/img/profile/cat.png"
     },
     {
         "id": 3,
         "username": "minecraft",
         "name": "Emily L.",
-        "status": true
+        "status": true,
+        "img": "/img/profile/deer.png"
     },
     {
         "id": 4,
         "username": "btest2",
         "name": "Jason H.",
-        "status": false
+        "status": false,
+        "img": "/img/profile/dog.png"
     },
     {
         "id": 5,
         "username": "powerkids1",
         "name": "Samantha P.",
-        "status": true
+        "status": true,
+        "img": "/img/profile/elephant.png"
     },
     {
         "id": 6,
         "username": "judger",
         "name": "Michael K.",
-        "status": false
+        "status": false,
+        "img": "/img/profile/fox.png"
     }
 ]

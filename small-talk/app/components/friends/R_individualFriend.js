@@ -3,7 +3,7 @@ import React from 'react';
 function R_IndividualFriend({ details }) {
     return (
         <div className="border p-4 bg-gray-100 rounded-lg flex items-center justify-between">
-            {/* add profileIcon component here */}
+            <img src={details.img} width="50" height="50"></img>  
             <div>
                 <p className="font-bold">{details.name}</p>
                 <h3 className="font-thin">{details.username}</h3>

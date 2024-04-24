@@ -3,18 +3,21 @@
         "id": 1,
         "username": "w1r3fram3",
         "name": "Lauren B.",
-        "status": false
+        "status": false,
+        "img": "/img/profile/monkey.png"
     },
     {
         "id": 2,
         "username": "justbecause6",
         "name": "Ashley C.",
-        "status": true
+        "status": true,
+        "img": "/img/profile/owl.png"
     },
     {
         "id": 3,
         "username": "toointeresting",
         "name": "Brandon K.",
-        "status": true
+        "status": true,
+        "img": "/img/profile/pig.png"
     }
 ]
