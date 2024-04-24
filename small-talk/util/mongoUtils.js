@@ -1,3 +1,5 @@
+// ai-gen start (ChatGPT-4, 2)
+
 import Mongoboi from "@/db/mongo";
 
 /**
@@ -66,3 +68,5 @@ export const getAllUsersByQuery = async (db, collection, query, projection) => {
     await disconnectMongoboi(myMongoboi);
     return users;
 }
+
+// ai-gen start (ChatGPT-4, 2)

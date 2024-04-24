@@ -1,3 +1,5 @@
+// ai-gen start (ChatGPT-4, 1)
+
 import { render, screen } from '@testing-library/react';
 import FriendsList from './FriendsList';
 import React from 'react';
@@ -45,3 +47,5 @@ describe('FriendsList', () => {
       expect(screen.getByText('user3')).toBeInTheDocument();
   });
 });
+
+// ai-gen end

@@ -9,6 +9,8 @@ const Chatbox = ({selectedFriend, userName}) => {
 	const [privateMessages, setPrivateMessages] = useState([]);
 	const [inputMessage, setInputMessage] = useState("");
 
+
+    // ai-gen start (ChatGPT-4, 2)
     // Define a useEffect hook that runs when a new user is selected
     useEffect(() => {
         // If a user is selected, set the room to the selected user's username
@@ -77,6 +79,8 @@ const Chatbox = ({selectedFriend, userName}) => {
 		socket.auth = { username };
 		socket.connect();
 	};
+    
+    // ai-gen end
 
     return (
         <div

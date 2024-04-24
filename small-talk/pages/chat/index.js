@@ -43,6 +43,7 @@ export const getServerSideProps = smolAuth(
     }
 )
 
+// ai-gen start (ChatGPT-4, 2)
 export default function Chat({user}) {
     const [selectedUser, setSelectedUser] = useState(null);
     
@@ -62,3 +63,4 @@ export default function Chat({user}) {
         </div>
     )
 }
+// ai-gen end
