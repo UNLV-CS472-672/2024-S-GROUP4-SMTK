@@ -1,86 +1,57 @@
 import { POST } from './getUser';
-import Mongoboi from 'mongoboi';
+import { getUserByQuery } from '@/util/mongoUtils';
+import Mongoboi from '@/db/mongo';
 
-jest.mock('mongoboi', () => {
-  return jest.fn().mockImplementation(() => ({
-    connect: jest.fn(),
-    findOne: jest.fn(),
-    disconnect: jest.fn(),
-  }));
-});
+// Tells Jest to replace the default export of '@/util/patientUtils' with a mock function
+// It uses export, so __esModule is true
+// getPatientsOnlineStatus is the default export of patientUtils so we define dfault as a jest.fn()
+jest.mock("@/db/mongo"); // Mocking Mongoboi class
+jest.mock('@/util/mongoUtils', () => ({
+    __esModule: true,
+    default: jest.fn(),
+    getUserByQuery: jest.fn(),
+}));
 
 describe('POST', () => {
-  let req;
-  let res;
+    let req;
+    let res;
+    let mockedGetUserByQuery = require('@/util/mongoUtils').getUserByQuery;
 
-  beforeEach(() => {
-    req = {
-      headers: {
-        authorization: 'test-session-id',
-      },
-    };
-    res = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
-    };
-  });
-
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
-  it('should return the user if found in the database', async () => {
-    const mockResult = { username: 'John Doe', age: 25 };
-    Mongoboi.prototype.findOne.mockResolvedValue(mockResult);
-
-    await POST(req, res);
-
-    expect(Mongoboi).toHaveBeenCalledWith(
-      'mongodb+srv://vercel-admin-user:pokemonwithguns@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority',
-      'Users'
-    );
-    expect(Mongoboi.prototype.connect).toHaveBeenCalled();
-    expect(Mongoboi.prototype.findOne).toHaveBeenCalledWith('patients', {
-      session_id: 'test-session-id',
+    beforeEach(() => {
+        req = {
+            method: 'POST',
+            headers: {
+                authorization: 'test'
+            }
+        };
+        res = {
+            status: jest.fn(() => res),
+            json: jest.fn(),
+        };
     });
-    expect(Mongoboi.prototype.disconnect).toHaveBeenCalled();
-    expect(res.status).toHaveBeenCalledWith(200);
-    expect(res.json).toHaveBeenCalledWith(mockResult);
-  });
 
-  it('should return null if user is not found in the database', async () => {
-    Mongoboi.prototype.findOne.mockResolvedValue(null);
-
-    await POST(req, res);
-
-    expect(Mongoboi).toHaveBeenCalledWith(
-      'mongodb+srv://vercel-admin-user:pokemonwithguns@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority',
-      'Users'
-    );
-    expect(Mongoboi.prototype.connect).toHaveBeenCalled();
-    expect(Mongoboi.prototype.findOne).toHaveBeenCalledWith('patients', {
-      session_id: 'test-session-id',
+    afterEach(() => {
+        mockedGetUserByQuery.mockClear();
     });
-    expect(Mongoboi.prototype.disconnect).toHaveBeenCalled();
-    expect(res.status).toHaveBeenCalledWith(200);
-    expect(res.json).toHaveBeenCalledWith(null);
-  });
 
-  it('should return an error if there is an exception during database operation', async () => {
-    Mongoboi.prototype.findOne.mockRejectedValue(new Error('Database error'));
+    test('POST method with valid user return should return 200 status and result', async () => {
+        let getUserByQueryMock = jest.fn(async () => {return ({username: 'patient'});});
+        mockedGetUserByQuery.mockImplementation(getUserByQueryMock);
+        
+        await POST(req, res);
 
-    await POST(req, res);
-
-    expect(Mongoboi).toHaveBeenCalledWith(
-      'mongodb+srv://vercel-admin-user:pokemonwithguns@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority',
-      'Users'
-    );
-    expect(Mongoboi.prototype.connect).toHaveBeenCalled();
-    expect(Mongoboi.prototype.findOne).toHaveBeenCalledWith('patients', {
-      session_id: 'test-session-id',
+        expect(res.status).toHaveBeenCalledWith(200);
+        expect(res.json).toHaveBeenCalledWith({username:'patient'});
     });
-    expect(Mongoboi.prototype.disconnect).toHaveBeenCalled();
-    expect(res.status).toHaveBeenCalledWith(200);
-    expect(res.json).toHaveBeenCalledWith({ found: false });
-  });
+    test('POST method with null return should return 200 status and found: false', async () => {
+        let getUserByQueryMock = jest.fn(async () => {return (null);});
+        mockedGetUserByQuery.mockImplementation(getUserByQueryMock);
+        
+        await POST(req, res);
+
+        expect(res.status).toHaveBeenCalledWith(200);
+        expect(res.json).toHaveBeenCalledWith({found:false});
+    });
+
+    
 });

@@ -1,5 +1,3 @@
-import UserStatus from '@/app/components/friends/UserStatus';
-import Mongoboi from '@/db/mongo.js'
 import { getUserByQuery } from '@/util/mongoUtils';
 
 export const POST = async (req, res) => {
@@ -17,7 +15,7 @@ export const POST = async (req, res) => {
 
         const user = await getUserByQuery("Users", "patients", query);
         if (user){
-            res.status(200).json(result); return;
+            res.status(200).json(user); return;
         }
         res.status(200).json({found: false}); return;
     }
