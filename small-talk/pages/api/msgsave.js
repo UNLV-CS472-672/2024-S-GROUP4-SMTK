@@ -1,4 +1,4 @@
-import Mongoboi from "./mongo"
+import Mongoboi from "/db/mongo"
 
 export default async function POST(req, res) {
     const uri = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@" + process.env.DB_URL
