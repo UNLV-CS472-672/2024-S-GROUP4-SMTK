@@ -1,14 +1,13 @@
-import socket from "../../util/socket";
+import socket from "@/util/socket";
 import React, { useEffect, useState } from 'react';
-import { sendMessage, setupChatRoom } from '../../util/chatUtils';
-import '@/styles/custom.css';
+import { sendMessage, setupChatRoom } from '@/util/chatUtils';
+import censor  from './censorMess';
 
-const Chatbox = ({selectedFriend}) => { 
+const Chatbox = ({selectedFriend, userName}) => { 
     const [user, setUser] = useState([]);
 	const [selectedUser, setSelectedUser] = useState(null);
 	const [privateMessages, setPrivateMessages] = useState([]);
 	const [inputMessage, setInputMessage] = useState("");
-	const [room, setRoom] = useState(""); 
 
     // Define a useEffect hook that runs when a new user is selected
     useEffect(() => {
@@ -35,8 +34,10 @@ const Chatbox = ({selectedFriend}) => {
 		});
 	
 		socket.on("private message", ({ content, from, room }) => {
-			setPrivateMessages(prevMessages => [...prevMessages, { content, from }]);
-			console.log("private message:", privateMessages);
+			if (room === selectedFriend.username) {
+                setPrivateMessages(prevMessages => [...prevMessages, { content, from }]);
+                console.log("private message:", privateMessages);
+            }
 		});
 	
 		socket.on("disconnect", () => {
@@ -54,12 +55,23 @@ const Chatbox = ({selectedFriend}) => {
 
 	const handleConnectButtonClick = () => {
 		// replace this with the proper usename taken from the cookie 
-		onUsernameSelection("randomusername");
+		onUsernameSelection(userName);
 	};
 
 	const handleSendMessage = () => {
-        sendMessage(inputMessage, selectedUser, setPrivateMessages, setInputMessage, 'dummy-room', socket);
+        if (typeof inputMessage === 'string' && inputMessage.trim() !== "" && selectedUser && typeof setPrivateMessages === 'function' && typeof setInputMessage === 'function') {
+            const censorMessage = censor(inputMessage);
+            
+            console.log("sent message from:" + selectedUser.username + " with message: " + censorMessage);
+            socket.emit("private message", { content: censorMessage, to: selectedUser.userID});
+            setPrivateMessages(prevMessages => [...prevMessages, { content: censorMessage, from: socket.id }]);
+            setInputMessage("");
+            //handleMessageSave(censorMessage);
+        } else {
+            console.log("No user selected or empty message");
+        }
     };
+
 
 	const onUsernameSelection = (username) => {
 		socket.auth = { username };
@@ -74,12 +86,12 @@ const Chatbox = ({selectedFriend}) => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                backgroundColor: 'pink',
+                backgroundColor: '#d3dae4',
                 color: 'black',
                 padding: '20px',
                 borderRadius: '10px',
                 maxWidth: '80%',
-                margin: '10vh auto 0', // Reduced the vertical margin from 20vh to 10vh
+                marginLeft: '10vh', // Reduced the vertical margin from 20vh to 10vh
                 height: '70vh',
                 maxHeight: '600px',
                 overflow: 'hidden',
@@ -121,7 +133,7 @@ const Chatbox = ({selectedFriend}) => {
             />
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 {/* <button style={{ backgroundColor: 'yellow', marginRight: '10px' }} onClick={handleConnectButtonClick}>Connect</button> */}
-                <button style={{ backgroundColor: 'green', marginRight: '10px' }} onClick={handleSendMessage}>Send</button>
+                <button className="bg-gray-700 text-white px-4 py-2 rounded-full text-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-150" onClick={handleSendMessage}>Send</button>
             </div>
         </div>
     );

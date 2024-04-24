@@ -5,13 +5,6 @@
 */
 import vulgar from './vulgarLang.js';
 
-// Mocking the list of swear words
-jest.mock('./swearWords.js', () => [
-    'shit',
-    'numbnuts',
-    'bitch'
-]);
-
 describe('vulgar', () => {
     // Test case: input contains a swear word from the list
     it('returns true if swear word detected', async () => {
@@ -29,7 +22,7 @@ describe('vulgar', () => {
 
     // Test case: input contains a partial match of a swear word from the list
     it('return true if partial swear word match was detected', async () => {
-        const input = 'this is a partialnumbnuts test';
+        const input = 'this is a partialshit test';
         const result = await vulgar(input);
         expect(result).toBe(true);
     });

@@ -1,6 +1,7 @@
-import handleMessageSave from "@/db/messageSave"
+//import handleMessageSave from "@/db/messageSave"
 import censor from "@/components/censorMess";
-
+async function handleMessageSave(content){
+}
 export const sendMessage = (inputMessage, selectedUser, setPrivateMessages, setInputMessage, room, socket) => {
     if (typeof inputMessage === 'string' && inputMessage.trim() !== "" && selectedUser && typeof setPrivateMessages === 'function' && typeof setInputMessage === 'function') {
         const censorMessage = censor(inputMessage);
