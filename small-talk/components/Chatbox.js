@@ -1,8 +1,9 @@
 import socket from "@/util/socket";
 import React, { useEffect, useState } from 'react';
 import { sendMessage, setupChatRoom } from '@/util/chatUtils';
+import censor  from './censorMess';
 
-const Chatbox = ({selectedFriend}) => { 
+const Chatbox = ({selectedFriend, userName}) => { 
     const [user, setUser] = useState([]);
 	const [selectedUser, setSelectedUser] = useState(null);
 	const [privateMessages, setPrivateMessages] = useState([]);
@@ -54,7 +55,7 @@ const Chatbox = ({selectedFriend}) => {
 
 	const handleConnectButtonClick = () => {
 		// replace this with the proper usename taken from the cookie 
-		onUsernameSelection("randomusername");
+		onUsernameSelection(userName);
 	};
 
 	const handleSendMessage = () => {
