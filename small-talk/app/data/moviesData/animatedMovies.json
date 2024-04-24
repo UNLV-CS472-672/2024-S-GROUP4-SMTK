@@ -1,0 +1,32 @@
+[
+    {
+        "id": 2,
+        "title": "Frozen II",
+        "poster": "/img/movies/frozen_ii.jpg"
+    },
+    {
+        "id": 4,
+        "title": "Toy Story 4",
+        "poster": "/img/movies/toy_story_4.jpg"
+    },
+    {
+        "id": 5,
+        "title": "Incredibles 2",
+        "poster": "/img/movies/incredibles_2.jpg"
+    },
+    {
+        "id": 10,
+        "title": "Inside Out",
+        "poster":"/img/movies/inside-out.jpg"
+    },
+    {
+        "id": 11,
+        "title": "Coco",
+        "poster":"/img/movies/coco.jpg"
+    },
+    {
+        "id": 12,
+        "title": "Moana",
+        "poster":"/img/movies/moana.jpg"
+    }
+]
