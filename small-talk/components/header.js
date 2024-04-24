@@ -6,6 +6,7 @@ import React from 'react';
 import Profile from './profile.js';
 
 export const Header = ({width, isOpen, setIsOpen}) => {
+    const headerTabs = Tabs.filter(tab => tab.header);
 
     const renderModal = () => {
         if (width < 1024) {
@@ -22,7 +23,7 @@ export const Header = ({width, isOpen, setIsOpen}) => {
         <div className="grid grid-cols-3 w-full lg:w-[1024px]">
             <Sushi isOpen={isOpen} setIsOpen={setIsOpen}/>
             <div className='flex justify-around items-center gap-5'>
-                {Tabs.map((i, idx) => (
+                {headerTabs.map((i, idx) => (
                     <a key={idx} href={i.slug} className={`px-2 rounded w-[128px] text-center hover:bg-gradient-to-r ${i.color}`}>
                         {i.name}
                     </a>

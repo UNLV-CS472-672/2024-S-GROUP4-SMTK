@@ -7,3 +7,5 @@ friend-tab.png: https://www.freepik.com/icon/friends_4828212
 game-tab.png: https://www.freepik.com/icon/game-controller_7654577
 health-tab.png: https://www.freepik.com/icon/healthcare_2679387
 media-tab.png: https://www.freepik.com/icon/tv_2073241
+profile-tab.png: https://www.freepik.com/icon/profile_4372360
+settigns-tab.png: https://www.freepik.com/icon/cogwheel_786650
