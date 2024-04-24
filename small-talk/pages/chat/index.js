@@ -45,10 +45,7 @@ export const getServerSideProps = smolAuth(
 
 export default function Chat({user}) {
     const [selectedUser, setSelectedUser] = useState(null);
-    useEffect(() => {
-        //console.log(props)
-        //console.log(props.user.username)
-    },[])
+    
     return (
         <div className='bg-slate-800 text-white'>
         <Layout renderHeader={true}>
