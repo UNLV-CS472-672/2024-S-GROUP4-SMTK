@@ -3,36 +3,48 @@
         "id": 1,
         "username": "aloha",
         "name": "Sarah M.",
-        "status": false
+        "status": false,
+        "avatar": 2,
+        "background": 2
     },
     {
         "id": 2,
         "username": "rawrXD",
         "name": "David S.",
-        "status": true
+        "status": true,
+        "avatar": 3,
+        "background": 3
     },
     {
         "id": 3,
         "username": "minecraft",
         "name": "Emily L.",
-        "status": true
+        "status": true,
+        "avatar": 4,
+        "background": 4
     },
     {
         "id": 4,
         "username": "btest2",
         "name": "Jason H.",
-        "status": false
+        "status": false,
+        "avatar": 5,
+        "background": 5
     },
     {
         "id": 5,
         "username": "powerkids1",
-        "name": "Samantha P.",
-        "status": true
+        "name": "Sam P.",
+        "status": true,
+        "avatar": 6,
+        "background": 6
     },
     {
         "id": 6,
         "username": "judger",
         "name": "Michael K.",
-        "status": false
+        "status": false,
+        "avatar": 7,
+        "background": 7
     }
 ]
