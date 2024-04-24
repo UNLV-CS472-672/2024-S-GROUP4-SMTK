@@ -12,7 +12,7 @@
 }
 
 .selected-friend{
-    @apply bg-red-200;
+    @apply bg-cool-gray;
 }
 
 .chatbox {

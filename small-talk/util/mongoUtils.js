@@ -7,7 +7,7 @@ import Mongoboi from "@/db/mongo";
  * @returns {string} The MongoDB connection URI.
  */
 export const getSmallTalkClusterMongoUri = () => {
-    return  "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@smalltalkcluster0.jo4jne6.mongodb.net/?retryWrites=true&w=majority";
+    return "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@" + process.env.DB_URL;
 }
 
 

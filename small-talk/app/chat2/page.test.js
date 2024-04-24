@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-import Chat from '../chat/page.js';
+import Chat from '../chat2/page.js';
 import socket from '../../util/socket';
-import { sendMessage } from '../chat/page.js';
+import { sendMessage } from '../chat2/page.js';
 
 jest.mock('../components/friends/FriendsList', () => {
     return function MockedFriendsList() {
