@@ -1,3 +1,6 @@
+// ai-gen start (ChatGPT-4, 0)
+
+
 import { getSmallTalkClusterMongoUri, getConnectedMongoboi, disconnectMongoboi, getAllUsernamesInDB} from './mongoUtils';
 import Mongoboi from '@/db/mongo';
 
@@ -71,3 +74,5 @@ describe('disconnectMongoboi', () => {
         expect(usernames).toEqual(['testUser1', 'testUser2']);
     });
 });
+
+// ai-gen end
