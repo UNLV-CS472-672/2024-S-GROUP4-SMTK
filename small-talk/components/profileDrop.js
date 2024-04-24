@@ -37,7 +37,7 @@ const ProfileDrop = ({ isVisible }) => {
     const itemList = [
         { redirect: '/profile', imgSrc: '/img/icons/profile-icon.png', altText: 'Profile', itemText: 'Profile', imageClass: 'w-3 ml-1', textClass: 'ml-4'},
         { redirect: '/settings', imgSrc: '/img/icons/setting-icon.png', altText: 'Settings', itemText: 'Settings', imageClass: 'w-4 ml-1', textClass: 'ml-3'},
-        { redirect: '/', imgSrc: '/img/icons/logout-icon.png', altText: 'Logout', itemText: 'Logout', imageClass: 'w-4 ml-1', textClass: 'ml-3'}
+        { redirect: '/login', imgSrc: '/img/icons/logout-icon.png', altText: 'Logout', itemText: 'Logout', imageClass: 'w-4 ml-1', textClass: 'ml-3'}
     ]
 
     return (
