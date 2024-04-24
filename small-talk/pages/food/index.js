@@ -3,6 +3,7 @@ import Layout from '@/components/layout';
 import React from 'react';
 import MenuTabs from '../../app/components/foodPage/MenuTabs'; // Ensure path is correct
 import { useEffect, useState } from 'react';
+import Title from '@/components/title';
 
 export default function Food() {
     const [windowWidth, setWindowWidth] = useState(null);
@@ -13,6 +14,7 @@ export default function Food() {
     return(
         <div className='bg-slate-800 text-white'>
             <Layout width={windowWidth} renderHeader={true} renderFooter={true}>
+            <Title page="Food"/>
                 <div style={{
                         // Styling for the container div
                         display: 'flex',
