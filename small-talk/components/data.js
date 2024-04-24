@@ -58,6 +58,7 @@ export const Tabs =
     },
     {
         name: "Settings",
+        slug: "/settings",
         color: "from-gray-300 to-slate-500",
         imgSrc: "/img/icons/settings-tab.png",
         header: false
