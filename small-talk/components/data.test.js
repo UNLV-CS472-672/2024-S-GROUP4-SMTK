@@ -2,7 +2,7 @@ import Tabs from './data.js';
 //ai-gen start (ChatGPT-4, 2)
 describe('Tabs array', () => {
     it('should contain the correct number of tabs', () => {
-        expect(Tabs.length).toBe(8);
+        expect(Tabs.length).toBe(9);
     });
 
     it('should contain the correct properties for each tab', () => {
@@ -10,6 +10,8 @@ describe('Tabs array', () => {
             expect(tab).toHaveProperty('name');
             expect(tab).toHaveProperty('slug');
             expect(tab).toHaveProperty('color');
+            expect(tab).toHaveProperty('imgSrc');
+            expect(tab).toHaveProperty('header');
         }
     });
 
@@ -19,7 +21,8 @@ describe('Tabs array', () => {
             name: 'Home',
             slug: '/homepage',
             color: 'from-cyan-400 to-sky-500',
-            imgSrc: '/img/logo-no_font.png'
+            imgSrc: '/img/logo-no_font.png',
+            header: true
         });
     });
 
