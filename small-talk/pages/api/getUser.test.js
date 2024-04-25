@@ -1,3 +1,5 @@
+// ai-gen start (ChatGpt-4, 2)
+
 import { POST } from './getUser';
 import { getUserByQuery } from '@/util/mongoUtils';
 import Mongoboi from '@/db/mongo';
@@ -55,3 +57,5 @@ describe('POST', () => {
 
     
 });
+
+//ai-gen end
