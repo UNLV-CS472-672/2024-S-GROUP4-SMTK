@@ -1,3 +1,6 @@
+// ai-gen start (ChatGPT-4, 1)
+
+
 import { getPatientsOnlineStatus } from './patientUtils';
 import * as mongoUtils from './mongoUtils';
 
@@ -13,6 +16,15 @@ describe('getPatientsOnlineStatus', () => {
       { username: 'Bob Johnson', online: true }
     ];
     const patients = ['John Doe', 'Jane Smith', 'Bob Johnson'];
+    mongoUtils.getAllUsernamesInDB.mockResolvedValue(patients);
+
+    const result = await getPatientsOnlineStatus();
+    expect(result).toEqual(expected);
+  });
+
+  it('should return an empty list if the usernames return is length 0', async () => {
+    const expected = [];
+    const patients = [];
     mongoUtils.getAllUsernamesInDB.mockResolvedValue(patients);
 
     const result = await getPatientsOnlineStatus();
@@ -47,3 +59,5 @@ describe('getPatientsOnlineStatus', () => {
   });
 
 });
+
+// ai-gen end

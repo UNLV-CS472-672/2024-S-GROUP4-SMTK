@@ -1,4 +1,5 @@
-//import handleMessageSave from "@/db/messageSave"
+// ai-gen start (ChatGPT-4, 2)
+
 import censor from "@/components/censorMess";
 async function handleMessageSave(content){
 }
@@ -27,3 +28,5 @@ export const setupChatRoom = (username) => {
         console.log("Invalid username");
     }
 };
+
+// ai-gen end

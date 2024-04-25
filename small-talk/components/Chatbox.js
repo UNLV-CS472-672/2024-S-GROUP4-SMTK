@@ -1,6 +1,6 @@
-import socket from "@/util/socket";
 import React, { useEffect, useState } from 'react';
 import { sendMessage, setupChatRoom } from '@/util/chatUtils';
+import socket from "@/util/socket";
 import censor  from './censorMess';
 
 const Chatbox = ({selectedFriend, userName}) => { 
@@ -10,6 +10,8 @@ const Chatbox = ({selectedFriend, userName}) => {
 	const [inputMessage, setInputMessage] = useState("");
 
     // Define a useEffect hook that runs when a new user is selected
+    // ai-gen start (ChatGPT-4, 2)
+
     useEffect(() => {
         // If a user is selected, set the room to the selected user's username
         // There will likely be a lot more functionality that needs to be added or changed
@@ -78,6 +80,8 @@ const Chatbox = ({selectedFriend, userName}) => {
 		socket.connect();
 	};
 
+    // ai-gen end
+    
     return (
         <div
             data-testid="chat-container" 
