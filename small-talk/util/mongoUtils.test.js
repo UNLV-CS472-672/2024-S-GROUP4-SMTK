@@ -124,4 +124,23 @@ describe('getUserByQuery', () => {
 
       expect(user.username).toEqual('testUser1');
   });
+  it('should return null on an error', async () => {
+      // Start by defining the environment variables
+      process.env.DB_USER = 'testUser';
+      process.env.DB_PASS = 'testPass';
+      process.env.DB_URL = 'testURL';
+      const expectedUri = 'mongodb+srv://testUser:testPass@testURL';
+
+      const query = {
+        session_id : 'testSessionId'
+      }
+  
+      // Set up the mocks
+      jest.spyOn(Mongoboi.prototype, 'findOne').mockImplementation(() => {throw new Error('test error')});
+      
+      // Call the function and verify the results
+      var user = await getUserByQuery('testDB', 'testCollection', query);
+      
+      expect(user).toEqual(null);
+  });
 });
