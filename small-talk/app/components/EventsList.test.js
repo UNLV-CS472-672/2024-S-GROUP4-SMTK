@@ -2,6 +2,7 @@ import React from 'react';
 import EventsList from './EventsList';
 import { render } from '@testing-library/react';
 
+// ai-gen start (Chat-GPT 3.5, 1)
 describe('EventsList component', () => 
 {
     // Test Events
@@ -72,3 +73,4 @@ describe('EventsList component', () =>
         // expect(getByText(/Event 3/)).toBeInTheDocument();
     });
 });
+// ai-gen end
