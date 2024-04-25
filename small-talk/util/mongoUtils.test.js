@@ -1,4 +1,7 @@
-import { getSmallTalkClusterMongoUri, getConnectedMongoboi, disconnectMongoboi, getAllUsernamesInDB} from './mongoUtils';
+
+import { getSmallTalkClusterMongoUri, getConnectedMongoboi, disconnectMongoboi, getAllUsernamesInDB, getUserByQuery} from './mongoUtils';
+// ai-gen start (ChatGPT-4, 0)
+
 import Mongoboi from '@/db/mongo';
 
 jest.mock('@/db/mongo'); // This will mock the entire Mongoboi module
@@ -25,19 +28,19 @@ describe('getConnectedMongoboi', () => {
 
 
 describe('disconnectMongoboi', () => {
-    beforeEach(() => {
-      // Clear all instances and calls to constructor and all methods:
-      Mongoboi.mockClear();
-    });
-  
-    it('should disconnect the given mongoboi', () => {
-        var myMongoboi = new Mongoboi('mongodb://localhost:27017', 'testDB');
-        disconnectMongoboi(myMongoboi);
-
-        const mockMongoboiInstance = Mongoboi.mock.instances[0];
-        expect(mockMongoboiInstance.disconnect).toHaveBeenCalledTimes(1);
-    });
+  beforeEach(() => {
+    // Clear all instances and calls to constructor and all methods:
+    Mongoboi.mockClear();
   });
+
+  it('should disconnect the given mongoboi', () => {
+      var myMongoboi = new Mongoboi('mongodb://localhost:27017', 'testDB');
+      disconnectMongoboi(myMongoboi);
+
+      const mockMongoboiInstance = Mongoboi.mock.instances[0];
+      expect(mockMongoboiInstance.disconnect).toHaveBeenCalledTimes(1);
+  });
+});
 
 
   describe('getAllUsernamesInDB', () => {
@@ -47,27 +50,103 @@ describe('disconnectMongoboi', () => {
     });
   
     it('should send a basic query to getAllUsersByQuery, which should make a call go findAll', async () => {
-        // Start by defining the environment variables
-        process.env.DB_USER = 'testUser';
-        process.env.DB_PASS = 'testPass';
-        process.env.DB_URL = 'testURL'
-        const expectedUri = 'mongodb+srv://testUser:testPass@testURL';
+      // Start by defining the environment variables
+      process.env.DB_USER = 'testUser';
+      process.env.DB_PASS = 'testPass';
+      process.env.DB_URL = 'testURL';
+      const expectedUri = 'mongodb+srv://testUser:testPass@testURL';
+
+      // Set up the mocks
+      const mockFindAll = jest.fn().mockResolvedValue([{username: 'testUser1'}, {username: 'testUser2'}]);
+      jest.spyOn(Mongoboi.prototype, 'findAll').mockImplementation(mockFindAll);
+      
+      // Call the function and verify the results
+      var usernames = await getAllUsernamesInDB('testDB', 'testCollection');
+      
+      expect(Mongoboi).toHaveBeenCalledTimes(1);
+      expect(Mongoboi).toHaveBeenCalledWith(expectedUri, 'testDB');
+
+      const mockMongoboiInstance = Mongoboi.mock.instances[0];
+      expect(mockMongoboiInstance.connect).toHaveBeenCalledTimes(1);
+      expect(mockMongoboiInstance.disconnect).toHaveBeenCalledTimes(1);
+      expect(mockMongoboiInstance.findAll).toHaveBeenCalledTimes(1);
+
+      expect(usernames).toEqual(['testUser1', 'testUser2']);
+    });
+
     
-        // Set up the mocks
-        const mockFindAll = jest.fn().mockResolvedValue([{username: 'testUser1'}, {username: 'testUser2'}]);
-        jest.spyOn(Mongoboi.prototype, 'findAll').mockImplementation(mockFindAll);
-        
-        // Call the function and verify the results
-        var usernames = await getAllUsernamesInDB('testDB', 'testCollection');
-        
-        expect(Mongoboi).toHaveBeenCalledTimes(1);
-        expect(Mongoboi).toHaveBeenCalledWith(expectedUri, 'testDB');
+    it('should return an empty array if no users are found', async () => {
+      // Start by defining the environment variables
+      process.env.DB_USER = 'testUser';
+      process.env.DB_PASS = 'testPass';
+      process.env.DB_URL = 'testURL';
+      const expectedUri = 'mongodb+srv://testUser:testPass@testURL';
 
-        const mockMongoboiInstance = Mongoboi.mock.instances[0];
-        expect(mockMongoboiInstance.connect).toHaveBeenCalledTimes(1);
-        expect(mockMongoboiInstance.disconnect).toHaveBeenCalledTimes(1);
-        expect(mockMongoboiInstance.findAll).toHaveBeenCalledTimes(1);
+      // Set up the mocks
+      const mockFindAll = jest.fn().mockResolvedValue(null);
+      jest.spyOn(Mongoboi.prototype, 'findAll').mockImplementation(mockFindAll);
+      
+      // Call the function and verify the results
+      var usernames = await getAllUsernamesInDB('testDB', 'testCollection');
 
-        expect(usernames).toEqual(['testUser1', 'testUser2']);
+      expect(usernames).toEqual([]);
     });
 });
+
+describe('getUserByQuery', () => {
+  beforeEach(() => {
+    // Clear all instances and calls to constructor and all methods:
+    Mongoboi.mockClear();
+  });
+
+  it('should make a call to findOne', async () => {
+      // Start by defining the environment variables
+      process.env.DB_USER = 'testUser';
+      process.env.DB_PASS = 'testPass';
+      process.env.DB_URL = 'testURL';
+      const expectedUri = 'mongodb+srv://testUser:testPass@testURL';
+
+      const query = {
+        session_id : 'testSessionId'
+      }
+  
+      // Set up the mocks
+      const mockFindOne = jest.fn().mockResolvedValue({username: 'testUser1'});
+      jest.spyOn(Mongoboi.prototype, 'findOne').mockImplementation(mockFindOne);
+      
+      // Call the function and verify the results
+      var user = await getUserByQuery('testDB', 'testCollection', query);
+      
+      expect(Mongoboi).toHaveBeenCalledTimes(1);
+      expect(Mongoboi).toHaveBeenCalledWith(expectedUri, 'testDB');
+
+      const mockMongoboiInstance = Mongoboi.mock.instances[0];
+      expect(mockMongoboiInstance.connect).toHaveBeenCalledTimes(1);
+      expect(mockMongoboiInstance.disconnect).toHaveBeenCalledTimes(1);
+      expect(mockMongoboiInstance.findOne).toHaveBeenCalledTimes(1);
+
+      expect(user.username).toEqual('testUser1');
+  });
+  it('should return null on an error', async () => {
+      // Start by defining the environment variables
+      process.env.DB_USER = 'testUser';
+      process.env.DB_PASS = 'testPass';
+      process.env.DB_URL = 'testURL';
+      const expectedUri = 'mongodb+srv://testUser:testPass@testURL';
+
+      const query = {
+        session_id : 'testSessionId'
+      }
+  
+      // Set up the mocks
+      jest.spyOn(Mongoboi.prototype, 'findOne').mockImplementation(() => {throw new Error('test error')});
+      
+      // Call the function and verify the results
+      var user = await getUserByQuery('testDB', 'testCollection', query);
+      
+      expect(user).toEqual(null);
+  });
+});
+
+// ai-gen end
+
