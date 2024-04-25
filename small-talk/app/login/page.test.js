@@ -3,6 +3,8 @@ const { render, screen, fireEvent, waitFor } = require('@testing-library/react')
 import LoginPage from './page';
 import validateInput from '@/components/inputValidation';
 
+// Mock the module that contains handleLogin function
+jest.mock('@/db/handleLogin');
 describe('Page component', () => {
 
     beforeEach(() => {
@@ -55,4 +57,33 @@ describe('Page component', () => {
         alertMock.mockRestore();
         
     });
+
+
+    test('redirects to homepage on successful login', async () => {
+        const username = 'validUsername';
+        const password = 'validPassword';
+
+        // Mock handleLogin function
+        const handleLoginMock = jest.fn();
+        // Assign the mock to the module
+        require('@/db/handleLogin').default = handleLoginMock;
+
+        const usernameInput = screen.getByPlaceholderText('Username');
+        const passwordInput = screen.getByPlaceholderText('Password');
+        const submitButton = screen.getByTestId('submit');
+
+        // Update the input fields
+        fireEvent.change(usernameInput, { target: { value: username } });
+        fireEvent.change(passwordInput, { target: { value: password } });
+        fireEvent.click(submitButton);
+
+        // Wait for redirection
+        await waitFor(() => {
+            expect(window.location.href).toContain('http://localhost/'); // Verify the partial match of the redirection URL
+        });
+
+    });
+
+    
+
 });
