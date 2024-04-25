@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Header from './header.js';
-import { MemoryRouter } from 'react-router-dom';
 
 // AI-gen start
 describe('Header component', () => {
