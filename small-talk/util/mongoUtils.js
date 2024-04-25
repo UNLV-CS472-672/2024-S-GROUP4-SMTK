@@ -1,3 +1,6 @@
+// ai-gen start (ChatGPT-4, 2)
+
+
 import Mongoboi from "@/db/mongo";
 
 /**

@@ -1,3 +1,5 @@
+// ai-gen start (ChatGPT-4, 1)
+
 import { render, screen } from '@testing-library/react';
 import UserStatus from './UserStatus';
 import React from 'react';
@@ -31,3 +33,5 @@ test('renders UserStatus component with offline status', () => {
   expect(dotElement).toBeInTheDocument();
   expect(dotElement).toHaveClass('bg-gray-400');
 });
+
+// ai-gen end

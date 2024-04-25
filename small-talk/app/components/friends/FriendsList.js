@@ -3,7 +3,7 @@ import UserStatus from './UserStatus';
 import { useState, useEffect } from 'react';
 import '@/styles/custom.css';
 
-
+// ai-gen start (ChatGPT-4, 2)
 /**
  * This component renders a grid of patients and their online status.
  * As of now, it lists every user from the database. In the future it should
@@ -62,3 +62,5 @@ const FriendsList = ({ onSelectUser, selectedUser }) => {
 };
 
 export default FriendsList;
+
+// ai-gen end

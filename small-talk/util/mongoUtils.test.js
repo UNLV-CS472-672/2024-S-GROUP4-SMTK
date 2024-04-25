@@ -1,4 +1,7 @@
+
 import { getSmallTalkClusterMongoUri, getConnectedMongoboi, disconnectMongoboi, getAllUsernamesInDB, getUserByQuery} from './mongoUtils';
+// ai-gen start (ChatGPT-4, 0)
+
 import Mongoboi from '@/db/mongo';
 
 jest.mock('@/db/mongo'); // This will mock the entire Mongoboi module
@@ -144,3 +147,6 @@ describe('getUserByQuery', () => {
       expect(user).toEqual(null);
   });
 });
+
+// ai-gen end
+
