@@ -48,6 +48,10 @@ const FriendsList = ({ onSelectUser, selectedUser }) => {
                 className={`
                     friend-selection 
                     ${isCurrentlySelected(user.username) ? 'selected-friend' : ''}
+                    
+                `}
+                data-testid={`
+                    ${isCurrentlySelected(user.username) ? 'selected-friend' : ''}
                 `}
                 onClick={() => onSelectUser(user)}>
                     <UserStatus username={user.username} onlineStatus={user.online} />

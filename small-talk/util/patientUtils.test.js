@@ -22,6 +22,15 @@ describe('getPatientsOnlineStatus', () => {
     expect(result).toEqual(expected);
   });
 
+  it('should return an empty list if the usernames return is length 0', async () => {
+    const expected = [];
+    const patients = [];
+    mongoUtils.getAllUsernamesInDB.mockResolvedValue(patients);
+
+    const result = await getPatientsOnlineStatus();
+    expect(result).toEqual(expected);
+  });
+
   it('should return a list of users with their online status if patients are passed into the call', async () => {
     const expected = [
       { username: 'John Doe', online: true },

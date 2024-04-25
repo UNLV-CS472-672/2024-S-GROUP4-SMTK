@@ -47,6 +47,36 @@ describe('FriendsList', () => {
       expect(screen.getByText('user2')).toBeInTheDocument();
       expect(screen.getByText('user3')).toBeInTheDocument();
   });
+
+  test('selects user on click', async () => {
+    const users = [
+      { username: 'user1', online: true },
+      { username: 'user2', online: false },
+      { username: 'user3', online: true },
+    ];
+
+    // Mock the API response with the users data
+    jest.spyOn(global, 'fetch').mockImplementation(mockFetch(users));
+
+    const onSelectUser = jest.fn();
+
+    render(<FriendsList onSelectUser={onSelectUser} selectedUser={{username: 'user1', online: true}} />);
+
+    // Wait for the users to be loaded
+    await screen.findByText('user1');
+    await screen.findByText('user2');
+    await screen.findByText('user3');
+
+    // Simulate click on a user
+    const user1Element = screen.getByText('user1');
+    user1Element.click();
+
+    // Assert that the onSelectUser function is called with the correct user
+    expect(onSelectUser).toHaveBeenCalledWith(users[0]);
+
+    expect(screen.getByTestId('selected-friend')).toBeInTheDocument();
+  });
 });
 
 // ai-gen end
+

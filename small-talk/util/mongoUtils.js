@@ -70,4 +70,24 @@ export const getAllUsersByQuery = async (db, collection, query, projection) => {
     return users;
 }
 
+
+/**
+ * Retrieves all users from a MongoDB collection based on a query and projection.
+ * @param {string} db - The name of the database.
+ * @param {string} collection - The name of the collection.
+ * @param {object} query - The query object to filter the results.
+ */
+export const getUserByQuery = async (db, collection, query) => {
+    let user = null;
+    try{
+        var myMongoboi = await getConnectedMongoboi(getSmallTalkClusterMongoUri(), db);
+        user = await myMongoboi.findOne(collection, query);
+    } catch (error) {
+        console.log("Error fetching user in getUserByQuery: ", error);
+    } finally {
+        await disconnectMongoboi(myMongoboi);
+        return user;
+    }
+}
+
 // ai-gen end
