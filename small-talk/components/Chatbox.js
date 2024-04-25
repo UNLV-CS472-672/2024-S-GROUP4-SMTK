@@ -1,6 +1,6 @@
-import socket from "@/util/socket";
 import React, { useEffect, useState } from 'react';
 import { sendMessage, setupChatRoom } from '@/util/chatUtils';
+import socket from "@/util/socket";
 import censor  from './censorMess';
 
 const Chatbox = ({selectedFriend, userName}) => { 
@@ -18,7 +18,8 @@ const Chatbox = ({selectedFriend, userName}) => {
         // depending on how the chat system is implemented
         console.log("Selected friend: ", selectedFriend)
         if (selectedFriend) {
-            setupChatRoom(selectedFriend.username);
+            setupChatRoom(selectedFriend.userName);
+            setPrivateMessages([]);
         }
     }, [selectedFriend]);
 
@@ -35,8 +36,8 @@ const Chatbox = ({selectedFriend, userName}) => {
 			setUser(prevUsers => [...prevUsers, user]);
 		});
 	
-		socket.on("private message", ({ content, from, room }) => {
-			if (room === selectedFriend.username) {
+		socket.on("private message", ({ content, from, room}) => {
+			if (room === selectedFriend.userName) {
                 setPrivateMessages(prevMessages => [...prevMessages, { content, from }]);
                 console.log("private message:", privateMessages);
             }
@@ -61,7 +62,7 @@ const Chatbox = ({selectedFriend, userName}) => {
 	};
 
 	const handleSendMessage = () => {
-        if (typeof inputMessage === 'string' && inputMessage.trim() !== "" && selectedUser && typeof setPrivateMessages === 'function' && typeof setInputMessage === 'function') {
+        if (typeof inputMessage === 'string' && inputMessage.trim() !== "" && typeof setPrivateMessages === 'function' && typeof setInputMessage === 'function') {
             const censorMessage = censor(inputMessage);
             
             console.log("sent message from:" + selectedUser.username + " with message: " + censorMessage);
@@ -73,7 +74,6 @@ const Chatbox = ({selectedFriend, userName}) => {
             console.log("No user selected or empty message");
         }
     };
-
 
 	const onUsernameSelection = (username) => {
 		socket.auth = { username };
@@ -128,7 +128,7 @@ const Chatbox = ({selectedFriend, userName}) => {
                 ))}
             </ul>
 
-            <input
+            {(selectedUser == null) ? <></>:<><input
                 type="text"
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
@@ -138,7 +138,7 @@ const Chatbox = ({selectedFriend, userName}) => {
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 {/* <button style={{ backgroundColor: 'yellow', marginRight: '10px' }} onClick={handleConnectButtonClick}>Connect</button> */}
                 <button className="bg-gray-700 text-white px-4 py-2 rounded-full text-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-150" onClick={handleSendMessage}>Send</button>
-            </div>
+            </div></>}
         </div>
     );
 }

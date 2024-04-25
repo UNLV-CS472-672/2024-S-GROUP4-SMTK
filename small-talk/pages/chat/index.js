@@ -5,6 +5,7 @@ import FriendsList from "@/app/components/friends/FriendsList";
 import { getCookie } from "@/util/smolCookie";
 import Chatbox from '@/components/Chatbox';
 import Title from '@/components/title.js';
+import React from 'react';
 
 export const getServerSideProps = smolAuth(
     async (_ctx) => {
