@@ -4,7 +4,7 @@ import MenuTabs from './MenuTabs';
 import VisualMenuComponent from './VisualMenuComponent'; // Assuming this is mocked
 import PastOrders from './PastOrders'; // Assuming this is mocked
 import MealCustomization from './MealCustomization'; // Assuming this is mocked
-
+//The majority of these test cases were created using ChatGPT as this is still a gap in my knowledge as I'm new to the language.
 jest.mock('./VisualMenuComponent', () => {
     const MockVisualMenuComponent = () => <div>VisualMenuComponent Content</div>;
     MockVisualMenuComponent.displayName = 'VisualMenuComponent';

@@ -49,7 +49,7 @@ function MenuTabs() {
                         Meal Customization
                     </button>
                 </div>
-
+                {/*AI generated code below, was used to help handle the clicking abilities of these food items so that they would be highlighted, this was beyond my knowledge */}
                 {/* Content below the tabs */}
                 <div>
                     {mainTab === 'orderFood' && (
@@ -80,7 +80,7 @@ function MenuTabs() {
                             {subTab === 'dinner' && <VisualMenuComponent menuDataPath="dinnerMenu.json" />}
                         </div>
                     )}
-
+                {/*ai gen end */}
                     {mainTab === 'pastOrders' && (
                         // Render past orders component for "Past Orders" tab
                         <div className="p-4">

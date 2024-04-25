@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import MealCustomization from './MealCustomization';
-
+// Most of these tests were generated using ChatGPT
 describe('MealCustomization Component', () => {
     // Render test
     it('renders the customization options correctly', () => {

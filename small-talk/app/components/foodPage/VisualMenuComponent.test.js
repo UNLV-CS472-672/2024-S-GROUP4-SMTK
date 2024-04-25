@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import VisualMenuComponent from './VisualMenuComponent';
-
+// Most of these tests were genereated by ChatGPT
 jest.mock('../../data/foodData/breakfastMenu.json', () => [
   { id: 1, name: 'Pancakes', description: 'Fluffy pancakes', imgPath: '/img/pancakes.jpg', nutritionalInfo: '500 kcal' },
 ], { virtual: true });

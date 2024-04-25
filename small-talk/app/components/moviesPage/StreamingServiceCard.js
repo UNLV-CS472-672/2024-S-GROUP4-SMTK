@@ -1,5 +1,5 @@
 import React from 'react';
-
+//This code was originally inspired by ChatGPT generated code (MovieCard)
 function StreamingServiceCard({ service }) {
     return (
         <div className="relative group m-2 flex-shrink-0" style={{ width: '200px', height: '200px' }}>
