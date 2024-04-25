@@ -14,7 +14,7 @@ describe('EventsList component', () =>
             {
                 year: 2024,
                 month: 4,
-                day: 24
+                day: 25
             },
             description: 'Event 1 - Today\'s Event'
         },
@@ -24,7 +24,7 @@ describe('EventsList component', () =>
             {
                 year: 2024,
                 month: 4,
-                day: 25
+                day: 26
             },
             description: 'Event 2 - Upcoming Event'
         },
