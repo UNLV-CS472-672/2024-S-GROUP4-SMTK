@@ -70,6 +70,24 @@ describe('disconnectMongoboi', () => {
 
       expect(usernames).toEqual(['testUser1', 'testUser2']);
     });
+
+    
+    it('should return an empty array if no users are found', async () => {
+      // Start by defining the environment variables
+      process.env.DB_USER = 'testUser';
+      process.env.DB_PASS = 'testPass';
+      process.env.DB_URL = 'testURL';
+      const expectedUri = 'mongodb+srv://testUser:testPass@testURL';
+
+      // Set up the mocks
+      const mockFindAll = jest.fn().mockResolvedValue(null);
+      jest.spyOn(Mongoboi.prototype, 'findAll').mockImplementation(mockFindAll);
+      
+      // Call the function and verify the results
+      var usernames = await getAllUsernamesInDB('testDB', 'testCollection');
+
+      expect(usernames).toEqual([]);
+    });
 });
 
 describe('getUserByQuery', () => {
