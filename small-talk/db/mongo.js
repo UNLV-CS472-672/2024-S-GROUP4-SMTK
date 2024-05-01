@@ -41,6 +41,15 @@ class Mongoboi {
     }
   }
 
+  async updateOne(collectionName, filter, document) {
+    try {
+      const result = await this.db.collection(collectionName).updateOne(filter, document);
+      console.log("document updated: "+result.modifiedCount)
+      return result;
+    } catch (error) {
+      return null;
+    }
+  }
   async findOne(collectionName, query) {
     try {
       const result = await this.db.collection(collectionName).findOne(query);
