@@ -1,15 +1,31 @@
 "use client"
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 //import Mongoboi from  "@/db/mongo"
 import handleSubmit from "@/db/handleLogin"
 //const Mongoboi = require("@/db/mongo");
 import validateInput from '@/components/inputValidation';
+import { getCookie } from "@/util/smolCookie";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const { push } = useRouter();
   var status = "Submit"; // name/text for the button
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("")
+  const [session_id, setSession_id] = useState(null);
+
+  useEffect(()=> {
+    const s = fetchCookieString();
+    console.log("useEffect after function call: " + s)
+    setSession_id(s)
+    console.log("useEffect: "+ s)
+    console.log("useEffect: "+ session_id)
+    if (s != null) {
+      push('/')
+    }
+    console.log("useEffect under branch: " + s)
+  },[])
   const handleLogin = () => {
     // if login sucessful
     window.location.href = "/homepage"; // Redirect to the homepage
@@ -19,6 +35,23 @@ export default function LoginPage() {
     window.location.href = "/accountCreate"; // Redirect to the homepage
   };
 
+  const fetchCookieString = () => {
+    const cookies = document.cookie;
+    if (cookies == null || cookies == "")
+    {
+      console.log("/login fetchCookieString: NO COOKIES - " + cookies)
+      return null;
+    } 
+    console.log("/login fetchCookieString: COOKIES - " + cookies)
+    const s_id = getCookie("session_id", document.cookie);
+    if (s_id == null || s_id == "")
+    {
+      console.log("/login fetchCookieString: NO SESSION ID - " + s_id)
+      return null;
+    }
+    console.log("/login fetchCookieString: SESSION_ID" + s_id)
+    return s_id;
+  }
   const authenticateUP = async (event) => {
     //form isnt submitted by default
 
@@ -36,9 +69,13 @@ export default function LoginPage() {
     }
     
     // checks if the credentials are in the database
-    if (await handleSubmit(username, password) == null){
+    const user = await handleSubmit(username, password)
+    if (user == null){
       alert("Invalid login!");
       return ok;
+    }else
+    {
+      document.cookie += "session_id="+ user.session_id+";";
     }
 
     ok = true;
